@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pamano.Core;
 
 namespace Pamano.Infrastructure.Data
 {
