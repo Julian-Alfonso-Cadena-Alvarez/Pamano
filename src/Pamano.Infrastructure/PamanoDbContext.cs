@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Pamano.Core.Domain;
 
-namespace Pamano.Web
+namespace Pamano.Infrastructure.Data
 {
     public partial class PamanoDbContext : DbContext
     {
@@ -29,11 +30,11 @@ namespace Pamano.Web
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("database=Pamano;server=localhost;port=3306;user id=root;password=''");
-            }
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseMySQL("database=Pamano;server=localhost;port=3306;user id=root;password=''");
+//            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

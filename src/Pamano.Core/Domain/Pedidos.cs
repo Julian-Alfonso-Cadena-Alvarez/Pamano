@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Pamano.Web
+namespace Pamano.Core.Domain
 {
     public partial class Pedidos
     {
