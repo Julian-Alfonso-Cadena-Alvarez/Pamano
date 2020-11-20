@@ -1,0 +1,45 @@
+﻿@model Pamano.Core.Domain.OrdenDeCompra
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>OrdenDeCompra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdOrdenDeCompra" />
+            <div class="form-group">
+                <label asp-for="NombreDelProveedor" class="control-label"></label>
+                <input asp-for="NombreDelProveedor" class="form-control" />
+                <span asp-validation-for="NombreDelProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorUnitarioDelProducto" class="control-label"></label>
+                <input asp-for="ValorUnitarioDelProducto" class="form-control" />
+                <span asp-validation-for="ValorUnitarioDelProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTotalDelProducto" class="control-label"></label>
+                <input asp-for="ValorTotalDelProducto" class="form-control" />
+                <span asp-validation-for="ValorTotalDelProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

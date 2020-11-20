@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Web\\Pamano.Web.csproj": {}
+    "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Web\\Pamano.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
+    "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
+        "projectUniqueName": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
         "projectName": "Pamano.Core",
-        "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
+        "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
         "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\obj\\",
+        "outputPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,14 +56,14 @@
         }
       }
     },
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj": {
+    "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
         "projectName": "Pamano.Infrastructure",
-        "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -79,8 +79,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
-                "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
+              "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
+                "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
               }
             }
           }
@@ -130,14 +130,14 @@
         }
       }
     },
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Web\\Pamano.Web.csproj": {
+    "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Web\\Pamano.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Web\\Pamano.Web.csproj",
+        "projectUniqueName": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Web\\Pamano.Web.csproj",
         "projectName": "Pamano.Web",
-        "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Web\\Pamano.Web.csproj",
+        "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Web\\Pamano.Web.csproj",
         "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Web\\obj\\",
+        "outputPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -153,11 +153,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
-                "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
+              "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
+                "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
               },
-              "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj"
+              "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj"
               }
             }
           }
