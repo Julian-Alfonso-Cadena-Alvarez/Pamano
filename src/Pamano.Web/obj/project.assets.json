@@ -3037,6 +3037,9 @@
       "Pamano.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "MySql.Data.EntityFrameworkCore": "8.0.22"
+        },
         "compile": {
           "bin/placeholder/Pamano.Core.dll": {}
         },

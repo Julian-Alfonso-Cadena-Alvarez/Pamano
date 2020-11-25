@@ -10,23 +10,23 @@ using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
 {
-    public class InventariosController : Controller
+    public class InventarioController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public InventariosController(PamanoDbContext context)
+        public InventarioController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: Inventarios
+        // GET: Inventario
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.Inventario.Include(i => i.IdOrdenDeCompraNavigation).Include(i => i.IdOrdenDeVentaNavigation).Include(i => i.IdPedidoNavigation).Include(i => i.IdUsuarioNavigation);
+            var pamanoDbContext = _context.Inventario.Include(i => i.IdOrdenDeCompraNavigation).Include(i => i.IdOrdenDeVentaNavigation).Include(i => i.IdPedidoNavigation).Include(i => i.IdProductoNavigation).Include(i => i.IdUsuarioNavigation);
             return View(await pamanoDbContext.ToListAsync());
         }
 
-        // GET: Inventarios/Details/5
+        // GET: Inventario/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -38,6 +38,7 @@ namespace Pamano.Web.Controllers
                 .Include(i => i.IdOrdenDeCompraNavigation)
                 .Include(i => i.IdOrdenDeVentaNavigation)
                 .Include(i => i.IdPedidoNavigation)
+                .Include(i => i.IdProductoNavigation)
                 .Include(i => i.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdInventario == id);
             if (inventario == null)
@@ -48,22 +49,23 @@ namespace Pamano.Web.Controllers
             return View(inventario);
         }
 
-        // GET: Inventarios/Create
+        // GET: Inventario/Create
         public IActionResult Create()
         {
-            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "IdOrdenDeCompra");
+            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "Producto");
             ViewData["IdOrdenDeVenta"] = new SelectList(_context.OrdenDeVenta, "IdOrdenDeVenta", "IdOrdenDeVenta");
             ViewData["IdPedido"] = new SelectList(_context.Pedidos, "IdPedido", "IdUsuario");
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto");
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
             return View();
         }
 
-        // POST: Inventarios/Create
+        // POST: Inventario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,CostoProd")] Inventario inventario)
+        public async Task<IActionResult> Create([Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,IdProducto")] Inventario inventario)
         {
             if (ModelState.IsValid)
             {
@@ -71,14 +73,15 @@ namespace Pamano.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "IdOrdenDeCompra", inventario.IdOrdenDeCompra);
+            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "Producto", inventario.IdOrdenDeCompra);
             ViewData["IdOrdenDeVenta"] = new SelectList(_context.OrdenDeVenta, "IdOrdenDeVenta", "IdOrdenDeVenta", inventario.IdOrdenDeVenta);
             ViewData["IdPedido"] = new SelectList(_context.Pedidos, "IdPedido", "IdUsuario", inventario.IdPedido);
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", inventario.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", inventario.IdUsuario);
             return View(inventario);
         }
 
-        // GET: Inventarios/Edit/5
+        // GET: Inventario/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,19 +94,20 @@ namespace Pamano.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "IdOrdenDeCompra", inventario.IdOrdenDeCompra);
+            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "Producto", inventario.IdOrdenDeCompra);
             ViewData["IdOrdenDeVenta"] = new SelectList(_context.OrdenDeVenta, "IdOrdenDeVenta", "IdOrdenDeVenta", inventario.IdOrdenDeVenta);
             ViewData["IdPedido"] = new SelectList(_context.Pedidos, "IdPedido", "IdUsuario", inventario.IdPedido);
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", inventario.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", inventario.IdUsuario);
             return View(inventario);
         }
 
-        // POST: Inventarios/Edit/5
+        // POST: Inventario/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,CostoProd")] Inventario inventario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,IdProducto")] Inventario inventario)
         {
             if (id != inventario.IdInventario)
             {
@@ -130,14 +134,15 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "IdOrdenDeCompra", inventario.IdOrdenDeCompra);
+            ViewData["IdOrdenDeCompra"] = new SelectList(_context.OrdenDeCompra, "IdOrdenDeCompra", "Producto", inventario.IdOrdenDeCompra);
             ViewData["IdOrdenDeVenta"] = new SelectList(_context.OrdenDeVenta, "IdOrdenDeVenta", "IdOrdenDeVenta", inventario.IdOrdenDeVenta);
             ViewData["IdPedido"] = new SelectList(_context.Pedidos, "IdPedido", "IdUsuario", inventario.IdPedido);
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", inventario.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", inventario.IdUsuario);
             return View(inventario);
         }
 
-        // GET: Inventarios/Delete/5
+        // GET: Inventario/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,6 +154,7 @@ namespace Pamano.Web.Controllers
                 .Include(i => i.IdOrdenDeCompraNavigation)
                 .Include(i => i.IdOrdenDeVentaNavigation)
                 .Include(i => i.IdPedidoNavigation)
+                .Include(i => i.IdProductoNavigation)
                 .Include(i => i.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdInventario == id);
             if (inventario == null)
@@ -159,7 +165,7 @@ namespace Pamano.Web.Controllers
             return View(inventario);
         }
 
-        // POST: Inventarios/Delete/5
+        // POST: Inventario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

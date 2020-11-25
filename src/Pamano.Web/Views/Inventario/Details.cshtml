@@ -18,16 +18,10 @@
             @Html.DisplayFor(model => model.FechaDeIngreso)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CostoProd)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CostoProd)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdOrdenDeCompraNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
+            @Html.DisplayFor(model => model.IdOrdenDeCompraNavigation.Producto)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdOrdenDeVentaNavigation)
@@ -40,6 +34,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IdPedidoNavigation.IdUsuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProductoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProductoNavigation.IdProducto)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdUsuarioNavigation)

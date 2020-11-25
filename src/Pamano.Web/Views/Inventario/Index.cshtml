@@ -17,9 +17,6 @@
                 @Html.DisplayNameFor(model => model.FechaDeIngreso)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CostoProd)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IdOrdenDeCompraNavigation)
             </th>
             <th>
@@ -27,6 +24,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdPedidoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
@@ -41,16 +41,16 @@
                 @Html.DisplayFor(modelItem => item.FechaDeIngreso)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CostoProd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
+                @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.Producto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)

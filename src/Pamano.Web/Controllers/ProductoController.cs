@@ -10,23 +10,23 @@ using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
 {
-    public class ProductoesController : Controller
+    public class ProductoController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public ProductoesController(PamanoDbContext context)
+        public ProductoController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: Productoes
+        // GET: Producto
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.Producto.Include(p => p.IdInventarioNavigation).Include(p => p.IdTipoDeProductoNavigation);
+            var pamanoDbContext = _context.Producto.Include(p => p.IdTipoDeProductoNavigation);
             return View(await pamanoDbContext.ToListAsync());
         }
 
-        // GET: Productoes/Details/5
+        // GET: Producto/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,7 +35,6 @@ namespace Pamano.Web.Controllers
             }
 
             var producto = await _context.Producto
-                .Include(p => p.IdInventarioNavigation)
                 .Include(p => p.IdTipoDeProductoNavigation)
                 .FirstOrDefaultAsync(m => m.IdProducto == id);
             if (producto == null)
@@ -46,20 +45,19 @@ namespace Pamano.Web.Controllers
             return View(producto);
         }
 
-        // GET: Productoes/Create
+        // GET: Producto/Create
         public IActionResult Create()
         {
-            ViewData["IdInventario"] = new SelectList(_context.Inventario, "IdInventario", "IdUsuario");
             ViewData["IdTipoDeProducto"] = new SelectList(_context.TipoDeProducto, "IdTipoProducto", "IdTipoProducto");
             return View();
         }
 
-        // POST: Productoes/Create
+        // POST: Producto/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProducto,CantidadDeProducto,IdTipoDeProducto,PrecioDelProducto,IdInventario,CaracteristicasDelProducto")] Producto producto)
+        public async Task<IActionResult> Create([Bind("IdProducto,CantidadDeProducto,IdTipoDeProducto,PrecioDelProducto,CaracteristicasDelProducto")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -67,12 +65,11 @@ namespace Pamano.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdInventario"] = new SelectList(_context.Inventario, "IdInventario", "IdUsuario", producto.IdInventario);
             ViewData["IdTipoDeProducto"] = new SelectList(_context.TipoDeProducto, "IdTipoProducto", "IdTipoProducto", producto.IdTipoDeProducto);
             return View(producto);
         }
 
-        // GET: Productoes/Edit/5
+        // GET: Producto/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,17 +82,16 @@ namespace Pamano.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdInventario"] = new SelectList(_context.Inventario, "IdInventario", "IdUsuario", producto.IdInventario);
             ViewData["IdTipoDeProducto"] = new SelectList(_context.TipoDeProducto, "IdTipoProducto", "IdTipoProducto", producto.IdTipoDeProducto);
             return View(producto);
         }
 
-        // POST: Productoes/Edit/5
+        // POST: Producto/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProducto,CantidadDeProducto,IdTipoDeProducto,PrecioDelProducto,IdInventario,CaracteristicasDelProducto")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProducto,CantidadDeProducto,IdTipoDeProducto,PrecioDelProducto,CaracteristicasDelProducto")] Producto producto)
         {
             if (id != producto.IdProducto)
             {
@@ -122,12 +118,11 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdInventario"] = new SelectList(_context.Inventario, "IdInventario", "IdUsuario", producto.IdInventario);
             ViewData["IdTipoDeProducto"] = new SelectList(_context.TipoDeProducto, "IdTipoProducto", "IdTipoProducto", producto.IdTipoDeProducto);
             return View(producto);
         }
 
-        // GET: Productoes/Delete/5
+        // GET: Producto/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,7 +131,6 @@ namespace Pamano.Web.Controllers
             }
 
             var producto = await _context.Producto
-                .Include(p => p.IdInventarioNavigation)
                 .Include(p => p.IdTipoDeProductoNavigation)
                 .FirstOrDefaultAsync(m => m.IdProducto == id);
             if (producto == null)
@@ -147,7 +141,7 @@ namespace Pamano.Web.Controllers
             return View(producto);
         }
 
-        // POST: Productoes/Delete/5
+        // POST: Producto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -33,7 +33,7 @@ namespace Pamano.Infrastructure.Data
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySQL("database=Pamano;server=localhost;port=3306;user id=root;password=''");
+//                optionsBuilder.UseMySQL("database=Pamano;server=localhost;port=3306;user id=root;password=");
 //            }
         }
 
@@ -72,16 +72,15 @@ namespace Pamano.Infrastructure.Data
                 entity.HasIndex(e => e.IdPedido)
                     .HasName("ID_pedido");
 
+                entity.HasIndex(e => e.IdProducto)
+                    .HasName("id_producto");
+
                 entity.HasIndex(e => e.IdUsuario)
                     .HasName("ID_usuario");
 
                 entity.Property(e => e.IdInventario)
                     .HasColumnName("ID_inventario")
                     .HasColumnType("int(3)");
-
-                entity.Property(e => e.CostoProd)
-                    .HasColumnName("costo_prod")
-                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.FechaDeIngreso)
                     .HasColumnName("Fecha_de_ingreso")
@@ -99,6 +98,11 @@ namespace Pamano.Infrastructure.Data
                 entity.Property(e => e.IdPedido)
                     .HasColumnName("ID_pedido")
                     .HasColumnType("int(3)");
+
+                entity.Property(e => e.IdProducto)
+                    .HasColumnName("id_producto")
+                    .HasColumnType("int(3)")
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdUsuario)
                     .IsRequired()
@@ -123,6 +127,11 @@ namespace Pamano.Infrastructure.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("inventario_ibfk_5");
 
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.Inventario)
+                    .HasForeignKey(d => d.IdProducto)
+                    .HasConstraintName("inventario_ibfk_7");
+
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Inventario)
                     .HasForeignKey(d => d.IdUsuario)
@@ -145,6 +154,11 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnName("Nombre_del_proveedor")
                     .HasMaxLength(15)
                     .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.Producto)
+                    .IsRequired()
+                    .HasColumnName("producto")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.ValorTotalDelProducto)
                     .HasColumnName("Valor_total_del_producto")
@@ -234,9 +248,6 @@ namespace Pamano.Infrastructure.Data
 
                 entity.ToTable("producto");
 
-                entity.HasIndex(e => e.IdInventario)
-                    .HasName("ID_inventario");
-
                 entity.HasIndex(e => e.IdTipoDeProducto)
                     .HasName("id_tipo_de_producto");
 
@@ -251,12 +262,8 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.CaracteristicasDelProducto)
                     .HasColumnName("Caracteristicas_del_producto")
-                    .HasMaxLength(20)
+                    .HasMaxLength(30)
                     .HasDefaultValueSql("'NULL'");
-
-                entity.Property(e => e.IdInventario)
-                    .HasColumnName("ID_inventario")
-                    .HasColumnType("int(3)");
 
                 entity.Property(e => e.IdTipoDeProducto)
                     .HasColumnName("id_tipo_de_producto")
@@ -267,12 +274,6 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnName("Precio_del_producto")
                     .HasColumnType("int(8)")
                     .HasDefaultValueSql("'NULL'");
-
-                entity.HasOne(d => d.IdInventarioNavigation)
-                    .WithMany(p => p.Producto)
-                    .HasForeignKey(d => d.IdInventario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("producto_ibfk_2");
 
                 entity.HasOne(d => d.IdTipoDeProductoNavigation)
                     .WithMany(p => p.Producto)
