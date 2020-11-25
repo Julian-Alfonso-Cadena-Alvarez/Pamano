@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #a3e209;
+}
+.borde{
+    border: 1px solid #8400ba;
+}
+
+/* Buscador */
+nav{
+    width: 100%;
+    height: 50px;
+}
+.logo{
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+.navegacion{
+    width: 65%;
+    height: 100%;
+    float: left;
+}
+.seccion{
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+.icon_sec{
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+.cerrar{
+    width: 75%;
+    height: 100%;
+    float:left;
+}
+/*Encabezado*/
+.indice{
+    height: 30px;
+    width: 100%;
+    float: left;
+}
+.titulo{
+    width: 100%;
+    height: 50px;
+    float: left;
+}
+/*Lista*/
+main#lista{
+    width: 100%;
+    height: 600px;
+    float: left;
+}
+/*Filtro de los productos*/
+.filtrar{
+    width: 100%;
+    height: 10%;
+    float: left;
+}
+.espacio_der{
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+.espaco_arriba{
+    width: 100%;
+    height: 15%;
+}
+.busca{
+    width: 60%;
+    height: 70%;
+    float: left;
+}
+/*Lista de productos*/
+.bor_list{
+    width: 100%;
+    height: 90%;
+    float: left;
+
+}
+.bor_der{
+    width: 5%;
+    height: 90%;
+    float: left;
+}
+.lis{
+    width: 90%;
+    height: 90%;
+    float: left;
+}
+footer{
+    width: 100%;
+    height: 50px;
+    float: left;
+}

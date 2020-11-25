@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #29cb08;
+}
+.borde{
+    border: 1px solid #030fb0;
+}
+
+/* Buscador */
+nav{
+    width: 100%;
+    height: 50px;
+}
+.logo{
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+.navegacion{
+    width: 65%;
+    height: 100%;
+    float: left;
+}
+.seccion{
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+.icon_sec{
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+.cerrar{
+    width: 75%;
+    height: 100%;
+    float:left;
+}
+header{
+    background-image: url(../img/img11.jpg)
+}
+/*Encabezado*/
+.indice{
+    height: 30px;
+    width: 100%;
+    float: left;
+}
+/* centro*/
+main#Inventario{
+    width: 100%;
+    height: 700px;
+}
+.titulo{
+    width: 100%;
+    height: 60px;
+    float: left;
+}
+/* medio_der*/
+.medio_der{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+.arriba{
+    width: 100%;
+    height: 33.33%;
+    float: left;
+}
+.medio{
+    width: 100%;
+    height: 33.33%;
+    float: left;
+}
+.abajo{
+    width: 100%;
+    height: 33.33%;
+    float: left;
+}
+/*Centralizacion del boton*/
+.sep_der{
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+.sep_izq{
+    width: 20%;
+    height: 100%;
+    float: right;
+}
+.sep_arr{
+    width: 60%;
+    height: 25%;
+    float: left;
+}
+.boton{
+    width: 60%;
+    height: 50%;
+    float: left;
+}
+.medio_izq{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+.izq_sep_de{
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+.izq_sep_izq{
+    width: 10%;
+    height: 100%;
+    float: right;
+}
+.izq_sep_arr{
+    width: 60%;
+    height: 6.5%;
+    float: left;
+}
+.izqboton{
+    width: 80%;
+    height: 87%;
+    float: left;
+}
+footer{
+    width: 100%;
+    height: 50px;
+    float: left;
+}
