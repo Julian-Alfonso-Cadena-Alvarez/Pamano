@@ -9,7 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pamano.Infrastructure.Data;
+using Pamano.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 namespace Pamano.Web
 {
     public class Startup
@@ -26,7 +29,15 @@ namespace Pamano.Web
         {
             services.AddDbContext<PamanoDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("PamanoConnection")));
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseMySQL(
+                    Configuration.GetConnectionString("IdentityConnection")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

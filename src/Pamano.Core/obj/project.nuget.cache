@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bp1wgjN5xIVcDRslA5wrV6o8hEf06xhZUoxjbzAyZZXV9SdDZ1Jrz4KeRWCYzVl9X5BUfuWPIKO358+6OTTMpQ==",
+  "dgSpecHash": "zNg6KNYUXOatURnL9RPChyN/q19DM0KA+mBpg+DcJONCnEXITXl/3aiO6OZ5snVDBxaCT6Dtmzyv0tI4SYyEtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
+  "projectFilePath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\familia\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\familia\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",

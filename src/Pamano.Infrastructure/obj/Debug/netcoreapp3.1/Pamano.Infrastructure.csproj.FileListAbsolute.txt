@@ -8,8 +8,8 @@ C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\bin\Debug\netcoreapp3.
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.csprojAssemblyReference.cache
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.AssemblyInfo.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.csproj.CopyComplete
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.dll
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.pdb
 C:\Users\familia\Desktop\Pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.genruntimeconfig.cache
+C:\Users\familia\Desktop\pamano\src\Pamano.Infrastructure\obj\Debug\netcoreapp3.1\Pamano.Infrastructure.csproj.CoreCompileInputs.cache
