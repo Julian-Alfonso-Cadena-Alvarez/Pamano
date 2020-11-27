@@ -517,3 +517,5 @@ C:\Users\familia\Desktop\pamano\src\Pamano.Web\bin\Debug\netcoreapp3.1\Microsoft
 C:\Users\familia\Desktop\pamano\src\Pamano.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Pamano_cliente.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Index.cshtml.g.cs

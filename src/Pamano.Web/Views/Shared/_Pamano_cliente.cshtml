@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Mi cuenta</title>
+    <link rel="stylesheet" type="text/css" href="../css/estilos_mi_cuenta_clien.css">
+    <link rel="shortcut icon" href="~/img/Logo1.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+            <div class="logo">
+                <img src="../img/Logo1.png" alt="">
+            </div>
+
+            <div class="navegacion">
+                <input type="text" name="Buscador" placeholder="Buscar" class="Buscador">
+                <p class="padding"><a href="#" class="btn_buscar">Buscar</a></p>
+
+                <div class="list_navegacion">
+                    <ul>
+                        <li><a href="#">INICIO</a></li>
+                        <li>
+                            <a href="#">MARCAS</a>
+                            <ul>
+                                <li><a href="#">Escolares</a></li>
+                                <li><a href="#">Oficina</a></li>
+                                <li><a href="#">Detalles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">QUIENES SOMOS</a></li>
+                        <li>
+                            <a href="#">CONTACTENOS</a>
+                            <ul>
+                                <li class="Direccion"><a href="#">Direccion</a></li>
+                                <li><a href="#">Redes Sociales</a></li>
+                                <li><a href="#">Correo Electronico</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cerrar">
+                <a href="#">Cerrar sesion</a>
+            </div>
+     </nav>
+    <header class="fondo_tifblue">
+        <h1 class="fondo_tifblue indice">Inicio - Mi Cuenta</h1>
+    </header>
+
+
+        <main role="main">
+
+            <div class=" cont_opc">
+                <div class=" img-centro"></div>
+                <h2>Datos Personales</h2>
+                <p>Puedes ver tus datos, actualizarlos si lo requieres y cambiar tu contraseña.</p>
+                <div class="btn_per btn_ir">
+                    <ul>
+                        <li><a href="../html/DatosP_Cliente.html">Ir a Datos Personales</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cont_opc">
+                <div class="img-centro"></div>
+                <h2>Favoritos</h2>
+                <p>Puedes ver tus productos favoritos, tambien puedes agregar mas o eliminar alguno de ellos. </p>
+                <div class=" btn_fav btn_ir">
+                    <ul>
+                        <li><a href="../html/Favoritos_cliente.html">Ir a Favoritos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cont_opc">
+                <div class=" img-centro"></div>
+                <h2>Historial de pedidos</h2>
+                <p>Mira los pedidos que haz efectuado, su estado y realiza su cancelación si así lo deseas.</p>
+                <div class=" btn_his btn_ir">
+                    <ul>
+                        <li><a href="../html/Historial_cliente.html">Ir a Historial</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cont_opc">
+                <div class="img-centro"></div>
+                <h2>Mi carrito</h2>
+                <p>Puedes ver los productos que tienes en el carrito, modificar su cantidad o agregar algun otro producto que te interese </p>
+                <div class="btn_car btn_ir">
+                    <ul>
+                        <li><a href="Mi_carro.html">Ir a Carrito</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn_salida">
+                <ul>
+                    <li><a href="#">SALIR</a></li>
+                </ul>
+            </div>
+            @RenderBody()
+        </main>   
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Pamano <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
