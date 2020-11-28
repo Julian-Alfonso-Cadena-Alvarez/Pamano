@@ -21,7 +21,7 @@
 
                 <div class="list_navegacion">
                     <ul>
-                        <li><a href="#">INICIO</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">INICIO</a></li>
                         <li>
                             <a href="#">MARCAS</a>
                             <ul>
@@ -74,7 +74,7 @@
 
                         <input type="submit" value="Guardar" class="btn-regis btn-enviar">
 
-                        <p class="form-link"><a class="form-link" href="../html/mi_cuenta_cliente.html">Volver</a></p>
+                        <p class="form-link"><a class="form-link" asp-area="" asp-controller="Home" asp-action="PerfilCliente">Volver</a></p>
 
                     </div>
                 </form>

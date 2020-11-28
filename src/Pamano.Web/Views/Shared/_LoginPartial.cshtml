@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-@RenderBody()
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -23,5 +23,4 @@
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
-
 </ul>
