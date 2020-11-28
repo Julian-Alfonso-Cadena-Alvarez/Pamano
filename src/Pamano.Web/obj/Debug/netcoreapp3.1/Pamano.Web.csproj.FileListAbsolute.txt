@@ -519,3 +519,6 @@ C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Are
 C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\familia\Desktop\pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Pamano_cliente.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Index.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Perfilcliente.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\DatosCliente.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DatosCliente.cshtml.g.cs

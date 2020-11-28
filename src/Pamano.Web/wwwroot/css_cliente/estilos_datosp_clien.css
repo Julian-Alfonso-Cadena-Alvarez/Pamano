@@ -1,0 +1,244 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    margin: 10px 20px 10px;
+    text-align: center;
+    font-size: 23px;
+    color: #ffffff;
+}
+p{
+    color: #0c97cb;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+.borde{
+    border: 1px solid black;
+}
+
+/*NAVEGACION*/
+nav{
+    width: 100%;
+    height: 60px;
+    margin-top: 1px;
+
+ }
+.logo{
+    width: 13%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.logo img{
+    width: 35%;
+    height: 100%;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    border-radius: 100%;
+}
+/*Inicio de Buscador*/
+.navegacion{
+    width: 77%;
+    height: 100%;
+    float: left;
+}
+.list_navegacion{
+    width: 56%;
+    height: 100%;
+    float: right;
+    padding-top: 2px;
+}
+.Buscador{
+    text-align: left;
+    width: 330px;
+    height: 49%;
+    padding:20px;
+    float: left;
+    margin-top: 6px;
+    margin-left: 2px;
+    border-radius: 0px;
+    border: 0px;
+    border-bottom: 2px solid #d17900;
+}
+body nav div.navegacion p.padding{
+    color: #0c97cb;
+    margin-left: 20px;
+    margin-right: 0px;
+    text-align: left;
+    margin-top: 25px;
+    padding-bottom: 0px;
+    float: left;
+}
+body nav div.navegacion p a.btn_buscar{
+    border: 3px solid  #FF9F1C;
+    padding: 10px;
+    background-color: #FF9F1C;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    border-radius: 50px;
+}
+/*Nivel 0*/
+nav ul{
+	list-style: none;
+	text-align: right;
+    background: rgba(255, 255, 255, 0.6);
+}
+nav ul li{
+    margin-right: 0px;
+	width: 130px;
+    background: rgba(255, 255, 255, 0.0);
+}
+nav ul li:hover ul{
+    display: block;
+}
+nav ul li a{
+	display: block;
+	text-decoration: none;
+	color:#FF9F1C;
+	font-weight: bold;
+	text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+	padding: 10px 2px;
+	border-bottom: 2px solid #d17900;
+}
+nav ul li a:hover{
+	background: rgba(189, 189, 189, 0.5);
+}
+/*Nivle 1*/
+nav li ul{
+    position: absolute;
+}
+nav .list_navegacion>ul>li{
+    display: inline-block;
+}
+nav li ul{
+    position: absolute;
+    display: none;
+}
+/*Fin del Buscador*/
+/*Cerrar sesion - inicio*/
+.cerrar{
+    width: 10%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 20px;
+}
+
+body div.cerrar a {
+    font-size: 18px;
+    color: #FF9F1C;
+    text-decoration: none;
+}
+
+/*Cerrar sesion - fin*/
+/*INDICE-HEDER*/
+header{
+    width: 100%;
+    height: 50px;
+    margin-top: 1px;
+    text-align: center;
+    padding-top: 7px;
+
+}
+.indice{
+    margin-top: 5px;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.fondo_tifblue{
+    background: #2EC4B6;
+}
+/*Formulario inicio*/
+.Formulario{
+    width: 100%;
+    height: 580px;
+    float: left;
+    padding-top: 20px;
+    background-color: #001d86;
+    background-image: url(../img/fondo3.png);
+}
+
+.form-registro{
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    background: #ffff;
+    border-radius: 7px;
+    background-color: #CBF3F0;
+}
+.borde-naran{
+    border: 2px solid  #FFBF69;
+}
+.form-titulo{
+    width: 100%;
+    background: #2EC4B6;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 100;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 5px solid #0C97CB;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+.cont-input{
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #CBF3F0;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+input{
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid #0C97CB;
+}
+.input-50{
+    width: 48%;
+    margin-top: 10px;
+}
+.input-100{
+    width: 100%;
+    margin-top: 15px;
+}
+.btn-regis{
+    background: #0C97CB;
+    color: #ffffff;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.form-link{
+    width: 100%;
+    margin: 7px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    color: #FF9F1C;
+    background-color: #CBF3F0;
+}
+.btn-enviar{
+    transform: scale(1);
+}
+
+/*Formulario finall*/

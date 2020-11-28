@@ -50,7 +50,7 @@ nav{
     float: left;
 }
 .list_navegacion{
-    width: 57%;
+    width: 56%;
     height: 100%;
     float: right;
     padding-top: 2px;
@@ -132,11 +132,11 @@ nav li ul{
     height: 100%;
     float: left;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 body div.cerrar a {
-    font-size: 18px;
+    font-size: 15px;
     color: #FF9F1C;
     text-decoration: none;
 }
@@ -148,27 +148,160 @@ header{
     height: 50px;
     margin-top: 1px;
     text-align: center;
-    padding-top: 7px;
-
+    padding-top: 15px;
 }
+header div.lineas ul{
+	list-style: none;
+	text-align: right;
+    background: rgba(255, 255, 255, 0.6);
+}
+header div.lineas ul li{
+    margin-right: 0px;
+	width: 130px;
+    background: rgba(255, 255, 255, 0.0);
+}
+header div.lineas ul li:hover ul{
+    display: block;
+}
+header div.lineas ul li a{
+	display: block;
+	text-decoration: none;
+	color:#FF9F1C;
+	font-weight: bold;
+	text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+	padding: 10px 2px;
+	border-bottom: 2px solid #d17900;
+}
+header div.lineas ul li a:hover{
+	background: rgba(189, 189, 189, 0.5);
+}
+
 .indice{
     margin-top: 5px;
-    font-size: 20px;
+    font-size: 15px;
     color: #FFFFFF;
+    margin-left: 20px;
 }
 .fondo_tifblue{
     background: #2EC4B6;
 }
-/*Formulario inicio*/
-.Formulario{
-    width: 100%;
-    height: 580px;
-    float: left;
-    padding-top: 20px;
-    background-color: #001d86;
-    background-image: url(../img/fondo3.png);
+.fav-car{
+    padding-left: 20%;
+    font-size: 15px;
 }
+/*fin*/
+/*inicio Carousel*/
+.w-100{
+    max-width: 100%;
+    max-height: 700px;
+}
+/*Fin carousel*/
+/*Inicio Nuestras Marcas*/
+.div-NuestrasMarcas{
+    width: 100%;
+    height: 740px;
+    background: url(../img/fondo3.png);
+}
+.div-Titulo{
+    width: 100%;
+    height: 50px;
+    background: #2EC4B6;
+    padding-top: 2px;
+}
+.Titulo{
+    background: #2EC4B6;
+    font-size: 30px;
+    color: #ffffff;
+    margin-top: 5px;
+}
+.div-marcas{
+    width: 100%;
+    height: 500px;
+    background: rgba(4, 16, 22, 0)
+}
+.cont-marca{
+    width: 25%;
+    height: 50%;
+    margin-left: 6%;
+    margin-top: 60px;
+    float: left;
+}
+/*Fin Nuestras Marcas*/
+/*Inicio Quines Somos*/
+.div-QuienesSomos{
+    width: 100%;
+    height: 500px;
+    background-image: url(../img/fondo3.png);
 
+}
+.div-Info{
+    width: 30%;
+    height: 70%;
+    margin-top: 45px;
+    border-radius: 15px;
+    margin-left: 2.5%;
+    background: #CBF3F0;
+    float: left;
+}
+.iconoVision{
+    width: 40%;
+    height: 50%;
+    margin-top: 1%;
+    margin-left: 30%;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    background: #CBF3F0;
+}
+.iconoprov{
+    width: 40%;
+    height: 50%;
+    margin-top: 1%;
+    margin-left: 30%;
+    margin-bottom:10px;
+    border-radius: 0%;
+    background: #CBF3F0;
+}
+body div.div-QuienesSomos div.div-Info div.iconoVision img{
+    width: 100%;
+    border-radius: 100%;
+    margin-top: 0px;
+    background: #CBF3F0;
+}
+body div.div-QuienesSomos div.div-Info div.iconoprov img{
+    width: 100%;
+    border-radius: 0%;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    background: #CBF3F0;
+}
+.textoQuienes{
+    text-align: center;
+    background: #CBF3F0;
+}
+body div.div-QuienesSomos div.div-Info div.textoQuienes h3{
+    font-size: 35px;
+    color:#0c97cb;
+    background: #CBF3F0;
+}
+body div.div-QuienesSomos div.div-Info div.textoQuienes p{
+    background: #CBF3F0;
+}
+/*Fin de Quienes Somos*/
+/*Inicio COntactenos*/
+.CONTACTENOS{
+    width: 100%;
+    height: 620px;
+    background-image: url(../img/fondo3.png);
+}/*Inicio Formulario*/
+.form-contacto{
+    width: 50%;
+    height: 92.5%;
+    float: left;
+    background: rgba(235, 111, 198, 0);
+    padding-top: 50px;
+}
 .form-registro{
     width: 100%;
     max-width: 500px;
@@ -218,7 +351,12 @@ input{
     width: 100%;
     margin-top: 15px;
 }
-.btn-regis{
+.text-enviar{
+    width: 100%;
+    height: 150px;
+    text-align-last: justify;
+}
+.btn-enviar{
     background: #0C97CB;
     color: #ffffff;
     margin: auto;
@@ -227,18 +365,19 @@ input{
     cursor: pointer;
     font-size: 20px;
 }
-.form-link{
-    width: 100%;
-    margin: 7px;
-    text-align: center;
-    font-size: 20px;
-    text-decoration: none;
-    margin-top: 10px;
-    color: #FF9F1C;
-    background-color: #CBF3F0;
+
+/*Fin Formulario*/
+.mapa{
+    width: 50%;
+    height: 46.3%;
+    float: left;
+    background: rgba(235, 111, 198, 0);
 }
-.btn-enviar{
-    transform: scale(1);
+.Direccion{
+    width: 50%;
+    height: 46.3%;
+    float: left;
+    background: rgba(235, 111, 198, 0);
 }
 
-/*Formulario finall*/
+/*Fin de Contactenos*/

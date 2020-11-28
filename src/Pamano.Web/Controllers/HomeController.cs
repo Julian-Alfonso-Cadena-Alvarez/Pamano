@@ -18,12 +18,20 @@ namespace Pamano.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+       public IActionResult Index()
         {
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        } 
+        public IActionResult Perfilcliente()
+        {
+            return View();
+        }
+        public IActionResult DatosCliente()
         {
             return View();
         }
