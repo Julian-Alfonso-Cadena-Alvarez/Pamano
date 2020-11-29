@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,9 +20,7 @@
         </div>
 
         <div class="navegacion">
-            <input type="text" name="Buscador" placeholder="Buscar" class="Buscador">
-            <p class="padding"><a href="#" class="btn_buscar">Buscar</a></p>
-
+            
             <div class="list_navegacion">
                 <ul>
                     <li><a href="#">PRODUCTOS</a></li>
@@ -43,15 +46,29 @@
         </div>
 
         <div class="cerrar">
-            <a href="#">Iniciar Sesion</a>
-            <a href="#">Resgistrarse</a>
+           @if (SignInManager.IsSignedIn(User))
+                {
+                    <div>
+                        <a  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="btn-cerr-ses">Cerrar sesion</button>
+                        </form>
+                    </div>
+                }
+                else
+                {   <div class="registrarse">
+                        <a class="registrarse" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
+
+                        <a class="registrarse" asp-area="Identity" asp-page="/Account/Login">Iniciar Sesion</a>
+                    </div>
+                }
         </div>
     </nav>
-
     <!-- Encabezado -->
     <header class="fondo_tifblue">
 
-        <div class="Lineas ">
+        <div class="Lineas">
             <ul>
                 <li class="fondo_tifblue ">
                     <a href="#" class="indice">Inicio</a>
@@ -60,13 +77,11 @@
                     <a href="#" class="indice">Linea Oficina</a>
                     <a href="#" class="indice">Linea Archivo</a>
                     <a href="#" class="indice">Linea Detalles</a>
-                    <!-- <a href="#" class="indice">Mi Perfil</a>-->
-                    <a class="indice indice fav-car" asp-area="" asp-controller="Home" asp-action="PerfilCLiente">Mi Perfil</a>
                 </li>
             </ul>
         </div>
     </header>
-    <div>
+    <div class"carrucel">
         <main role="main" class="pb-3">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
