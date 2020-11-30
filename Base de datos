@@ -1,0 +1,922 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-11-2020 a las 01:17:31
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `pamano`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_del_pedido`
+--
+
+CREATE TABLE `estado_del_pedido` (
+  `id_estado` int(3) NOT NULL,
+  `Nombre_estado_del_pedido` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estado_del_pedido`
+--
+
+INSERT INTO `estado_del_pedido` (`id_estado`, `Nombre_estado_del_pedido`) VALUES
+(1, 'Entregado'),
+(2, 'En Proceso'),
+(3, 'Cancelado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `ID_inventario` int(3) NOT NULL,
+  `Fecha_de_ingreso` date DEFAULT NULL,
+  `ID_usuario` varchar(10) NOT NULL,
+  `ID_orden_de_venta` int(3) NOT NULL,
+  `ID_orden_de_compra` int(3) NOT NULL,
+  `ID_pedido` int(3) NOT NULL,
+  `id_producto` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `orden_de_compra`
+--
+
+CREATE TABLE `orden_de_compra` (
+  `ID_orden_de_compra` int(3) NOT NULL,
+  `Nombre_del_proveedor` varchar(15) DEFAULT NULL,
+  `Valor_unitario_del_producto` int(5) DEFAULT NULL,
+  `Valor_total_del_producto` int(8) DEFAULT NULL,
+  `producto` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `orden_de_compra`
+--
+
+INSERT INTO `orden_de_compra` (`ID_orden_de_compra`, `Nombre_del_proveedor`, `Valor_unitario_del_producto`, `Valor_total_del_producto`, `producto`) VALUES
+(73, 'Tui', 7200, 40000, 'Labia iquido'),
+(711, 'Mayorista marde', 300, 11300, 'Taja lapiz '),
+(712, 'La gran distrib', 300, 7000, 'Borrador'),
+(713, 'Mayorista marde', 400, 19900, 'Silicona en barra '),
+(714, 'Mayorista marde', 1000, 12400, 'Silicona liquida'),
+(715, 'La gran distrib', 300, 18650, 'Cinta pequeńa transparente '),
+(716, 'La gran distrib', 5000, 24000, 'Cinta grande trasparente'),
+(718, 'La gran distrib', 400, 20800, 'Carton paja '),
+(719, 'La gran distrib', 800, 27200, 'Pliego de cartulina'),
+(721, 'Adams', 1200, 6300, 'Halls '),
+(722, 'Nutresa', 500, 12300, 'Chocolatina jet (clasica)'),
+(723, 'Dulceria el mun', 200, 23000, 'Gomitas banderitas'),
+(724, 'Super', 1500, 14900, 'Gomitas trululu'),
+(725, 'Dulceria el mun', 1500, 14000, 'Chicle metro'),
+(726, 'Adams', 100, 5850, 'Chiclex'),
+(727, 'Adams', 200, 6800, 'Traident'),
+(728, 'Super', 150, 6500, 'Barrilete'),
+(729, 'Colombina', 300, 8000, 'Bon-Bom-Bum'),
+(731, 'Alfadi', 200, 7000, 'Puntillas'),
+(732, 'Tui', 2500, 15000, 'Softlips'),
+(734, 'Tui', 8000, 48000, 'Labial cremoso'),
+(735, 'Tui', 3000, 21000, 'Removedor de esmalte'),
+(736, 'Tui', 6000, 32000, 'Delineador liquido'),
+(737, 'Tui', 7000, 40000, 'Iluminador'),
+(738, 'Tui', 6500, 34000, 'Pestańina'),
+(739, 'Tui', 2400, 24000, 'Esmalte'),
+(748, 'Colombia cipe', 2500, 56700, 'Resaltador '),
+(749, 'La gran distrib', 700, 25200, 'Carton cartulina'),
+(811, 'Colombia cipe', 2000, 40000, 'Marcadores timoteo'),
+(812, 'Colombia cipe', 1300, 32000, 'Marcadores borrables '),
+(813, 'Colombia cipe', 1000, 31000, 'Marcadores permanentes'),
+(814, 'Colombia cipe', 5000, 67200, 'Caja de pintura'),
+(815, 'Colombia cipe', 6500, 55900, 'Caja de colores'),
+(816, 'Colombia cipe', 2000, 60000, 'Cuaderno pequeńo argollado'),
+(817, 'Colombia cipe', 7000, 90000, 'Cuaderno grande argollado'),
+(819, 'Colombia cipe', 1300, 55000, 'Cuaderno pequeńo'),
+(821, 'Nutresa', 1000, 18000, 'Galletas ducales'),
+(822, 'Colombina', 600, 7000, 'Galletas nucita'),
+(823, 'Adams', 500, 8950, 'Gastellas oreo'),
+(824, 'Festival ', 600, 9200, 'Galleta festival'),
+(825, 'Cheetos', 1200, 10000, 'Cheetos '),
+(826, 'Ramo', 1100, 12000, 'Tostacos'),
+(827, 'Pepsico', 1000, 15000, 'Choclitos '),
+(828, '', 1500, 16500, 'Todo rico'),
+(829, 'Pepsico', 1500, 16000, 'Detodito '),
+(831, 'Tui', 14500, 86000, 'Perfume splash'),
+(832, 'Mundo tecnologi', 1200, 67000, 'Cd virgen '),
+(833, 'Mundo tecnologi', 19000, 89000, 'Parlante pequeńo '),
+(834, 'Mundo tecnologi', 21000, 100000, 'Memoria usb'),
+(835, 'Mundo tecnologi', 20000, 100000, 'Memoria micro 32 gb'),
+(836, 'Mundo tecnologi', 8000, 36000, 'Memoria micro 2 gb'),
+(837, 'Mundo tecnologi', 25000, 150000, 'Audifonos de diadema '),
+(838, 'Mundo tecnologi', 12000, 96000, 'Cargador'),
+(839, 'Mundo tecnologi', 11000, 26000, 'Audifonos para celular'),
+(841, 'La gran distrib', 2000, 10800, 'Cartuchera'),
+(842, 'Frito Lay ', 800, 10200, 'Chookis'),
+(843, 'Frito Lay ', 1100, 8900, 'Cheese tris'),
+(844, 'La gran distrib', 200, 48000, 'Papel kraft'),
+(845, 'La gran distrib', 2000, 20000, 'Carboncillo'),
+(846, 'La gran distrib', 800, 10100, 'Manimoto '),
+(847, 'La gran distrib', 300, 79000, 'Papel periodico '),
+(848, 'Mayorista marde', 1500, 21600, 'Huellero'),
+(849, 'Mayorista marde', 6900, 98000, 'Archivador tipo cheque '),
+(910, 'Colombia cipe', 2000, 79000, 'Cuaderno grande cocido '),
+(911, 'Mayorista marde', 6000, 36000, 'Mapamundi'),
+(912, 'Mayorista marde', 1500, 72000, 'Transportador'),
+(913, 'Mayorista marde', 5000, 87000, 'Compas'),
+(914, 'La gran distrib', 1500, 50000, 'Block hoja cuadriculada'),
+(915, 'Mayorista marde', 2500, 28800, 'Regla'),
+(916, 'La gran distrib', 1000, 16000, 'Caja de esferos negros'),
+(917, 'La gran distrib', 800, 12800, 'Caja de lapices'),
+(918, 'La gran distrib', 10000, 68, 'Resmas de papel'),
+(919, 'La gran distrib', 150, 10000, 'Cartulinas'),
+(921, 'Pepsico', 1400, 15000, 'Doritos '),
+(922, 'Frito Lay ', 1400, 18900, 'Papas margarita '),
+(923, 'La gran distrib', 2000, 15000, 'Micropunta '),
+(924, 'Mayorista marde', 2100, 22000, 'Rompecabezas '),
+(925, 'Mayorista marde', 3000, 55000, 'Block hoja iris'),
+(926, 'Mayorista marde', 500, 27000, 'Papel crepe'),
+(927, 'Peluchin', 8000, 48000, 'Vasos '),
+(928, 'Peluchin', 10000, 35000, 'Peluche pequeńo'),
+(929, 'La gran distrib', 40000, 100000, 'Peluche grande'),
+(931, 'Mundo tecnologi', 5000, 100000, 'Cable usb'),
+(932, 'Mundo tecnologi', 15000, 70000, 'Mouse '),
+(933, 'Festival ', 800, 14400, 'Golochips '),
+(934, 'Pepsico', 800, 18000, 'Gol'),
+(935, 'Ramo', 1500, 9600, 'Chocorramo'),
+(936, 'Ramo', 1300, 8700, 'Ponque gala'),
+(937, 'Nutresa', 2000, 19000, 'Chocolatina jumbo (grande)'),
+(938, 'Nutresa', 600, 7000, 'Chocolatina jumbo (pequeńa)'),
+(939, 'Nutresa', 2000, 18000, 'Chocolatina jet (grande)'),
+(941, 'La gran distrib', 3000, 50000, 'Block mantequilla'),
+(942, 'La gran distrib', 15000, 99000, 'Calculadora'),
+(943, 'Ramo', 1000, 11200, 'Gansito'),
+(944, 'Super', 100, 3900, 'Chicle bombazo '),
+(945, 'Super', 100, 7900, 'Bianchi'),
+(946, 'Alfadi', 6000, 36000, 'Cinta metrica '),
+(947, 'Alfadi', 6500, 36000, 'Extenciones electricas'),
+(948, 'Alfadi', 18400, 90000, 'Martillo'),
+(949, 'Alfadi', 300, 10000, 'Tornillos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `orden_de_venta`
+--
+
+CREATE TABLE `orden_de_venta` (
+  `ID_orden_de_venta` int(3) NOT NULL,
+  `Cantidad_del_producto` int(2) DEFAULT NULL,
+  `Valor_unitario` int(5) DEFAULT NULL,
+  `Valor_total` int(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `orden_de_venta`
+--
+
+INSERT INTO `orden_de_venta` (`ID_orden_de_venta`, `Cantidad_del_producto`, `Valor_unitario`, `Valor_total`) VALUES
+(98, 1, 34000, 34000),
+(100, 1, 1000, 1000),
+(111, 1, 100, 100),
+(121, 1, 1500, 1500),
+(131, 1, 2000, 2000),
+(141, 3, 500, 2500),
+(151, 2, 1500, 3000),
+(161, 3, 1500, 3500),
+(171, 1, 4000, 4000),
+(191, 1, 4500, 4500),
+(200, 1, 16000, 16000),
+(202, 13, 100, 1300),
+(213, 2, 2500, 5000),
+(214, 1, 5500, 5500),
+(215, 3, 2000, 6000),
+(216, 4, 1500, 6000),
+(217, 4, 2000, 8000),
+(218, 1, 7500, 7500),
+(219, 1, 8500, 8500),
+(222, 2, 100, 200),
+(229, 1, 6300, 6300),
+(300, 1, 17000, 17000),
+(303, 8, 400, 3200),
+(324, 6, 1500, 9000),
+(325, 1, 9500, 9500),
+(326, 1, 10000, 10000),
+(327, 1, 20000, 20000),
+(328, 1, 30000, 30000),
+(329, 1, 25000, 25000),
+(331, 1, 2000, 2000),
+(332, 2, 2800, 5600),
+(333, 1, 300, 300),
+(334, 1, 5700, 5700),
+(335, 1, 8800, 8800),
+(336, 1, 5000, 5000),
+(337, 2, 11000, 22000),
+(338, 4, 1550, 6200),
+(339, 2, 3200, 6400),
+(400, 1, 1800, 1800),
+(404, 1, 3100, 3100),
+(409, 1, 21000, 21000),
+(412, 1, 50000, 50000),
+(432, 5, 11000, 55000),
+(441, 1, 6600, 6600),
+(442, 1, 6700, 6700),
+(443, 1, 6800, 6800),
+(444, 4, 100, 400),
+(456, 1, 12000, 12000),
+(465, 1, 13000, 13000),
+(476, 1, 14000, 14000),
+(487, 1, 15000, 15000),
+(498, 1, 17000, 17000),
+(500, 2, 800, 1900),
+(505, 1, 2900, 2900),
+(554, 1, 6900, 6900),
+(555, 1, 500, 500),
+(556, 1, 7100, 7100),
+(600, 1, 2100, 2100),
+(606, 1, 2800, 2800),
+(612, 1, 23000, 23000),
+(632, 1, 25000, 25000),
+(645, 2, 13000, 26000),
+(654, 1, 27000, 27000),
+(666, 2, 300, 600),
+(700, 2, 1100, 2200),
+(707, 1, 27000, 27000),
+(765, 1, 28000, 28000),
+(777, 1, 700, 700),
+(800, 1, 2300, 2300),
+(808, 1, 2400, 2400),
+(865, 1, 3200, 3200),
+(876, 3, 15000, 35000),
+(881, 4, 800, 3200),
+(882, 2, 2700, 5400),
+(883, 1, 5100, 5100),
+(884, 1, 4900, 4900),
+(885, 1, 4800, 4800),
+(886, 1, 4700, 4700),
+(887, 2, 4600, 4600),
+(888, 1, 800, 800),
+(889, 2, 4600, 4600),
+(900, 1, 14000, 14000),
+(909, 1, 2600, 2600),
+(919, 1, 38000, 38000),
+(928, 2, 30000, 60000),
+(937, 1, 1100, 1100),
+(947, 4, 300, 1200),
+(956, 1, 1300, 13000),
+(987, 1, 2000, 2000),
+(991, 2, 1700, 3400),
+(992, 3, 1200, 3600),
+(993, 1, 3700, 3700),
+(994, 2, 1900, 3800),
+(995, 1, 1800, 1800),
+(996, 1, 4100, 4100),
+(997, 1, 4200, 4200),
+(998, 1, 4300, 4300),
+(999, 3, 300, 900);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `ID_pedido` int(3) NOT NULL,
+  `id_estado_pedido` int(3) DEFAULT NULL,
+  `Cantidad` int(100) DEFAULT NULL,
+  `ID_usuario` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`ID_pedido`, `id_estado_pedido`, `Cantidad`, `ID_usuario`) VALUES
+(100, 1, 1, '53804,9257'),
+(101, 1, 1, '66316,5843'),
+(102, 1, 1, '67949,7575'),
+(103, 2, 1, '70839,3831'),
+(104, 3, 3, '72413,2743'),
+(105, 2, 1, '62898,3951'),
+(106, 1, 3, '55135,7532'),
+(107, 3, 3, '56643,4144'),
+(108, 2, 1, '61077,0231'),
+(109, 3, 1, '61570,6438'),
+(111, 1, 4, '66947,0336'),
+(112, 1, 2, '681,105016'),
+(113, 1, 1, '71147,1529'),
+(114, 3, 1, '64396,0058'),
+(115, 2, 1, '62778,3692'),
+(116, 1, 2, '56301,4011'),
+(117, 2, 1, '59323,3451'),
+(118, 2, 2, '61294,1202'),
+(119, 2, 3, '62556,6581'),
+(120, 1, 4, '75294,0374'),
+(121, 2, 1, '83914,6675'),
+(122, 3, 1, '89300,3303'),
+(123, 2, 1, '93722,5981'),
+(124, 2, 1, '97922,9769'),
+(125, 1, 5, '8263,18762'),
+(126, 2, 1, '8119,72764'),
+(127, 3, 1, '76063,3058'),
+(128, 3, 1, '78745,3545'),
+(129, 3, 1, '79740,4243'),
+(130, 3, 1, '80908,3229'),
+(131, 1, 1, '53577,0091'),
+(132, 2, 1, '16719,9769'),
+(133, 3, 10, '21928,0037'),
+(134, 2, 1, '2294,18358'),
+(135, 1, 2, '45163,0075'),
+(136, 3, 1, '15938,2118'),
+(137, 1, 1, '14382,0131'),
+(138, 2, 1, '105355,748'),
+(139, 1, 2, '31334,1877'),
+(140, 1, 1, '112723,674'),
+(141, 1, 1, '114261,945'),
+(142, 3, 3, '37511,4314'),
+(143, 3, 1, '43133,2034'),
+(144, 1, 13, '44899,9082'),
+(145, 3, 3, '4703,95309'),
+(146, 1, 2, '51942,5054'),
+(147, 2, 1, '41535,4001'),
+(148, 1, 1, '40081,4834'),
+(149, 1, 2, '32851,6907'),
+(150, 1, 1, '35955,1597'),
+(151, 3, 1, '36817,2052'),
+(152, 1, 2, '38796,7973'),
+(153, 3, 2, '32851,6907'),
+(154, 2, 1, '35955,1597'),
+(155, 3, 2, '36817,2052'),
+(156, 1, 1, '38796,7973'),
+(157, 3, 1, '50675,4456'),
+(158, 2, 1, '52003,7248'),
+(159, 2, 1, '40831,8518');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE `producto` (
+  `ID_producto` int(3) NOT NULL,
+  `Cantidad_de_producto` int(3) DEFAULT NULL,
+  `id_tipo_de_producto` int(2) DEFAULT NULL,
+  `Precio_del_producto` int(8) DEFAULT NULL,
+  `Caracteristicas_del_producto` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`ID_producto`, `Cantidad_de_producto`, `id_tipo_de_producto`, `Precio_del_producto`, `Caracteristicas_del_producto`) VALUES
+(1, 500, 1, 150, 'Cartulinas'),
+(2, 50, 1, 10000, 'Resmas de papel'),
+(3, 24, 1, 800, 'Caja de lapices'),
+(4, 24, 1, 1000, 'Caja de esferos negros'),
+(5, 24, 1, 2500, 'Regla'),
+(6, 80, 1, 1500, 'Block hoja cuadriculada'),
+(7, 24, 1, 5000, 'Compas'),
+(8, 90, 1, 1500, 'Transportador'),
+(9, 12, 1, 6000, 'Mapamundi'),
+(10, 200, 1, 2000, 'Cuaderno grande cocido '),
+(11, 180, 1, 1300, 'Cuaderno pequeńo'),
+(12, 150, 1, 7000, 'Cuaderno grande argollado'),
+(13, 130, 1, 2000, 'Cuaderno pequeńo argollado'),
+(14, 30, 1, 6500, 'Caja de colores'),
+(15, 25, 1, 5000, 'Caja de pintura'),
+(16, 55, 1, 1000, 'Marcadores permanentes'),
+(17, 54, 1, 1300, 'Marcadores borrables '),
+(18, 35, 1, 2000, 'Marcadores timoteo'),
+(19, 87, 1, 800, 'Pliego de cartulina'),
+(20, 200, 1, 400, 'Carton paja '),
+(21, 12, 1, 5000, 'Cinta grande trasparente'),
+(22, 92, 1, 300, 'Cinta pequeńa transparente '),
+(23, 24, 1, 1000, 'Silicona liquida'),
+(24, 96, 1, 400, 'Silicona en barra '),
+(25, 40, 1, 300, 'Borrador'),
+(26, 40, 1, 300, 'Taja lapiz '),
+(27, 5, 6, 40000, 'Peluche grande'),
+(28, 7, 6, 10000, 'Peluche pequeńo'),
+(29, 10, 6, 8000, 'Vasos '),
+(30, 100, 1, 500, 'Papel crepe'),
+(31, 27, 1, 3000, 'Block hoja iris'),
+(32, 12, 1, 2100, 'Rompecabezas '),
+(33, 15, 1, 2000, 'Micropunta '),
+(34, 24, 2, 1400, 'Papas margarita '),
+(35, 24, 2, 1400, 'Doritos '),
+(36, 22, 2, 1500, 'Detodito '),
+(37, 18, 2, 1500, 'Todo rico'),
+(38, 23, 2, 1000, 'Choclitos '),
+(39, 23, 2, 1100, 'Tostacos'),
+(40, 26, 2, 1200, 'Cheetos '),
+(41, 16, 2, 600, 'Galleta festival'),
+(42, 13, 2, 500, 'Gastellas oreo'),
+(43, 13, 2, 600, 'Galletas nucita'),
+(44, 15, 2, 1000, 'Galletas ducales'),
+(45, 36, 2, 300, 'Bon-Bom-Bum'),
+(46, 24, 2, 150, 'Barrilete'),
+(47, 27, 2, 200, 'Traident'),
+(48, 27, 2, 100, 'Chiclex'),
+(49, 15, 2, 1500, 'Chicle metro'),
+(50, 26, 2, 1500, 'Gomitas trululu'),
+(51, 100, 2, 200, 'Gomitas banderitas'),
+(52, 36, 2, 500, 'Chocolatina jet (clasica)'),
+(53, 15, 2, 1200, 'Halls '),
+(54, 15, 2, 2000, 'Chocolatina jet (grande)'),
+(55, 15, 2, 600, 'Chocolatina jumbo (pequeńa)'),
+(56, 15, 2, 2000, 'Chocolatina jumbo (grande)'),
+(57, 23, 2, 1300, 'Ponque gala'),
+(58, 24, 2, 1500, 'Chocorramo'),
+(59, 25, 2, 800, 'Gol'),
+(60, 23, 2, 800, 'Golochips '),
+(61, 7, 3, 15000, 'Mouse '),
+(62, 50, 3, 5000, 'Cable usb'),
+(63, 23, 3, 12000, 'Cargador'),
+(64, 13, 3, 11000, 'Audifonos para celular'),
+(65, 5, 3, 25000, 'Audifonos de diadema '),
+(66, 6, 3, 8000, 'Memoria micro 2 gb'),
+(67, 8, 3, 20000, 'Memoria micro 32 gb'),
+(68, 7, 3, 21000, 'Memoria usb'),
+(69, 6, 3, 19000, 'Parlante pequeńo '),
+(70, 100, 3, 1200, 'Cd virgen '),
+(71, 7, 5, 14500, 'Perfume splash'),
+(72, 12, 5, 2400, 'Esmalte'),
+(73, 8, 5, 6500, 'Pestańina'),
+(74, 11, 5, 7000, 'Iluminador'),
+(75, 10, 5, 6000, 'Delineador liquido'),
+(76, 14, 5, 3000, 'Removedor de esmalte'),
+(77, 12, 5, 8000, 'Labial cremoso'),
+(78, 11, 5, 7200, 'Labia iquido'),
+(79, 15, 5, 2500, 'Softlips'),
+(80, 70, 4, 200, 'Puntillas'),
+(81, 50, 4, 300, 'Tornillos'),
+(82, 9, 4, 18400, 'Martillo'),
+(83, 12, 4, 6500, 'Extenciones electricas'),
+(84, 12, 4, 6000, 'Cinta metrica '),
+(85, 50, 2, 100, 'Bianchi'),
+(86, 50, 2, 100, 'Chicle bombazo '),
+(87, 21, 2, 1000, 'Gansito'),
+(88, 10, 1, 15000, 'Calculadora'),
+(89, 33, 1, 3000, 'Block mantequilla'),
+(90, 25, 1, 6900, 'Archivador tipo cheque '),
+(91, 21, 1, 1500, 'Huellero'),
+(92, 1, 1, 300, 'Papel periodico Rollo'),
+(93, 24, 2, 800, 'Manimoto '),
+(94, 20, 1, 2000, 'Carboncillo'),
+(95, 1, 1, 200, 'Papel kraft Rollo'),
+(96, 15, 2, 1100, 'Cheese tris'),
+(97, 12, 2, 800, 'Chookis'),
+(98, 12, 1, 2000, 'Cartuchera'),
+(99, 50, 1, 700, 'Carton cartulina'),
+(100, 50, 1, 2500, 'Resaltador ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol`
+--
+
+CREATE TABLE `rol` (
+  `ID_rol` int(1) NOT NULL,
+  `Tipo_de_rol` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`ID_rol`, `Tipo_de_rol`) VALUES
+(1, 'Administrador'),
+(2, 'Vendedor'),
+(3, 'Cliente');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `telefono`
+--
+
+CREATE TABLE `telefono` (
+  `id_telefono` int(1) NOT NULL,
+  `id_tipo_telefono` int(1) NOT NULL,
+  `Numero_telefonico` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `telefono`
+--
+
+INSERT INTO `telefono` (`id_telefono`, `id_tipo_telefono`, `Numero_telefonico`) VALUES
+(1, 2, '3102718499'),
+(2, 1, '2501115'),
+(3, 2, '3124026986'),
+(4, 2, '3157689898'),
+(5, 2, '3196620804'),
+(6, 2, '3114678532'),
+(7, 2, '3107225468'),
+(8, 2, '3013034567'),
+(9, 2, '3034567832'),
+(10, 2, '3134767904'),
+(11, 2, '3002943541'),
+(12, 2, '3223396184'),
+(13, 2, '3223198795'),
+(14, 2, '3209855462'),
+(15, 2, '3202817336'),
+(16, 2, '3224087438'),
+(17, 2, '3507680658'),
+(18, 2, '3213227913'),
+(19, 2, '3222244987'),
+(20, 2, '3127843165'),
+(21, 2, '3106093929'),
+(22, 2, '3123405577'),
+(23, 2, '3222320064'),
+(24, 2, '3203460147'),
+(25, 2, '3000208268'),
+(26, 2, '3132105718'),
+(27, 2, '3207691943'),
+(28, 2, '3165691075'),
+(29, 2, '3043828354'),
+(30, 2, '3132143399'),
+(31, 2, '3229008168'),
+(32, 1, '3142634'),
+(33, 1, '2654587'),
+(34, 1, '3156897'),
+(35, 1, '2903567'),
+(36, 1, '2186878'),
+(37, 1, '1234567'),
+(38, 1, '3210987'),
+(39, 1, '8765432'),
+(40, 1, '4678511'),
+(41, 1, '9688066'),
+(42, 1, '4327754'),
+(43, 1, '2397654'),
+(44, 1, '9871212'),
+(45, 1, '1124567'),
+(46, 1, '5467800'),
+(47, 1, '9386433'),
+(48, 1, '3208344'),
+(49, 1, '2602145'),
+(50, 2, '3222229108'),
+(51, 2, '3134594500'),
+(52, 2, '3213158698'),
+(53, 2, '3114447333'),
+(54, 2, '3224087438'),
+(55, 2, '3225068765'),
+(56, 2, '3136009988'),
+(57, 2, '3254256787'),
+(58, 2, '3000453243'),
+(59, 2, '3144454356'),
+(60, 2, '3166667377'),
+(61, 2, '3156755581'),
+(62, 2, '3111145663'),
+(63, 2, '3125027996'),
+(64, 2, '3133034926'),
+(65, 2, '3225435322'),
+(66, 2, '3003217856'),
+(67, 2, '3194890920'),
+(68, 2, '3193222446'),
+(69, 2, '3225567890'),
+(70, 2, '3184148432'),
+(71, 2, '3208985327'),
+(72, 2, '3140567899'),
+(73, 2, '3105635311'),
+(74, 2, '3125536477'),
+(75, 2, '3135637689'),
+(76, 2, '3197730695'),
+(77, 2, '3126758543'),
+(78, 1, '38754321'),
+(79, 1, '69864438'),
+(80, 1, '85977745'),
+(81, 1, '65773554'),
+(82, 1, '78674876'),
+(83, 1, '63457576'),
+(84, 1, '90798898'),
+(85, 1, '57886889'),
+(86, 1, '96097899'),
+(87, 1, '47824123'),
+(88, 1, '77566455'),
+(89, 1, '19773476'),
+(90, 1, '96276354'),
+(91, 2, '3113828419'),
+(92, 2, '3120736832'),
+(93, 1, '46882646'),
+(94, 2, '3196219364'),
+(95, 2, '3508736657'),
+(96, 2, '3608945575'),
+(97, 1, '6660598'),
+(98, 2, '3339498858'),
+(99, 2, '3456765744'),
+(100, 2, '3902746853'),
+(101, 2, '3904837965');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_de_producto`
+--
+
+CREATE TABLE `tipo_de_producto` (
+  `id_tipo_producto` int(2) NOT NULL,
+  `Nombre_producto` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_de_producto`
+--
+
+INSERT INTO `tipo_de_producto` (`id_tipo_producto`, `Nombre_producto`) VALUES
+(1, 'Escolar'),
+(2, 'Comestible'),
+(3, 'Tecnológico '),
+(4, 'Ferretería'),
+(5, 'Comestible'),
+(6, 'Detalles');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_de_telefono`
+--
+
+CREATE TABLE `tipo_de_telefono` (
+  `id_tipo_telefono` int(1) NOT NULL,
+  `tipo_telefono` varchar(7) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_de_telefono`
+--
+
+INSERT INTO `tipo_de_telefono` (`id_tipo_telefono`, `tipo_telefono`) VALUES
+(1, 'FIJO'),
+(2, 'CELULAR');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `ID_usuario` varchar(10) NOT NULL,
+  `ID_rol` int(3) NOT NULL,
+  `id_telefono` int(1) DEFAULT NULL,
+  `Primer_nombre` varchar(15) DEFAULT NULL,
+  `Segundo_nombre` varchar(15) NOT NULL,
+  `Primer_apellido` varchar(15) DEFAULT NULL,
+  `Segundo_apellido` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID_usuario`, `ID_rol`, `id_telefono`, `Primer_nombre`, `Segundo_nombre`, `Primer_apellido`, `Segundo_apellido`) VALUES
+('1035,57213', 3, 91, 'Javier', 'Abram', ' Chávez', ' Montecinos'),
+('105145,348', 3, 89, 'Román', 'Ernesto', ' Castellanos', ' Montiel'),
+('105355,748', 3, 75, 'Santiago', 'Pablo', ' Gaytán', ' Marcías'),
+('107153,407', 3, 20, 'Sara', 'Jimena', ' Aguirre', ' Lombardo'),
+('107315,742', 2, 28, 'Vivian', 'Celeste', ' Caldera', ' Arrollo'),
+('107677,676', 1, 1, 'Isabella', 'Ximena', 'Acosta', 'Lacayo'),
+('109158,630', 3, 79, 'Leonardo', 'Gustavo', ' Gutiérrez', ' Merazo'),
+('112093,965', 3, 61, 'Xavier', 'Emanuel', ' Castañeda', ' Meneses'),
+('112723,674', 3, 77, 'Iván', 'Saúl', ' Granada', ' Manuel'),
+('11410,0041', 3, 40, 'Aurora', 'Regina', ' Camareno', ' Castellanos'),
+('114261,945', 3, 74, 'Joel', 'Gerardo', ' Galán', ' Maurer'),
+('13100,3271', 2, 29, 'Nora', 'Viviana', ' Cisneros', ' Aguirre'),
+('14382,0131', 3, 41, 'Alexandría', 'Elsa', ' Correa', ' Cabrera'),
+('15818,7984', 3, 5, 'Victoria', 'Esmeralda', ' Arriaga', ' Lemus'),
+('15938,2118', 3, 9, 'Camila', 'Carmen', ' Anaya', ' Lastreto'),
+('16590,7114', 2, 25, 'Daniela', 'Lilian', ' Cevallos', ' Lázaro'),
+('16719,9769', 3, 92, 'Abraham', 'Noé', ' Cardoso', ' Meza'),
+('20258,9337', 3, 50, 'Fátima', 'Mercedes', ' Cepeda', ' Gallegos'),
+('21928,0037', 3, 15, 'Eva', 'Emilia', ' Acuña', ' Lorio'),
+('22315,4479', 3, 86, 'Andrés', 'Alfredo', ' Gómez', ' Minas'),
+('2294,18358', 3, 96, 'Mario', 'Alonzo', ' Carvallo', ' Martínez'),
+('23932,8211', 3, 68, 'Alex', 'Lorenzo', ' Guillén', ' Monge'),
+('29278,6240', 3, 43, 'Alicia', 'Raquel', ' Cabeza', ' Cervantes'),
+('29482,0086', 3, 52, 'David', 'Héctor', ' Chavira', ' Garrido'),
+('29763,2548', 3, 10, 'Alexandra', 'Iris', ' Ayala.', ' López'),
+('30577,7990', 3, 7, 'Alexa', 'Daniella', ' Almendárez', ' Lagos'),
+('31052,2096', 3, 57, 'Ángel', 'Martín', ' Casas', ' Manzano'),
+('31334,1877', 3, 16, 'Angelina', 'Lía', ' Alfaro', ' Luna. '),
+('32851,6907', 3, 19, 'Isabel', 'Carolina', ' Arrollo', ' Larios'),
+('33411,2264', 3, 83, 'Jorge', 'Orlando', ' Grijalba', ' Martí'),
+('35701,7622', 2, 23, 'Juliana', 'Estrella', ' Argüelles', ' Lagunal'),
+('35955,1597', 3, 46, 'Jazmín', 'Linda', ' Cuervo', ' Castañeda'),
+('36630,0467', 3, 58, 'José', 'Marco', ' Cervantes', ' Montero'),
+('36817,2052', 3, 80, 'Eduardo', 'Rodrigo', ' Galeno', ' Magallón'),
+('37511,4314', 3, 63, 'Luis', 'Rubén', 'Gaitán', ' Molina'),
+('38796,7973', 3, 65, 'Óliver', 'Emilio', ' Gallegos', ' Marroquí'),
+('40081,4834', 3, 66, 'Carlos', 'Joaquín', ' Góngora', ' Morillo'),
+('40831,8518', 3, 60, 'Sebastián', 'Pedro', ' Corro', ' Montalbán'),
+('41535,4001', 3, 32, 'Clara', 'Gloria', ' Cabrera', ' Argüelles'),
+('42686,4141', 2, 27, 'Lila', 'Serena', ' Cuéllar', ' Lugo'),
+('43133,2034', 3, 53, 'Gabriel', 'Sergio', ' Carranza', ' Guillén'),
+('43599,3475', 3, 37, 'Diana', 'Ada', ' Cordero', ' Caldera'),
+('44899,9082', 3, 84, 'Omar', 'Hugo', ' Guzmán.', ' Moscoa'),
+('45163,0075', 3, 17, 'Valeria', 'Tatiana', ' Alanis', ' Lafuente'),
+('4703,95309', 3, 44, 'Amaya', 'Virginia', ' Cevedo', ' Camarillo'),
+('50675,4456', 3, 11, 'Maya', 'Guadalupe', ' Agustín', ' Lucas'),
+('51942,5054', 3, 98, 'Édgar', 'Matías', ' Camareno', ' Castellanos'),
+('52003,7248', 3, 97, 'Manuel', 'Felipe', ' Cerda', ' Munera'),
+('52155,1162', 3, 67, 'Jesús', 'Marcos', ' Garrido', ' Maltés'),
+('53577,0091', 3, 54, 'Benjamín', 'Emiliano', ' Cuevas. ', 'Macedo'),
+('53804,9257', 3, 76, 'Elías', 'Jaime', ' Galván', ' Montes'),
+('53805,3548', 1, 3, 'Alexis', 'Cecilia', ' Ahumada', ' Lández'),
+('55135,7532', 3, 21, 'Liliana', 'Dulce', ' Altamirano', ' Leyva'),
+('56301,4011', 3, 6, 'Amelia', 'Verónica', ' Aguilar', ' Losada'),
+('56643,4144', 3, 64, 'Diego', 'Fabián', ' Gayoso', ' Medina'),
+('59323,3451', 3, 51, 'Daniel', 'Mateo', ' Cadenas', ' Góngora'),
+('61077,0231', 3, 90, 'Fernando', 'Tobías', ' Cabrera', ' Manzanal'),
+('61294,1202', 3, 81, 'Alan', 'Arturo', ' Godines', ' Molleda'),
+('61570,6438', 3, 72, 'Miguel', 'Julio', ' Granados', ' Machado'),
+('62556,6581', 3, 55, 'Samuel', 'Simón', ' Camacho', ' Mijares'),
+('62778,3692', 3, 85, 'Paúl', 'Salvador', ' Galindo', ' Macías'),
+('62898,3951', 3, 18, 'Natalia', 'Mónica', ' Amador', ' Lines'),
+('64396,0058', 3, 13, 'Ariana', 'Fernanda', ' Alcázar', ' Llano'),
+('64685,1120', 3, 38, 'Ana', 'Rosa', ' Carvallo', ' Cisneros'),
+('66316,5843', 3, 36, 'Amanda', 'Asia', ' Calles', ' Cuéllar'),
+('66947,0336', 3, 93, 'Ricardo', 'Guillermo', ' Cuesta', ' Maldonado'),
+('67949,7575', 3, 88, 'Josué', 'Ramón', ' Guardado', ' Marrero'),
+('681,105016', 3, 45, 'Alexia', 'Patricia', ' Cárdenas', ' Corro'),
+('70839,3831', 3, 12, 'Andrea', 'Selena', ' Álvarez', ' Lamas'),
+('71147,1529', 3, 69, 'Max', 'Armando', ' Galeano', ' Mena'),
+('72413,2743', 3, 99, 'Alexis', 'Tomás', ' Galán', ' Cabrera'),
+('72811,1820', 3, 100, 'Israel', 'Jairo', ' Gaytán', ' Chávez'),
+('75294,0374', 3, 33, 'Eliana', 'Claudia', ' Chávez', 'Caballero'),
+('75532,2584', 2, 26, 'Valentina', 'Paola', ' Campos', ' Loredo'),
+('75560,5385', 3, 42, 'Lola', 'Perla', ' Céspedes', ' Chávez'),
+('75925,1424', 3, 71, 'Antonio', 'Raúl', ' Gamboa', ' Murillo. '),
+('76063,3058', 3, 73, 'Víctor', 'Enrique', ' Guerrero', ' Milanés'),
+('76912,6764', 3, 39, 'Penélope', 'Isabela', ' Cerda', ' Carrillo'),
+('78745,3545', 3, 48, 'Alina', 'Leila', ' Collado', 'Gaitán'),
+('7916,88604', 3, 35, 'Miranda', 'Marisol', ' Cuesta', ' Campos'),
+('79740,4243', 3, 82, 'Nicolás', 'Mauricio', ' Gámez', ' Mendoza'),
+('80364,5279', 3, 87, 'Julián', 'Maximiliano', ' García', ' Medrano'),
+('80908,3229', 3, 70, 'Alejandro', 'Adán', ' Gillén', ' Mateo'),
+('8119,55848', 2, 22, 'Adriana', 'Talía', ' Alayón', ' Lozano'),
+('8119,72764', 3, 47, 'Mariana', 'Marina', ' Calleja', ' Guardiola'),
+('8258,68784', 3, 14, 'María', 'Angélica', ' Arjona', ' Leandro'),
+('8263,18762', 3, 49, 'Lucía', 'América', ' Carvajal', ' Gayoso'),
+('83914,6675', 3, 94, 'Francisco', 'Ezequiel', ' Calles', ' Moneda'),
+('84188,6554', 3, 78, 'Óscar', 'Esteban', ' Gavilán', ' Montalvo'),
+('86910,5679', 2, 31, 'Elena', 'Melina', ' Castellanos', ' Alayón'),
+('89300,3303', 3, 62, 'Juan', 'Abel', ' Guardiola', ' Maduro'),
+('89335,2520', 3, 34, 'Alana', 'Sandra', ' Cardoso', ' Cevallos'),
+('93722,5981', 3, 59, 'Adrián', 'Roberto', ' Camarillo', ' Mantilla'),
+('94141,7776', 2, 24, 'Gabriela', 'Brenda', 'Caballero', ' Lizano'),
+('94847,0880', 1, 2, 'Olivia', 'Laura', ' Alcocer', ' Linares'),
+('96118,2473', 2, 30, 'Ángela', 'Elisa', ' Carrillo', ' Altamirano'),
+('97575,4032', 3, 8, 'Julia', 'Miriam', ' Alarcón', ' Lira'),
+('97922,9769', 3, 95, 'César', 'Lucián', ' Cordero', ' Mejía'),
+('9925,58142', 3, 56, 'Lucas', 'Rafael', ' Cornejo', ' Matías'),
+('99943,7005', 3, 4, 'Sofía', 'Alejandra', ' Alzate', ' Lobo');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `estado_del_pedido`
+--
+ALTER TABLE `estado_del_pedido`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`ID_inventario`),
+  ADD KEY `ID_orden_de_compra` (`ID_orden_de_compra`),
+  ADD KEY `ID_orden_de_venta` (`ID_orden_de_venta`),
+  ADD KEY `ID_pedido` (`ID_pedido`),
+  ADD KEY `ID_usuario` (`ID_usuario`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indices de la tabla `orden_de_compra`
+--
+ALTER TABLE `orden_de_compra`
+  ADD PRIMARY KEY (`ID_orden_de_compra`);
+
+--
+-- Indices de la tabla `orden_de_venta`
+--
+ALTER TABLE `orden_de_venta`
+  ADD PRIMARY KEY (`ID_orden_de_venta`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`ID_pedido`),
+  ADD KEY `id_estado_pedido` (`id_estado_pedido`),
+  ADD KEY `ID_usuario` (`ID_usuario`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`ID_producto`),
+  ADD KEY `id_tipo_de_producto` (`id_tipo_de_producto`);
+
+--
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`ID_rol`);
+
+--
+-- Indices de la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  ADD PRIMARY KEY (`id_telefono`),
+  ADD KEY `id_tipo_telefono` (`id_tipo_telefono`);
+
+--
+-- Indices de la tabla `tipo_de_producto`
+--
+ALTER TABLE `tipo_de_producto`
+  ADD PRIMARY KEY (`id_tipo_producto`);
+
+--
+-- Indices de la tabla `tipo_de_telefono`
+--
+ALTER TABLE `tipo_de_telefono`
+  ADD PRIMARY KEY (`id_tipo_telefono`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ID_usuario`),
+  ADD KEY `ID_rol` (`ID_rol`),
+  ADD KEY `id_telefono` (`id_telefono`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD CONSTRAINT `inventario_ibfk_2` FOREIGN KEY (`ID_orden_de_compra`) REFERENCES `orden_de_compra` (`ID_orden_de_compra`),
+  ADD CONSTRAINT `inventario_ibfk_4` FOREIGN KEY (`ID_orden_de_venta`) REFERENCES `orden_de_venta` (`ID_orden_de_venta`),
+  ADD CONSTRAINT `inventario_ibfk_5` FOREIGN KEY (`ID_pedido`) REFERENCES `pedidos` (`ID_pedido`),
+  ADD CONSTRAINT `inventario_ibfk_6` FOREIGN KEY (`ID_usuario`) REFERENCES `usuarios` (`ID_usuario`),
+  ADD CONSTRAINT `inventario_ibfk_7` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`ID_producto`);
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `id_estado_pedido` FOREIGN KEY (`id_estado_pedido`) REFERENCES `estado_del_pedido` (`id_estado`),
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`ID_usuario`) REFERENCES `usuarios` (`ID_usuario`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`id_tipo_de_producto`) REFERENCES `tipo_de_producto` (`id_tipo_producto`);
+
+--
+-- Filtros para la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  ADD CONSTRAINT `telefono_ibfk_1` FOREIGN KEY (`id_tipo_telefono`) REFERENCES `tipo_de_telefono` (`id_tipo_telefono`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `id_telefono` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id_telefono`),
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`ID_rol`) REFERENCES `rol` (`ID_rol`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
