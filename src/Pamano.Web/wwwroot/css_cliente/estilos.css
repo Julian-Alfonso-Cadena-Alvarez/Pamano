@@ -211,15 +211,25 @@ header div.lineas ul li a:hover{
 .div-marcas{
     width: 100%;
     height: 500px;
-    background: rgba(4, 16, 22, 0)
+    background: rgba(4, 16, 22, 0);
 }
-.cont-marca{
+.cont-marca {
     width: 25%;
     height: 50%;
     margin-left: 6%;
     margin-top: 60px;
     float: left;
+
 }
+.marcas {
+
+}
+.offiesco img {
+    width: 100%;
+    margin-top: 45px;
+}
+
+
 /*Fin Nuestras Marcas*/
 /*Inicio Quines Somos*/
 .div-QuienesSomos{
@@ -358,17 +368,43 @@ input{
 }
 
 /*Fin Formulario*/
-.mapa{
+.mapa {
     width: 50%;
-    height: 46.3%;
+    height: 64%;
     float: left;
     background: rgba(235, 111, 198, 0);
+    padding:15px;
 }
+
+iframe {
+    width: 669px;
+    height: 395px;
+}
+
 .Direccion{
     width: 50%;
     height: 46.3%;
     float: left;
     background: rgba(235, 111, 198, 0);
+}
+.facebook1 img {
+    float: left;
+    width: 90px;
+    margin-top: 30px;
+    margin-left: 220px;
+}
+
+.instag img {
+    float: right;
+    width: 90px;
+    margin-top: 30px;
+    margin-right: 210px;
+}
+
+h3 {
+    float: right;
+    margin: 15px;
+    margin-right: 280px;
 }
 
 /*Fin de Contactenos*/

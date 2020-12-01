@@ -528,3 +528,4 @@ C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Are
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Navegador.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs

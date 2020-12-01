@@ -17,16 +17,15 @@
         <section>
             <form id="account" method="post" class="form-registro">
                 <h4 class="form-titulo">Iniciar Session</h4>
-                <hr />
                 <div asp-validation-summary="All" class="cont-input">
 
                     <label class="labelCorreo" asp-for="Input.Email">Correo Electronico</label>
-                    <span asp-validation-for="Input.Email" class="badvertencia"></span>
+                    <span asp-validation-for="Input.Email" class="advertencia"></span>
                     <input asp-for="Input.Email" class="input" />
 
 
                     <label class="label" asp-for="Input.Password">Contraseña</label>
-                    <span asp-validation-for="Input.Password" class=" advertencia"></span>
+                    <span asp-validation-for="Input.Password" class="advertencia"></span>
                     <input asp-for="Input.Password" class="input" />
 
 
@@ -36,23 +35,23 @@
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label>
                     </div>
-
-
-                    <input type="submit" class="btn-regis" value="Iniciar">
-
-                    <div class="div-fin fondo_azulcla">
-                        <p class="fondo_azulcla">
-                            <a id="forgot-password" class="fondo_azulcla form-link" asp-page="./ForgotPassword">¿Olvido su Contraseña?</a>
-                        </p>
-                        <p class="fondo_azulcla">
-                            <a class="fondo_azulcla form-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse como nuevo usuario</a>
-                        </p>
-
+                    <input type="submit" class="btn-iniciar" value="Iniciar">
+                    <div class="btn_salida">
+                        <ul>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Volver</a></li>
+                        </ul>
                     </div>
-
                 </div>
-
             </form>
+            <div class="div-fin">
+                <p class="">
+                    <a id="forgot-password" class="form-link" asp-page="./ForgotPassword">¿Olvido su Contraseña?</a>
+                </p>
+                <p class="">
+                    <a class="form-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse como nuevo usuario</a>
+                </p>
+            </div>
+
         </section>
     </div>
 </div>
