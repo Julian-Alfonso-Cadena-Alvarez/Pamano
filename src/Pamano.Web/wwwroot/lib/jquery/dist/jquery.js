@@ -11,6 +11,10 @@
  *
  * Date: 2020-05-04T22:49Z
  */
+$(document).ready(function () {
+	$('productos').DataTable();
+});
+
 ( function( global, factory ) {
 
 	"use strict";
