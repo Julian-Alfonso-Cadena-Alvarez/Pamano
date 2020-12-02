@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,99 +15,114 @@
 </head>
 <body>
     <nav>
-            <div class="logo">
-                <img src="../img/Logo1.png" alt="">
+        <div class="logo borde ">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/Logo1.png" alt=""></a>
+        </div>
+
+        <div class="navegacion borde">
+
+            <div class="list_navegacion borde ">
+                <ul>
+                    <li><a asp-area="" asp-controller="Producto" asp-action="Index">PRODUCTOS</a></li>
+                    <li>
+                        <a href="#">MARCAS</a>
+                        <ul>
+                            <li><a href="#">Escolares</a></li>
+                            <li><a href="#">Oficina</a></li>
+                            <li><a href="#">Detalles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#QuienesSomos">QUIENES SOMOS</a></li>
+                    <li>
+                        <a href="#">CONTACTENOS</a>
+                        <ul>
+                            <li><a href="#">Direccion</a></li>
+                            <li><a href="#">Redes Sociales</a></li>
+                            <li><a href="#">Correo Electronico</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="navegacion">
-                <input type="text" name="Buscador" placeholder="Buscar" class="Buscador">
-                <p class="padding"><a href="#" class="btn_buscar">Buscar</a></p>
+        <div class="cerrar borde">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
 
-                <div class="list_navegacion">
-                    <ul>
-                        <li><a href="#">INICIO</a></li>
-                        <li>
-                            <a href="#">MARCAS</a>
-                            <ul>
-                                <li><a href="#">Escolares</a></li>
-                                <li><a href="#">Oficina</a></li>
-                                <li><a href="#">Detalles</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">QUIENES SOMOS</a></li>
-                        <li>
-                            <a href="#">CONTACTENOS</a>
-                            <ul>
-                                <li class="Direccion"><a href="#">Direccion</a></li>
-                                <li><a href="#">Redes Sociales</a></li>
-                                <li><a href="#">Correo Electronico</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="btn-cerr-ses">Cerrar sesion</button>
+                    </form>
                 </div>
-            </div>
+            }
+            else
+            { <div class="registrarse">
+                    <a class="registrarse" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
 
-            <div class="cerrar">
-                <a href="#">Cerrar sesion</a>
-            </div>
-     </nav>
+                    <a class="registrarse" asp-area="Identity" asp-page="/Account/Login">Iniciar Sesion</a>
+                </div>
+            }
+        </div>
+    </nav>
+
     <header class="fondo_tifblue">
         <h1 class="fondo_tifblue indice">Inicio - Mi Cuenta</h1>
     </header>
 
 
-        <main role="main">
+    <main role="main">
 
-            <div class=" cont_opc">
-                <div class=" img-centro"></div>
-                <h2>Datos Personales</h2>
-                <p>Puedes ver tus datos, actualizarlos si lo requieres y cambiar tu contraseña.</p>
-                <div class="btn_per btn_ir">
-                    <ul>
-                        <li><a asp-area="" asp-controller="Home" asp-action="DatosCliente">Ir a Datos Personales</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cont_opc">
-                <div class="img-centro"></div>
-                <h2>Favoritos</h2>
-                <p>Puedes ver tus productos favoritos, tambien puedes agregar mas o eliminar alguno de ellos. </p>
-                <div class=" btn_fav btn_ir">
-                    <ul>
-                        <li><a href="../html/Favoritos_cliente.html">Ir a Favoritos</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="cont_opc">
-                <div class=" img-centro"></div>
-                <h2>Historial de pedidos</h2>
-                <p>Mira los pedidos que haz efectuado, su estado y realiza su cancelación si así lo deseas.</p>
-                <div class=" btn_his btn_ir">
-                    <ul>
-                        <li><a href="../html/Historial_cliente.html">Ir a Historial</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cont_opc">
-                <div class="img-centro"></div>
-                <h2>Mi carrito</h2>
-                <p>Puedes ver los productos que tienes en el carrito, modificar su cantidad o agregar algun otro producto que te interese </p>
-                <div class="btn_car btn_ir">
-                    <ul>
-                        <li><a href="Mi_carro.html">Ir a Carrito</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="btn_salida">
+        <div class=" cont_opc">
+            <div class=" img-centro"></div>
+            <h2>Datos Personales</h2>
+            <p>Puedes ver tus datos, actualizarlos si lo requieres y cambiar tu contraseña.</p>
+            <div class="btn_per btn_ir">
                 <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">SALIR</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="DatosCliente">Ir a Datos Personales</a></li>
                 </ul>
             </div>
-            @RenderBody()
-        </main>   
+        </div>
+
+        <div class="cont_opc">
+            <div class="img-centro"></div>
+            <h2>Favoritos</h2>
+            <p>Puedes ver tus productos favoritos, tambien puedes agregar mas o eliminar alguno de ellos. </p>
+            <div class=" btn_fav btn_ir">
+                <ul>
+                    <li><a href="../html/Favoritos_cliente.html">Ir a Favoritos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cont_opc">
+            <div class=" img-centro"></div>
+            <h2>Historial de pedidos</h2>
+            <p>Mira los pedidos que haz efectuado, su estado y realiza su cancelación si así lo deseas.</p>
+            <div class=" btn_his btn_ir">
+                <ul>
+                    <li><a href="../html/Historial_cliente.html">Ir a Historial</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cont_opc">
+            <div class="img-centro"></div>
+            <h2>Mi carrito</h2>
+            <p>Puedes ver los productos que tienes en el carrito, modificar su cantidad o agregar algun otro producto que te interese </p>
+            <div class="btn_car btn_ir">
+                <ul>
+                    <li><a href="Mi_carro.html">Ir a Carrito</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="btn_salida">
+            <ul>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">SALIR</a></li>
+            </ul>
+        </div>
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">

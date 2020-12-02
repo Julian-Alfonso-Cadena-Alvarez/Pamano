@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="../img/Logo1.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
+
 <body>
     <nav>
         <div class="logo">
@@ -23,7 +24,7 @@
             
             <div class="list_navegacion">
                 <ul>
-                    <li><a href="#">PRODUCTOS</a></li>
+                    <li><a asp-area="" asp-controller="Producto" asp-action="Index">PRODUCTOS</a></li>
                     <li>
                         <a href="#">MARCAS</a>
                         <ul>
@@ -77,11 +78,13 @@
                     <a href="#" class="indice">Linea Oficina</a>
                     <a href="#" class="indice">Linea Archivo</a>
                     <a href="#" class="indice">Linea Detalles</a>
+                    <a asp-controller="Home" asp-action="Perfilcliente"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+
                 </li>
             </ul>
         </div>
     </header>
-    <div class"carrucel">
+    <div>
         <main role="main" class="pb-3">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -191,7 +194,7 @@
                             <input type="text" name="Nombres" placeholder="Nombres" class="input-50">
                             <input type="text" name="Apellidos" placeholder="Apellidos" class="input-50">
                             <input type="email" name="Correo" placeholder="Correo electronico" class="input-100">
-                            <input type="text" name="Mensaje" placeholder="Cuentanos" class="input-100 text-enviar">
+                            <textarea type="text" name="Mensaje" placeholder="Cuentanos" class="input-100 text-enviar"></textarea>
                             <input type="submit" value="Enviar" class="btn-enviar">
                         </div>
                     </form>
@@ -200,8 +203,16 @@
                 <div class="mapa">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6857365118162!2d-74.07503538568643!3d4.650025743390728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a4bb916d97f%3A0x6f4c1d7a992e5d03!2sP%40peleri%40%20Pamano!5e0!3m2!1ses!2sco!4v1606542402952!5m2!1ses!2sco"></iframe>
                 </div>
-                <div class="borde Direccion">
+                <div class="Direccion">
 
+                    <div class="facebook1">
+                        <img src="../img/facebook.png">
+                    </div>
+
+                    <div class="instag">
+                        <img src="../img/instagram.png">
+                    </div>
+                    <h4>Pamano</h4>
                 </div>
 
             </div>

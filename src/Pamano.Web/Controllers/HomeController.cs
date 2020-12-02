@@ -9,6 +9,7 @@ using Pamano.Web.Models;
 
 namespace Pamano.Web.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

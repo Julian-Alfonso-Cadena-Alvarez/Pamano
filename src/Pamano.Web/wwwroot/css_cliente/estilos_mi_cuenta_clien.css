@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-image: #ffffff;
+    background: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
 }
 h2{
@@ -24,105 +24,125 @@ p{
 }
 
 /*NAVEGACION*/
-nav{
+nav {
     width: 100%;
     height: 60px;
     margin-top: 1px;
+    z-index: 2;
+}
 
- }
-.logo{
+.logo {
     width: 13%;
     height: 100%;
     float: left;
     text-align: center;
 }
-.logo img{
-    width: 35%;
-    height: 100%;
-    margin-top: 1px;
-    margin-bottom: 2px;
-    border-radius: 100%;
-}
+
+    .logo img {
+        width: 35%;
+        height: 100%;
+        margin-top: 1px;
+        margin-bottom: 2px;
+        border-radius: 100%;
+    }
 /*Inicio de Buscador*/
-.navegacion{
-    width: 77%;
+.navegacion {
+    width: 68%;
     height: 100%;
     float: left;
 }
-.list_navegacion{
-    width: 56%;
+
+.list_navegacion {
+    width: 100%;
     height: 100%;
-    float: right;
     padding-top: 2px;
+    text-align: center;
+    margin-left: 35px;
 }
-.Buscador{
-    text-align: left;
-    width: 330px;
-    height: 50%;
-    padding:20px;
-    float: left;
-    margin-top: 6px;
-    margin-left: 2px;
-    border-radius: 0px;
-    border: 0px;
-    border-bottom: 2px solid #d17900;
-}
-body nav div.navegacion p.padding{
-    color: #0c97cb;
-    margin-left: 20px;
-    margin-right: 0px;
-    text-align: left;
-    margin-top: 25px;
-    padding-bottom: 0px;
-    float: left;
-}
-body nav div.navegacion p a.btn_buscar{
-    border: 3px solid  #FF9F1C;
-    padding: 10px;
-    background-color: #FF9F1C;
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: 'Helvetica', sans-serif;
-    border-radius: 50px;
-}
+
 /*Nivel 0*/
-nav ul{
-	list-style: none;
-	text-align: right;
+nav ul {
+    list-style: none;
+    text-align: right;
     background: rgba(255, 255, 255, 0.6);
 }
-nav ul li{
-    margin-right: 0px;
-	width: 130px;
-}
-nav ul li:hover ul{
-    display: block;
-}
-nav ul li a{
-	display: block;
-	text-decoration: none;
-	color:#FF9F1C;
-	font-weight: bold;
-	text-align: center;
-    font-size: 12px;
-    margin-top: 10px;
-	padding: 10px 2px;
-	border-bottom: 2px solid #d17900;
-}
-nav ul li a:hover{
-	background: rgba(189, 189, 189, 0.5);
-}
+
+    nav ul li {
+        margin-right: 0px;
+        width: 130px;
+        background: rgba(255, 255, 255, 0.0);
+    }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: #FF9F1C;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+            padding: 10px 2px;
+            border-bottom: 2px solid #d17900;
+        }
+
+            nav ul li a:hover {
+                background: rgba(189, 189, 189, 0.5);
+            }
 /*Nivle 1*/
-nav li ul{
+nav li ul {
     position: absolute;
+    z-index: 2;
 }
-nav .list_navegacion>ul>li{
+
+nav .list_navegacion > ul > li {
     display: inline-block;
 }
-nav li ul{
+
+nav li ul {
     position: absolute;
     display: none;
+}
+/*Fin del Buscador*/
+/*Cerrar sesion - inicio*/
+.cerrar {
+    width: 19%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.registrarse {
+    margin-top: 15px;
+}
+
+body div.cerrar a {
+    font-size: 15px;
+    color: #FF9F1C;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+    body div.cerrar a:hover {
+        background: rgba(189, 189, 189, 0.5);
+        text-decoration: underline;
+        color: #0C97CB;
+    }
+
+.btn-cerr-ses {
+    color: #0C97CB;
+    background: #ffffff;
+    margin: auto;
+    margin-top: 2px;
+    padding: 2px 10px 0px;
+    cursor: pointer;
+    font-size: 20px;
+    border-style: none
 }
 /*Fin del Buscador*/
 /*Cerrar sesion - inicio*/
