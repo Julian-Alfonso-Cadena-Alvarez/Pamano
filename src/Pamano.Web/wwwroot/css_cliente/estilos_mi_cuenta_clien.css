@@ -1,25 +1,30 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     background: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
 }
-h2{
+
+h2 {
     margin: 10px 20px 10px;
     text-align: center;
     font-size: 23px;
     color: #0c97cb;
+    background: #CBF3F0;
 }
-p{
+
+p {
     color: #0c97cb;
     margin-left: 20px;
     margin-right: 20px;
     text-align: justify;
     margin-top: 30px;
     padding-bottom: 20px;
+    background: #CBF3F0;
 }
-.borde{
+
+.borde {
     border: 1px solid black;
 }
 
@@ -47,13 +52,13 @@ nav {
     }
 /*Inicio de Buscador*/
 .navegacion {
-    width: 68%;
+    width: 66%;
     height: 100%;
     float: left;
 }
 
 .list_navegacion {
-    width: 100%;
+    width: 80%;
     height: 100%;
     padding-top: 2px;
     text-align: center;
@@ -111,13 +116,12 @@ nav li ul {
 .cerrar {
     width: 19%;
     height: 100%;
-    float: left;
+    float: right;
     text-align: center;
-    padding-top: 5px;
 }
 
 .registrarse {
-    margin-top: 15px;
+    padding-bottom: 5px;
 }
 
 body div.cerrar a {
@@ -146,12 +150,11 @@ body div.cerrar a {
 }
 /*Fin del Buscador*/
 /*Cerrar sesion - inicio*/
-.cerrar{
-    width: 10%;
+.cerrar {
+    width: 18%;
     height: 100%;
     float: left;
     text-align: center;
-    padding-top: 20px;
 }
 
 body div.cerrar a {
@@ -161,28 +164,31 @@ body div.cerrar a {
 }
 
 /*INDICE-HEDER*/
-header{
+header {
     width: 100%;
     height: 50px;
     margin-top: 1px;
     text-align: center;
     padding-top: 7px;
-
 }
-.indice{
+
+.indice {
     margin-top: 5px;
     font-size: 20px;
     color: #FFFFFF;
 }
-.fondo_tifblue{
+
+.fondo_tifblue {
     background: #2EC4B6;
 }
-main{
+
+main {
     width: 100%;
     height: 577px;
     background-image: url(../img/fondo3.png);
 }
-.cont_opc{
+
+.cont_opc {
     margin-left: 3.3%;
     margin-top: 80px;
     width: 21%;
@@ -192,7 +198,8 @@ main{
     border-radius: 10%;
     padding-bottom: 10px;
 }
-.img-centro{
+
+.img-centro {
     margin-left: 20%;
     margin-top: 10%;
     width: 60%;
@@ -203,74 +210,97 @@ main{
 
 
 /*Inicio boton ir*/
-.btm_ir{
+.btm_ir {
     width: 100%;
     height: 50px;
     float: left;
+    background: #CBF3F0;
 }
-.btn_ir ul{
-list-style: none;
-text-align: center;
-}
-.btn_ir ul li{
-    display: inline-block;
-    width: 250px;
-    margin-bottom: 10px;
-}
-.btn_ir ul li a{
-    display: block;
-    text-decoration: none;
-    color: #FFBF69;
-    font-size: 23px;
-    font-weight: bold;
+
+.btn_ir ul {
+    list-style: none;
     text-align: center;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding-top: 10px;
+    background: #CBF3F0;
 }
-.btn_ir ul li a:hover{
-    background: rgba(150, 187, 185, 0.4);
-}
-.btn_his{
+
+    .btn_ir ul li {
+        display: inline-block;
+        width: 250px;
+        margin-bottom: 10px;
+        background: #CBF3F0;
+    }
+
+        .btn_ir ul li a {
+            display: block;
+            text-decoration: none;
+            color: #FFBF69;
+            font-size: 23px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            padding-top: 10px;
+            background: #CBF3F0;
+        }
+
+            .btn_ir ul li a:hover {
+                background: rgba(150, 187, 185, 0.4);
+            }
+
+.btn_his {
     margin-top: -35px;
+
 }
-.btn_per{
-    margin-top: -1px;
+
+.btn_per {
+    margin-top: 25px;
 }
-.btn_fav{
+
+.btn_fav {
     margin-top: -2px;
-}.btn_car{
+}
+
+.btn_car {
     margin-top: -22px;
 }
 /*fin boton ir*/
 
 /*Boton de salida*/
-.btm_salida{
+.btm_salida {
     width: 100%;
     height: 6%;
     padding-bottom: 7px;
     float: right;
+    background: rgba(200,20,200,0);
 }
-.btn_salida ul{
-list-style: none;
-text-align: right;
+
+.btn_salida ul {
+    list-style: none;
+    text-align: right;
+    float:right;
+    background: rgba(200,20,200,0);
 }
-.btn_salida ul li{
-    display: inline-block;
-    width: 180px;
-}
-.btn_salida ul li a{
-    display: block;
-    text-decoration: none;
-    color: #FFBF69;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-right: 60px;
-    margin-top: 15px;
-    border-bottom: 2px solid #ffa124;
-}
-.btn_salida ul li a:hover{
-    background: rgba(189, 189, 189, 0.4);
-}
+
+    .btn_salida ul li {
+        display: inline-block;
+        width: 180px;
+        background: rgba(200,20,200,0);
+    }
+
+        .btn_salida ul li a {
+            display: block;
+            text-decoration: none;
+            color: #FFBF69;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 60px;
+            margin-top: 15px;
+            border-bottom: 2px solid #ffa124;
+            background: rgba(200,20,200,0);
+        }
+
+            .btn_salida ul li a:hover {
+                background: rgba(189, 189, 189, 0.4);
+            }

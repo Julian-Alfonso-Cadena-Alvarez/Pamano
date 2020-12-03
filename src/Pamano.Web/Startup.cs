@@ -37,8 +37,9 @@ namespace Pamano.Web
                     Configuration.GetConnectionString("IdentityConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppIdentityDbContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PamanoDbContext>();
 
-            services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
 

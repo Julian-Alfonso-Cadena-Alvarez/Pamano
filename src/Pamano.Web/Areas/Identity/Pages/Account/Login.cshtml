@@ -35,14 +35,15 @@
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label>
                     </div>
-                    <input type="submit" class="btn-iniciar" value="Iniciar">
-                    <div class="btn_salida">
-                        <ul>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Volver</a></li>
-                        </ul>
-                    </div>
+                    <input type="submit" class="btn-iniciar" value="Iniciar" />
                 </div>
             </form>
+            <div class="btn_salida">
+                <ul class="salida">
+                    <li></li>
+                    <li class="salida"><a asp-area="" asp-controller="Home" asp-action="Index">Volver</a></li>
+                </ul>
+            </div>
             <div class="div-fin">
                 <p class="">
                     <a id="forgot-password" class="form-link" asp-page="./ForgotPassword">¿Olvido su Contraseña?</a>
