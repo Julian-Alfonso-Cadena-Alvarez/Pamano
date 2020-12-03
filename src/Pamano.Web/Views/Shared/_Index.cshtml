@@ -78,7 +78,14 @@
                     <a href="#" class="indice">Linea Oficina</a>
                     <a href="#" class="indice">Linea Archivo</a>
                     <a href="#" class="indice">Linea Detalles</a>
-                    <a asp-controller="Home" asp-action="Perfilcliente"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-controller="Home" asp-action="Perfilcliente"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+                    }
 
                 </li>
             </ul>
