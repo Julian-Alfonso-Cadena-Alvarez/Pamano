@@ -80,13 +80,12 @@
                     <a href="#" class="indice">Linea Detalles</a>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <a asp-controller="Home" asp-action="Perfilcliente"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+                        <a asp-controller="Home" asp-action="Perfilcliente" > <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
                     }
                     else
-                    {
-                        <a asp-area="Identity" asp-page="/Account/Manage/Index"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+                    {   
+                        <a asp-area="Identity" asp-page="/Account/Login"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>               
                     }
-
                 </li>
             </ul>
         </div>

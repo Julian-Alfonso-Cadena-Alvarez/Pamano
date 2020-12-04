@@ -1,2 +1,17 @@
-﻿body {
+﻿.cont{
+    background-image:url(../img/fondo3.png);
+    margin-bottom:2.5%;
+}
+.cont-tabla {
+    background: url(../img/fondo2.png);
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+    border: 1px solid #777777;
+    border-radius:1px;
+    border-top-right-radius:0px;
+}
+main {
+    background: url(../img/fondo3.png);
 }

@@ -4,54 +4,71 @@
     ViewData["Title"] = "Productos";
     Layout = "~/Views/Shared/_Navegador.cshtml";
 }
+@section productos{
+    <link href="~/css_cliente/prueba1.css" rel="stylesheet" />
+}
+
+
 <header class="fondo_tifblue">
     <h2 class="fondo_tifblue indice">Productos</h2>
 </header>
 <p>
-    <a asp-action="Create">Agregar nuevo producto</a>
+    <a hidden asp-action="Create">Agregar nuevo producto</a>
 </p>
-<div>
-    <table id="productos" class="table">
-        <thead>
-            <tr>
-                <th>
-                    Cantidad
-                </th>
-                <th>
-                    Precio
-                </th>
-                <th>
-                    Caracteristicas
-                </th>
-                <th>
-                    Tipo de producto
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+<div class="cont">
+    <div class="cont-tabla">
+        <table id="productos" class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CantidadDeProducto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrecioDelProducto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CaracteristicasDelProducto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IdTipoDeProductoNavigation.NombreProducto)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdProducto">Editar</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdProducto">Detalles</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdProducto">Eliminar</a>
-                    </td>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Caracteristicas
+                    </th>
+                    <th>
+                        Tipo de producto
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
                 </tr>
-            }
-        
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CantidadDeProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecioDelProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CaracteristicasDelProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdTipoDeProductoNavigation.NombreProducto)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdProducto">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdProducto">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdProducto">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
 </div>
+@section scripts{ 
+<script>
+    $(document).ready(function () {
+        $('#productos').DataTable();
+    });
+</script>
+}
