@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
+using Pamano.Core.Domain;
+
 
 namespace Pamano.Web.Controllers
 {
@@ -54,7 +56,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto")] OrdenDeCompra ordenDeCompra)
+        public async Task<IActionResult> Create([Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto,Producto")] OrdenDeCompra ordenDeCompra)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +88,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto")] OrdenDeCompra ordenDeCompra)
+        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto,Producto")] OrdenDeCompra ordenDeCompra)
         {
             if (id != ordenDeCompra.IdOrdenDeCompra)
             {

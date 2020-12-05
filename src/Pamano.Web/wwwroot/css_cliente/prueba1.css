@@ -1,8 +1,10 @@
-﻿.cont{
+﻿.cont
+{
     background-image:url(../img/fondo3.png);
     margin-bottom:2.5%;
 }
-.cont-tabla {
+.cont-tabla 
+{
     background: url(../img/fondo2.png);
     margin-left: 10%;
     margin-right: 10%;
@@ -12,6 +14,7 @@
     border-radius:1px;
     border-top-right-radius:0px;
 }
-main {
+main 
+{
     background: url(../img/fondo3.png);
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pamano.Web.Models;
@@ -19,7 +20,7 @@ namespace Pamano.Web.Controllers
             _logger = logger;
         }
 
-       public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -27,7 +28,8 @@ namespace Pamano.Web.Controllers
         public IActionResult Privacy()
         {
             return View();
-        } 
+        }
+        [Authorize]
         public IActionResult Perfilcliente()
         {
             return View();

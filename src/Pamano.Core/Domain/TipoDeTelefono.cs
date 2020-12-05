@@ -7,12 +7,12 @@ namespace Pamano.Core.Domain
     {
         public TipoDeTelefono()
         {
-            Telefono = new HashSet<Telefono>();
+            Usuarios = new HashSet<Usuarios>();
         }
 
         public int IdTipoTelefono { get; set; }
         public string TipoTelefono { get; set; }
 
-        public virtual ICollection<Telefono> Telefono { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

@@ -25,14 +25,6 @@
             <div class="list_navegacion">
                 <ul>
                     <li><a asp-area="" asp-controller="Producto" asp-action="Index">PRODUCTOS</a></li>
-                    <li>
-                        <a href="#">MARCAS</a>
-                        <ul>
-                            <li><a href="#">Escolares</a></li>
-                            <li><a href="#">Oficina</a></li>
-                            <li><a href="#">Detalles</a></li>
-                        </ul>
-                    </li>
                     <li><a href="#QuienesSomos">QUIENES SOMOS</a></li>
                     <li>
                         <a href="#">CONTACTENOS</a>
@@ -78,14 +70,14 @@
                     <a href="#" class="indice">Linea Oficina</a>
                     <a href="#" class="indice">Linea Archivo</a>
                     <a href="#" class="indice">Linea Detalles</a>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
+                   
+                    
                         <a asp-controller="Home" asp-action="Perfilcliente" > <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
-                    }
-                    else
-                    {   
-                        <a asp-area="Identity" asp-page="/Account/Login"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>               
-                    }
+                    
+                    
+                     
+            
+                    
                 </li>
             </ul>
         </div>

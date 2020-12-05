@@ -5,27 +5,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
+using Pamano.Core.Domain;
 
 namespace Pamano.Web.Controllers
 {
-    public class EstadoDelPedidoController : Controller
+    public class OrdenDeVentaController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public EstadoDelPedidoController(PamanoDbContext context)
+        public OrdenDeVentaController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: EstadoDelPedido
+        // GET: OrdenDeVenta
         public async Task<IActionResult> Index()
         {
-            return View(await _context.EstadoDelPedido.ToListAsync());
+            var pamanoDbContext = _context.OrdenDeVenta.Include(o => o.IdUsuarioNavigation);
+            return View(await pamanoDbContext.ToListAsync());
         }
 
-        // GET: EstadoDelPedido/Details/5
+        // GET: OrdenDeVenta/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +35,42 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var estadoDelPedido = await _context.EstadoDelPedido
-                .FirstOrDefaultAsync(m => m.IdEstado == id);
-            if (estadoDelPedido == null)
+            var ordenDeVenta = await _context.OrdenDeVenta
+                .Include(o => o.IdUsuarioNavigation)
+                .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
+            if (ordenDeVenta == null)
             {
                 return NotFound();
             }
 
-            return View(estadoDelPedido);
+            return View(ordenDeVenta);
         }
 
-        // GET: EstadoDelPedido/Create
+        // GET: OrdenDeVenta/Create
         public IActionResult Create()
         {
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
             return View();
         }
 
-        // POST: EstadoDelPedido/Create
+        // POST: OrdenDeVenta/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEstado,NombreEstadoDelPedido")] EstadoDelPedido estadoDelPedido)
+        public async Task<IActionResult> Create([Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario")] OrdenDeVenta ordenDeVenta)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(estadoDelPedido);
+                _context.Add(ordenDeVenta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(estadoDelPedido);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
+            return View(ordenDeVenta);
         }
 
-        // GET: EstadoDelPedido/Edit/5
+        // GET: OrdenDeVenta/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +78,23 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var estadoDelPedido = await _context.EstadoDelPedido.FindAsync(id);
-            if (estadoDelPedido == null)
+            var ordenDeVenta = await _context.OrdenDeVenta.FindAsync(id);
+            if (ordenDeVenta == null)
             {
                 return NotFound();
             }
-            return View(estadoDelPedido);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
+            return View(ordenDeVenta);
         }
 
-        // POST: EstadoDelPedido/Edit/5
+        // POST: OrdenDeVenta/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEstado,NombreEstadoDelPedido")] EstadoDelPedido estadoDelPedido)
+        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario")] OrdenDeVenta ordenDeVenta)
         {
-            if (id != estadoDelPedido.IdEstado)
+            if (id != ordenDeVenta.IdOrdenDeVenta)
             {
                 return NotFound();
             }
@@ -97,12 +103,12 @@ namespace Pamano.Web.Controllers
             {
                 try
                 {
-                    _context.Update(estadoDelPedido);
+                    _context.Update(ordenDeVenta);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EstadoDelPedidoExists(estadoDelPedido.IdEstado))
+                    if (!OrdenDeVentaExists(ordenDeVenta.IdOrdenDeVenta))
                     {
                         return NotFound();
                     }
@@ -113,10 +119,11 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(estadoDelPedido);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
+            return View(ordenDeVenta);
         }
 
-        // GET: EstadoDelPedido/Delete/5
+        // GET: OrdenDeVenta/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +131,31 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var estadoDelPedido = await _context.EstadoDelPedido
-                .FirstOrDefaultAsync(m => m.IdEstado == id);
-            if (estadoDelPedido == null)
+            var ordenDeVenta = await _context.OrdenDeVenta
+                .Include(o => o.IdUsuarioNavigation)
+                .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
+            if (ordenDeVenta == null)
             {
                 return NotFound();
             }
 
-            return View(estadoDelPedido);
+            return View(ordenDeVenta);
         }
 
-        // POST: EstadoDelPedido/Delete/5
+        // POST: OrdenDeVenta/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var estadoDelPedido = await _context.EstadoDelPedido.FindAsync(id);
-            _context.EstadoDelPedido.Remove(estadoDelPedido);
+            var ordenDeVenta = await _context.OrdenDeVenta.FindAsync(id);
+            _context.OrdenDeVenta.Remove(ordenDeVenta);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EstadoDelPedidoExists(int id)
+        private bool OrdenDeVentaExists(int id)
         {
-            return _context.EstadoDelPedido.Any(e => e.IdEstado == id);
+            return _context.OrdenDeVenta.Any(e => e.IdOrdenDeVenta == id);
         }
     }
 }

@@ -5,27 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
+using Pamano.Core.Domain;
 
 namespace Pamano.Web.Controllers
 {
-    public class RolsController : Controller
+    public class RolController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public RolsController(PamanoDbContext context)
+        public RolController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: Rols
+        // GET: Rol
         public async Task<IActionResult> Index()
         {
             return View(await _context.Rol.ToListAsync());
         }
 
-        // GET: Rols/Details/5
+        // GET: Rol/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +44,13 @@ namespace Pamano.Web.Controllers
             return View(rol);
         }
 
-        // GET: Rols/Create
+        // GET: Rol/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Rols/Create
+        // POST: Rol/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +66,7 @@ namespace Pamano.Web.Controllers
             return View(rol);
         }
 
-        // GET: Rols/Edit/5
+        // GET: Rol/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +82,7 @@ namespace Pamano.Web.Controllers
             return View(rol);
         }
 
-        // POST: Rols/Edit/5
+        // POST: Rol/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +117,7 @@ namespace Pamano.Web.Controllers
             return View(rol);
         }
 
-        // GET: Rols/Delete/5
+        // GET: Rol/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +135,7 @@ namespace Pamano.Web.Controllers
             return View(rol);
         }
 
-        // POST: Rols/Delete/5
+        // POST: Rol/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

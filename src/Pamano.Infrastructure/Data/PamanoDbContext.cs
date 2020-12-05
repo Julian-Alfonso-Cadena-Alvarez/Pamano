@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Pamano.Infrastructure;
 using Pamano.Core.Domain;
 
 namespace Pamano.Infrastructure.Data
@@ -17,14 +17,15 @@ namespace Pamano.Infrastructure.Data
         {
         }
 
+
         public virtual DbSet<EstadoDelPedido> EstadoDelPedido { get; set; }
+    
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<OrdenDeCompra> OrdenDeCompra { get; set; }
         public virtual DbSet<OrdenDeVenta> OrdenDeVenta { get; set; }
         public virtual DbSet<Pedidos> Pedidos { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
-        public virtual DbSet<Telefono> Telefono { get; set; }
         public virtual DbSet<TipoDeProducto> TipoDeProducto { get; set; }
         public virtual DbSet<TipoDeTelefono> TipoDeTelefono { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
@@ -34,12 +35,21 @@ namespace Pamano.Infrastructure.Data
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySQL("database=Pamano;server=localhost;port=3306;user id=root;password=");
+//                optionsBuilder.UseMySQL("database=pamano;server=localhost;port=3306;user id=root;password=");
 //            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
+           
+
+
+
+           
+           
+
             modelBuilder.Entity<EstadoDelPedido>(entity =>
             {
                 entity.HasKey(e => e.IdEstado)
@@ -49,13 +59,15 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdEstado)
                     .HasColumnName("id_estado")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.NombreEstadoDelPedido)
                     .HasColumnName("Nombre_estado_del_pedido")
                     .HasMaxLength(20)
                     .HasDefaultValueSql("'NULL'");
             });
+
+           
 
             modelBuilder.Entity<Inventario>(entity =>
             {
@@ -81,7 +93,7 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdInventario)
                     .HasColumnName("ID_inventario")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.FechaDeIngreso)
                     .HasColumnName("Fecha_de_ingreso")
@@ -90,19 +102,19 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdOrdenDeCompra)
                     .HasColumnName("ID_orden_de_compra")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdOrdenDeVenta)
                     .HasColumnName("ID_orden_de_venta")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdPedido)
                     .HasColumnName("ID_pedido")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdProducto)
                     .HasColumnName("id_producto")
-                    .HasColumnType("int(3)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdUsuario)
@@ -149,7 +161,7 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdOrdenDeCompra)
                     .HasColumnName("ID_orden_de_compra")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.NombreDelProveedor)
                     .HasColumnName("Nombre_del_proveedor")
@@ -163,12 +175,12 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.ValorTotalDelProducto)
                     .HasColumnName("Valor_total_del_producto")
-                    .HasColumnType("int(8)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.ValorUnitarioDelProducto)
                     .HasColumnName("Valor_unitario_del_producto")
-                    .HasColumnType("int(5)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
             });
 
@@ -179,24 +191,42 @@ namespace Pamano.Infrastructure.Data
 
                 entity.ToTable("orden_de_venta");
 
+                entity.HasIndex(e => e.IdUsuario)
+                    .HasName("id_usuario");
+
                 entity.Property(e => e.IdOrdenDeVenta)
                     .HasColumnName("ID_orden_de_venta")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.CantidadDelProducto)
                     .HasColumnName("Cantidad_del_producto")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.FechaDeVenta)
+                    .HasColumnName("fecha_de_venta")
+                    .HasColumnType("date")
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.IdUsuario)
+                    .HasColumnName("id_usuario")
+                    .HasMaxLength(10)
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.ValorTotal)
                     .HasColumnName("Valor_total")
-                    .HasColumnType("int(8)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.ValorUnitario)
                     .HasColumnName("Valor_unitario")
-                    .HasColumnType("int(5)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.OrdenDeVenta)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("orden_de_venta_ibfk_1");
             });
 
             modelBuilder.Entity<Pedidos>(entity =>
@@ -214,15 +244,15 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdPedido)
                     .HasColumnName("ID_pedido")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Cantidad)
-                    .HasColumnType("int(100)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdEstadoPedido)
                     .HasColumnName("id_estado_pedido")
-                    .HasColumnType("int(3)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdUsuario)
@@ -254,11 +284,11 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdProducto)
                     .HasColumnName("ID_producto")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.CantidadDeProducto)
                     .HasColumnName("Cantidad_de_producto")
-                    .HasColumnType("int(3)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.CaracteristicasDelProducto)
@@ -268,12 +298,12 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdTipoDeProducto)
                     .HasColumnName("id_tipo_de_producto")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.PrecioDelProducto)
                     .HasColumnName("Precio_del_producto")
-                    .HasColumnType("int(8)")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.HasOne(d => d.IdTipoDeProductoNavigation)
@@ -291,42 +321,12 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdRol)
                     .HasColumnName("ID_rol")
-                    .HasColumnType("int(1)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.TipoDeRol)
                     .HasColumnName("Tipo_de_rol")
                     .HasMaxLength(15)
                     .HasDefaultValueSql("'NULL'");
-            });
-
-            modelBuilder.Entity<Telefono>(entity =>
-            {
-                entity.HasKey(e => e.IdTelefono)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("telefono");
-
-                entity.HasIndex(e => e.IdTipoTelefono)
-                    .HasName("id_tipo_telefono");
-
-                entity.Property(e => e.IdTelefono)
-                    .HasColumnName("id_telefono")
-                    .HasColumnType("int(1)");
-
-                entity.Property(e => e.IdTipoTelefono)
-                    .HasColumnName("id_tipo_telefono")
-                    .HasColumnType("int(1)");
-
-                entity.Property(e => e.NumeroTelefonico)
-                    .IsRequired()
-                    .HasColumnName("Numero_telefonico")
-                    .HasMaxLength(11);
-
-                entity.HasOne(d => d.IdTipoTelefonoNavigation)
-                    .WithMany(p => p.Telefono)
-                    .HasForeignKey(d => d.IdTipoTelefono)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("telefono_ibfk_1");
             });
 
             modelBuilder.Entity<TipoDeProducto>(entity =>
@@ -338,7 +338,7 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdTipoProducto)
                     .HasColumnName("id_tipo_producto")
-                    .HasColumnType("int(2)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.NombreProducto)
                     .HasColumnName("Nombre_producto")
@@ -355,7 +355,7 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdTipoTelefono)
                     .HasColumnName("id_tipo_telefono")
-                    .HasColumnType("int(1)");
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.TipoTelefono)
                     .HasColumnName("tipo_telefono")
@@ -373,7 +373,7 @@ namespace Pamano.Infrastructure.Data
                 entity.HasIndex(e => e.IdRol)
                     .HasName("ID_rol");
 
-                entity.HasIndex(e => e.IdTelefono)
+                entity.HasIndex(e => e.IdTipoTelefono)
                     .HasName("id_telefono");
 
                 entity.Property(e => e.IdUsuario)
@@ -382,11 +382,11 @@ namespace Pamano.Infrastructure.Data
 
                 entity.Property(e => e.IdRol)
                     .HasColumnName("ID_rol")
-                    .HasColumnType("int(3)");
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.IdTelefono)
-                    .HasColumnName("id_telefono")
-                    .HasColumnType("int(1)")
+                entity.Property(e => e.IdTipoTelefono)
+                    .HasColumnName("id_tipo_telefono")
+                    .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.PrimerApellido)
@@ -409,16 +409,20 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnName("Segundo_nombre")
                     .HasMaxLength(15);
 
+                entity.Property(e => e.Telefono)
+                    .IsRequired()
+                    .HasMaxLength(11);
+
                 entity.HasOne(d => d.IdRolNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdRol)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("usuarios_ibfk_1");
 
-                entity.HasOne(d => d.IdTelefonoNavigation)
+                entity.HasOne(d => d.IdTipoTelefonoNavigation)
                     .WithMany(p => p.Usuarios)
-                    .HasForeignKey(d => d.IdTelefono)
-                    .HasConstraintName("id_telefono");
+                    .HasForeignKey(d => d.IdTipoTelefono)
+                    .HasConstraintName("usuarios_ibfk_2");
             });
 
             OnModelCreatingPartial(modelBuilder);

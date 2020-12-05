@@ -24,9 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdRolNavigation)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTelefonoNavigation)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -49,9 +46,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IdRolNavigation.IdRol)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdTelefonoNavigation.NumeroTelefonico)
-                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |

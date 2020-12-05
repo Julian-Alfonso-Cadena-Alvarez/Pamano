@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
-
+using Pamano.Core.Domain;
 namespace Pamano.Web.Controllers
 {
     public class TipoDeProductoController : Controller

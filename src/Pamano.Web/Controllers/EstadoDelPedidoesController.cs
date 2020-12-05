@@ -6,27 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
 {
-    public class TelefonoController : Controller
+    public class EstadoDelPedidoesController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public TelefonoController(PamanoDbContext context)
+        public EstadoDelPedidoesController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: Telefono
+        // GET: EstadoDelPedidoes
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.Telefono.Include(t => t.IdTipoTelefonoNavigation);
-            return View(await pamanoDbContext.ToListAsync());
+            return View(await _context.EstadoDelPedido.ToListAsync());
         }
 
-        // GET: Telefono/Details/5
+        // GET: EstadoDelPedidoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +34,39 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var telefono = await _context.Telefono
-                .Include(t => t.IdTipoTelefonoNavigation)
-                .FirstOrDefaultAsync(m => m.IdTelefono == id);
-            if (telefono == null)
+            var estadoDelPedido = await _context.EstadoDelPedido
+                .FirstOrDefaultAsync(m => m.IdEstado == id);
+            if (estadoDelPedido == null)
             {
                 return NotFound();
             }
 
-            return View(telefono);
+            return View(estadoDelPedido);
         }
 
-        // GET: Telefono/Create
+        // GET: EstadoDelPedidoes/Create
         public IActionResult Create()
         {
-            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono");
             return View();
         }
 
-        // POST: Telefono/Create
+        // POST: EstadoDelPedidoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTelefono,IdTipoTelefono,NumeroTelefonico")] Telefono telefono)
+        public async Task<IActionResult> Create([Bind("IdEstado,NombreEstadoDelPedido")] EstadoDelPedido estadoDelPedido)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(telefono);
+                _context.Add(estadoDelPedido);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", telefono.IdTipoTelefono);
-            return View(telefono);
+            return View(estadoDelPedido);
         }
 
-        // GET: Telefono/Edit/5
+        // GET: EstadoDelPedidoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +74,22 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var telefono = await _context.Telefono.FindAsync(id);
-            if (telefono == null)
+            var estadoDelPedido = await _context.EstadoDelPedido.FindAsync(id);
+            if (estadoDelPedido == null)
             {
                 return NotFound();
             }
-            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", telefono.IdTipoTelefono);
-            return View(telefono);
+            return View(estadoDelPedido);
         }
 
-        // POST: Telefono/Edit/5
+        // POST: EstadoDelPedidoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTelefono,IdTipoTelefono,NumeroTelefonico")] Telefono telefono)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEstado,NombreEstadoDelPedido")] EstadoDelPedido estadoDelPedido)
         {
-            if (id != telefono.IdTelefono)
+            if (id != estadoDelPedido.IdEstado)
             {
                 return NotFound();
             }
@@ -102,12 +98,12 @@ namespace Pamano.Web.Controllers
             {
                 try
                 {
-                    _context.Update(telefono);
+                    _context.Update(estadoDelPedido);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TelefonoExists(telefono.IdTelefono))
+                    if (!EstadoDelPedidoExists(estadoDelPedido.IdEstado))
                     {
                         return NotFound();
                     }
@@ -118,11 +114,10 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", telefono.IdTipoTelefono);
-            return View(telefono);
+            return View(estadoDelPedido);
         }
 
-        // GET: Telefono/Delete/5
+        // GET: EstadoDelPedidoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,31 +125,30 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var telefono = await _context.Telefono
-                .Include(t => t.IdTipoTelefonoNavigation)
-                .FirstOrDefaultAsync(m => m.IdTelefono == id);
-            if (telefono == null)
+            var estadoDelPedido = await _context.EstadoDelPedido
+                .FirstOrDefaultAsync(m => m.IdEstado == id);
+            if (estadoDelPedido == null)
             {
                 return NotFound();
             }
 
-            return View(telefono);
+            return View(estadoDelPedido);
         }
 
-        // POST: Telefono/Delete/5
+        // POST: EstadoDelPedidoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var telefono = await _context.Telefono.FindAsync(id);
-            _context.Telefono.Remove(telefono);
+            var estadoDelPedido = await _context.EstadoDelPedido.FindAsync(id);
+            _context.EstadoDelPedido.Remove(estadoDelPedido);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TelefonoExists(int id)
+        private bool EstadoDelPedidoExists(int id)
         {
-            return _context.Telefono.Any(e => e.IdTelefono == id);
+            return _context.EstadoDelPedido.Any(e => e.IdEstado == id);
         }
     }
 }

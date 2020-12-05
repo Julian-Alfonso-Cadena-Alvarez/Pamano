@@ -5,27 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pamano.Core.Domain;
+using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
+using Pamano.Core.Domain;
 
 namespace Pamano.Web.Controllers
 {
-    public class OrdenDeVentasController : Controller
+    public class TipoDeTelefonoesController : Controller
     {
         private readonly PamanoDbContext _context;
 
-        public OrdenDeVentasController(PamanoDbContext context)
+        public TipoDeTelefonoesController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        // GET: OrdenDeVentas
+        // GET: TipoDeTelefonoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrdenDeVenta.ToListAsync());
+            return View(await _context.TipoDeTelefono.ToListAsync());
         }
 
-        // GET: OrdenDeVentas/Details/5
+        // GET: TipoDeTelefonoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,39 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var ordenDeVenta = await _context.OrdenDeVenta
-                .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
-            if (ordenDeVenta == null)
+            var tipoDeTelefono = await _context.TipoDeTelefono
+                .FirstOrDefaultAsync(m => m.IdTipoTelefono == id);
+            if (tipoDeTelefono == null)
             {
                 return NotFound();
             }
 
-            return View(ordenDeVenta);
+            return View(tipoDeTelefono);
         }
 
-        // GET: OrdenDeVentas/Create
+        // GET: TipoDeTelefonoes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: OrdenDeVentas/Create
+        // POST: TipoDeTelefonoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal")] OrdenDeVenta ordenDeVenta)
+        public async Task<IActionResult> Create([Bind("IdTipoTelefono,TipoTelefono")] TipoDeTelefono tipoDeTelefono)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ordenDeVenta);
+                _context.Add(tipoDeTelefono);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(ordenDeVenta);
+            return View(tipoDeTelefono);
         }
 
-        // GET: OrdenDeVentas/Edit/5
+        // GET: TipoDeTelefonoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +74,22 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var ordenDeVenta = await _context.OrdenDeVenta.FindAsync(id);
-            if (ordenDeVenta == null)
+            var tipoDeTelefono = await _context.TipoDeTelefono.FindAsync(id);
+            if (tipoDeTelefono == null)
             {
                 return NotFound();
             }
-            return View(ordenDeVenta);
+            return View(tipoDeTelefono);
         }
 
-        // POST: OrdenDeVentas/Edit/5
+        // POST: TipoDeTelefonoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal")] OrdenDeVenta ordenDeVenta)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTipoTelefono,TipoTelefono")] TipoDeTelefono tipoDeTelefono)
         {
-            if (id != ordenDeVenta.IdOrdenDeVenta)
+            if (id != tipoDeTelefono.IdTipoTelefono)
             {
                 return NotFound();
             }
@@ -97,12 +98,12 @@ namespace Pamano.Web.Controllers
             {
                 try
                 {
-                    _context.Update(ordenDeVenta);
+                    _context.Update(tipoDeTelefono);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrdenDeVentaExists(ordenDeVenta.IdOrdenDeVenta))
+                    if (!TipoDeTelefonoExists(tipoDeTelefono.IdTipoTelefono))
                     {
                         return NotFound();
                     }
@@ -113,10 +114,10 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(ordenDeVenta);
+            return View(tipoDeTelefono);
         }
 
-        // GET: OrdenDeVentas/Delete/5
+        // GET: TipoDeTelefonoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +125,30 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
 
-            var ordenDeVenta = await _context.OrdenDeVenta
-                .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
-            if (ordenDeVenta == null)
+            var tipoDeTelefono = await _context.TipoDeTelefono
+                .FirstOrDefaultAsync(m => m.IdTipoTelefono == id);
+            if (tipoDeTelefono == null)
             {
                 return NotFound();
             }
 
-            return View(ordenDeVenta);
+            return View(tipoDeTelefono);
         }
 
-        // POST: OrdenDeVentas/Delete/5
+        // POST: TipoDeTelefonoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ordenDeVenta = await _context.OrdenDeVenta.FindAsync(id);
-            _context.OrdenDeVenta.Remove(ordenDeVenta);
+            var tipoDeTelefono = await _context.TipoDeTelefono.FindAsync(id);
+            _context.TipoDeTelefono.Remove(tipoDeTelefono);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrdenDeVentaExists(int id)
+        private bool TipoDeTelefonoExists(int id)
         {
-            return _context.OrdenDeVenta.Any(e => e.IdOrdenDeVenta == id);
+            return _context.TipoDeTelefono.Any(e => e.IdTipoTelefono == id);
         }
     }
 }

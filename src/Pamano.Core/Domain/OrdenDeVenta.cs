@@ -14,7 +14,10 @@ namespace Pamano.Core.Domain
         public int? CantidadDelProducto { get; set; }
         public int? ValorUnitario { get; set; }
         public int? ValorTotal { get; set; }
+        public DateTime? FechaDeVenta { get; set; }
+        public string IdUsuario { get; set; }
 
+        public virtual Usuarios IdUsuarioNavigation { get; set; }
         public virtual ICollection<Inventario> Inventario { get; set; }
     }
 }

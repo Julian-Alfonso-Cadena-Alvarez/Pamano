@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pamano.Infrastructure.Data;
 using Pamano.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web
 {
@@ -30,7 +30,7 @@ namespace Pamano.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PamanoDbContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("PamanoConnection")));
+                 options.UseMySQL(Configuration.GetConnectionString("PamanoConnection")));
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseMySQL(

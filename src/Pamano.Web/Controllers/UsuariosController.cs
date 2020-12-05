@@ -22,7 +22,7 @@ namespace Pamano.Web.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.Usuarios.Include(u => u.IdRolNavigation).Include(u => u.IdTelefonoNavigation);
+            var pamanoDbContext = _context.Usuarios.Include(u => u.IdRolNavigation).Include(u => u.IdTipoTelefonoNavigation);
             return View(await pamanoDbContext.ToListAsync());
         }
 
@@ -36,7 +36,7 @@ namespace Pamano.Web.Controllers
 
             var usuarios = await _context.Usuarios
                 .Include(u => u.IdRolNavigation)
-                .Include(u => u.IdTelefonoNavigation)
+                .Include(u => u.IdTipoTelefonoNavigation)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuarios == null)
             {
@@ -50,7 +50,7 @@ namespace Pamano.Web.Controllers
         public IActionResult Create()
         {
             ViewData["IdRol"] = new SelectList(_context.Rol, "IdRol", "IdRol");
-            ViewData["IdTelefono"] = new SelectList(_context.Telefono, "IdTelefono", "NumeroTelefonico");
+            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,IdRol,IdTelefono,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("IdUsuario,IdRol,IdTipoTelefono,Telefono,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace Pamano.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdRol"] = new SelectList(_context.Rol, "IdRol", "IdRol", usuarios.IdRol);
-            ViewData["IdTelefono"] = new SelectList(_context.Telefono, "IdTelefono", "NumeroTelefonico", usuarios.IdTelefono);
+            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", usuarios.IdTipoTelefono);
             return View(usuarios);
         }
 
@@ -86,7 +86,7 @@ namespace Pamano.Web.Controllers
                 return NotFound();
             }
             ViewData["IdRol"] = new SelectList(_context.Rol, "IdRol", "IdRol", usuarios.IdRol);
-            ViewData["IdTelefono"] = new SelectList(_context.Telefono, "IdTelefono", "NumeroTelefonico", usuarios.IdTelefono);
+            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", usuarios.IdTipoTelefono);
             return View(usuarios);
         }
 
@@ -95,7 +95,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("IdUsuario,IdRol,IdTelefono,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido")] Usuarios usuarios)
+        public async Task<IActionResult> Edit(string id, [Bind("IdUsuario,IdRol,IdTipoTelefono,Telefono,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido")] Usuarios usuarios)
         {
             if (id != usuarios.IdUsuario)
             {
@@ -123,7 +123,7 @@ namespace Pamano.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdRol"] = new SelectList(_context.Rol, "IdRol", "IdRol", usuarios.IdRol);
-            ViewData["IdTelefono"] = new SelectList(_context.Telefono, "IdTelefono", "NumeroTelefonico", usuarios.IdTelefono);
+            ViewData["IdTipoTelefono"] = new SelectList(_context.TipoDeTelefono, "IdTipoTelefono", "IdTipoTelefono", usuarios.IdTipoTelefono);
             return View(usuarios);
         }
 
@@ -137,7 +137,7 @@ namespace Pamano.Web.Controllers
 
             var usuarios = await _context.Usuarios
                 .Include(u => u.IdRolNavigation)
-                .Include(u => u.IdTelefonoNavigation)
+                .Include(u => u.IdTipoTelefonoNavigation)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuarios == null)
             {
