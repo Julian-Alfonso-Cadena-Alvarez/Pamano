@@ -1,29 +1,30 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Prerfil";
+    ViewData["Title"] = "Tus Datos";
     ViewData["ActivePage"] = ManageNavPages.Index;
+    Layout = "~/Views/Shared/_Navegador.cshtml";
 }
-
-
-<h4>@ViewData["Title"]</h4>
+@section Estilo_datos_correo{
+    <link href="~/css_cliente/estilos_datosp_clien.css" rel="stylesheet" />
+}
+<hr />
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Username"></label>
-                <input asp-for="Username" class="form-control" disabled />
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.PhoneNumber"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
+<div class="Formulario">
+    <form id="profile-form" class="form-registro" method="post">
+        <h2 class="form-titulo">Datos Personales</h2>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="cont-input">
+            <label class="" asp-for="Username">Usuario</label>
+            <input asp-for="Username" class="input-100" disabled />
+            <label class="" asp-for="Input.PhoneNumber">Numero Telefonico</label>
+            <input asp-for="Input.PhoneNumber" class="input-100 " />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            <input id="update-profile-button" type="submit" value="Guardar" class="btn-regis btn-enviar">
+            <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="Perfilcliente">Volver</a></p>
+        </div>
+        
+    </form>
 </div>
 
 @section Scripts {

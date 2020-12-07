@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Compra a Proveedores";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section Provedor{
+    <link href="~/css_admin/compra_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
+}
+
+<div class="content">
+    <div class=" cont_opc">
+        <div class="proveedor">
+            <img src="~/img_Admin/lista.png" alt="">
+        </div>
+        <h2>Lista proveedores</h2>
+        <p>En esta seccion podras ver tus proveedores registrados.</p>
+        <div class="btn_his btn_ir">
+            <ul>
+                <li><a href="lista_proveedores_ADMINISTRADOR.html">Ir a lista</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class=" cont_opc">
+        <div class="proveedor">
+            <img src="~/img_Admin/compras.png" alt="">
+        </div>
+        <h2>Compras realizadas</h2>
+        <p>Puedes ver el historial de tus compras a proveedores.</p>
+        <div class=" btn_per btn_ir">
+            <ul>
+                <li><a href="admin_comprasrealizadas_proveedores_ADMINISTRADOR.html">Ir a compras</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cont_opc">
+        <div class="proveedor">
+            <img src="~/img_admin/registrar.png" alt="">
+        </div>
+        <h2>Registrar proveedor</h2>
+        <p>Puedes registrar nuevos proveedores. </p>
+        <div class="btn_fav btn_ir">
+            <ul>
+                <li><a href="registrar_proveedor_ADMINISTRADOR.html">Ir a registrar</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="btn_salida">
+    <ul>
+        <li><a href="mi_cuenta_INICIO_ADMINISTRADOR.html">SALIR</a></li>
+    </ul>
+</div>

@@ -1,0 +1,252 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+    margin: 10px 20px 10px;
+    text-align: center;
+    font-size: 23px;
+    color: #0c97cb;
+    background: #CBF3F0;
+}
+
+h3 {
+    margin: 10px 20px 10px;
+    text-align: center;
+    color: #0c97cb;
+    font-size: 20px;
+    background: #CBF3F0;
+}
+
+p {
+    color: #0c97cb;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    background: #CBF3F0;
+}
+.borde{
+    border: 1px solid black;
+}
+
+/* SECCION MAIN*/
+main{
+    width: 100%;
+    background-image: url(../img/fondo3.png);
+    height: 580px;
+    
+}
+.perfil{
+    width: 350px;
+    height: 580px;
+   
+    background: #CBF3F0;
+    border-right: 2px solid #2EC4B6;
+   
+    padding-bottom: 5px;
+    border-bottom: 2px solid #2EC4B6;
+    border-top: 2px solid #2EC4B6;
+    border-left: 2px solid #2EC4B6;
+    
+
+    border-radius: 10px;
+}
+
+
+.foto{
+    margin-left: 20%;
+    margin-top: 10%;
+    width: 200px;
+    height: 195px;
+    border-radius: 50%;
+    background: #fff;
+    border:2px solid #2EC4B6;
+   
+}
+
+
+.boton{
+     width: 50%;
+     height: 30px;
+     background-color: #fff;
+     margin-top: 30px;
+     margin-left: 90px;
+     border-radius: 30px;
+     border: 2px solid #FF9F1C;
+     padding-right: 10px;
+     
+     
+}
+.btn_miperfil {
+    background: #CBF3F0;
+}
+    .btn_miperfil ul{
+        background: rgba(25,25,25,0);
+    }
+    .btn_miperfil ul li {
+        display: inline-block;
+        width: 250px;
+        margin-bottom: 5px;
+        background: rgba(25,25,25,0);
+    }
+        .btn_miperfil ul li a {
+            display: flex;
+            text-decoration: none;
+            color: #BA4A00;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 70px;
+            margin-left: 18px;
+            margin-top: 5px;
+            background: rgba(25,25,25,0);
+        }
+
+.btn_usuarios {
+    background: rgba(25,25,25,0);
+}
+.btn_usuarios ul {
+    background: rgba(25,25,25,0);
+}
+.btn_usuarios ul li {
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 5px;
+    
+    background: rgba(25,25,25,0);
+}
+
+    .btn_usuarios ul li a {
+        display: flex;
+        text-decoration: none;
+        color: #BA4A00;
+        font-size: 15px;
+        font-weight: bold;
+        background: rgba(25,25,25,0);
+        margin-left: 38px;
+        margin-top: 5px;
+    }
+
+.btn_usuarios1 {
+    background: rgba(25,25,25,0);
+}
+    .btn_usuarios1 ul {
+        background: rgba(25,25,25,0);
+    }
+
+        .btn_usuarios1 ul li {
+            display: inline-block;
+            width: 200px;
+            margin-bottom: 5px;
+            background: rgba(25,25,25,0);
+        }
+
+            .btn_usuarios1 ul li a {
+                display: flex;
+                text-decoration: none;
+                color: #BA4A00;
+                font-size: 15px;
+                font-weight: bold;
+                margin-left: 25px;
+                margin-top: 5px;
+                background: rgba(25,25,25,0);
+            }
+
+
+.cont_opc {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 10%;
+    padding-top: 60px;
+}
+
+.contenido{
+    margin-top: 10px;
+    background: #CBF3F0;
+    width: 300px;
+    border-radius: 10%;
+    text-align: center;
+}
+.content1 {
+    background: rgba(0,0,0,0);
+}
+.img-centro {
+    background: rgba(0,0,0,0);
+}
+
+.img-centro img {
+    margin-left: 2%;
+    margin-top: 10%;
+    width: 60%;
+    height: 140px;
+    background: rgba(0,0,0,0);
+}
+
+
+.compra {
+    margin-left: 10%;
+    width: 70%;
+    height: 140px;
+    border-radius: 100%;
+    background: rgba(0,0,0,0);
+}
+
+
+/*Inicio boton ir*/
+.btm_ir {
+    width: 100%;
+    height: 50px;
+    float: left;
+    background: rgba(0,0,0,0);
+}
+.btn_ir ul {
+    list-style: none;
+    text-align: center;
+    background: rgba(0,0,0,0);
+}
+    .btn_ir ul li {
+        display: inline-block;
+        width: 250px;
+        margin-bottom: 10px;
+        background: rgba(0,0,0,0);
+    }
+        .btn_ir ul li a {
+            display: block;
+            text-decoration: none;
+            color: #FFBF69;
+            font-size: 23px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            padding-top: 10px;
+            background: rgba(0,0,0,0);
+        }
+.btn_ir ul li a:hover{
+    background: rgba(150, 187, 185, 0.4);
+}
+
+
+.btn_compras {
+    margin-top: 15px;
+    background: rgba(0,0,0,0);
+}
+.btn_ventas {
+    margin-top: 31px;
+    background: rgba(0,0,0,0);
+}
+.btn_inventario {
+    margin-top: 31px;
+    background: rgba(0,0,0,0);
+}
+
+/*fin boton ir*/
+
+
+
+

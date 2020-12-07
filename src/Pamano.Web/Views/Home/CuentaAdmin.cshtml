@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewData["Title"] = "Cuenta Administrador";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section EstilosAdmin{
+    <link href="~/css_admin/estilos_mi_cuenta_INICIO_ADMINISTRADOS.css" rel="stylesheet" />
+}
+
+
+<table>
+    <tr valign="top" align="left">
+        <td width="350">
+            <div class="perfil">
+                <div class=" foto"></div>
+                <h3>Nombre completo</h3>
+
+                <div class="btn_miperfil">
+                    <div class="boton">
+
+                        <ul>
+                            <li ><a href="configurar_perfil_ADMINISTRADOR.html">Configurar mi Perfil</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p>----------------------------------------------------------------</p>
+
+                <h2>USUARIOS</h2>
+                <div class="btn_usuarios">
+                    <div class="boton">
+
+                        <ul>
+                            <li><a href="crear_usuario_ADMINISTRADOR.html">Crear usuario</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="btn_usuarios1">
+                    <div class="boton">
+
+                        <ul>
+                            <li><a href="consultar_usuario_ADMINISTRADOR.html">Consultar usuario</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </td>
+
+
+
+
+        <td width="1000" valign="top" align="left">
+
+            <div class="cont_opc">
+
+                <div class="contenido">
+                    <div class="content1">
+                        <div class="img-centro">
+                            <img src="../img_admin/compras.png" alt="" class="compra">
+                        </div>
+                        <h2>Compra a proveedores</h2>
+                        <p>Aquí podras registrar y ver listado de tus proveedores, asi mismo verificar las compras realizadas. </p>
+                        <div class="btn_compras btn_ir">
+                            <ul>
+                                <li><a href="compra_proveedores_ADMINISTRADOR.html">Ir a compras a proveedores</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contenido">
+                    <div class="content1">
+                        <div class="img-centro">
+                            <img src="../img_admin/ventas.png" alt="" class="compra">
+                        </div>
+                        <h2>Ventas</h2>
+                        <p>En esta sección podras visualizar las ventas realizadas o ejecutar una venta.</p>
+                        <div class=" btn_ventas btn_ir">
+                            <ul>
+                                <li><a href="ventas_ADMINISTRADOR.html">Ir a Ventas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contenido">
+                    <div class="content1">
+                        <div class="img-centro">
+                            <img src="../img_admin/inventario.png" alt="" class="compra">
+                        </div>
+                        <h2>Inventario</h2>
+                        <p>Podras ver la lista de los productos, actualizar inventario o agregar nuevos productos si así lo deseas.</p>
+                        <div class=" btn_inventario btn_ir">
+                            <ul>
+                                <li><a href="admin_inventario_ADMINISTRADOR.html">Ir a Inventario</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </td>
+    </tr>
+
+</table>
+<div class="btn_salida">
+    <ul>
+        <li><a href="mi_cuenta_INICIO_ADMINISTRADOR.html">SALIR</a></li>
+    </ul>
+</div>

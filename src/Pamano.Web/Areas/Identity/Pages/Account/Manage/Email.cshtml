@@ -1,0 +1,32 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Correo Electronico";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+    Layout = "~/Views/Shared/_Navegador.cshtml";
+}
+@section Estilo_datos_correo{
+    <link href="~/css_cliente/estilos_datosp_clien.css" rel="stylesheet" />
+}
+
+<div class="Formulario">
+    <form id="email-form" method="post" class="form-registro">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <h2 class="form-titulo">Actualizar Correo Electronico</h2>
+        <div class="cont-input">
+            <label asp-for="Email">Tu Correo Electronico</label>
+            <input asp-for="Email" class="input-100" disabled />
+
+            <label asp-for="Input.NewEmail" class="">Nuevo Correo Electronico</label>
+            <input asp-for="Input.NewEmail" class="input-100" />
+            <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            <input id="change-email-button" type="submit" asp-page-handler="ChangeEmail" value="Guardar" class="btn-regis btn-enviar">
+            <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="Index">Volver</a></p>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -14,9 +14,11 @@
     <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
     @RenderSection("Vistaperfil", required: false)
     @RenderSection("Productos", required:false)
+    @RenderSection("Estilo_datos_correo", required:false)
+    @RenderSection("EstilosAdmin",required: false)
 </head>
 <body>
-    
+
     <nav>
         <div class="logo">
             <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/Logo1.png" alt=""></a>
@@ -26,7 +28,7 @@
 
             <div class="list_navegacion">
                 <ul>
-                    <li><a href="#">PRODUCTOS</a></li>
+                    <li><a asp-controller="Producto" asp-action="Index">PRODUCTOS</a></li>
                     <li><a href="#QuienesSomos">QUIENES SOMOS</a></li>
                     <li>
                         <a href="#">CONTACTENOS</a>
@@ -36,6 +38,17 @@
                             <li><a href="#">Correo Electronico</a></li>
                         </ul>
                     </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a asp-area="Identity" asp-page="/Account/Mange/Index">PERFIL</a>
+                            <ul>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index">Datos Personales</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Email">Cambiar Correo Electronico</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/ChangePassword">Cambiar Contraseña</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -60,6 +73,9 @@
             }
         </div>
     </nav>
+    <header class="fondo_tifblue">
+        <h1 class="fondo_tifblue titulo1">@ViewData["Title"]</h1>
+    </header>
 
     <div>
         <main role="main">
@@ -78,5 +94,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     @RenderSection("Scripts", required: false)
+ 
 </body>
 </html>

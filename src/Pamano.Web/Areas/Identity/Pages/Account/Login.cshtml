@@ -4,13 +4,6 @@
 @{
     ViewData["Title"] = "Inicio de Sesion";
 }
-<!-- Encabezado -->
-<header class="fondo_tifblue">
-    <div>
-        <h1 class="fondo_tifblue titulo1">@ViewData["Title"]</h1>
-    </div>
-</header>
-
 
 <div>
     <div class="Formulario">
@@ -27,7 +20,6 @@
                     <label class="label" asp-for="Input.Password">Contraseña</label>
                     <span asp-validation-for="Input.Password" class="advertencia"></span>
                     <input asp-for="Input.Password" class="input" />
-
 
                     <div class="checkbox fondo_azulcla">
                         <label class="labelRemember" asp-for="Input.RememberMe">

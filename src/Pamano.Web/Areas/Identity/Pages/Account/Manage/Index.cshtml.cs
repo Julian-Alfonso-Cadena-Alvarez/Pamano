@@ -33,7 +33,7 @@ namespace Pamano.Web.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Numero de telefono")]
             public string PhoneNumber { get; set; }
         }
 

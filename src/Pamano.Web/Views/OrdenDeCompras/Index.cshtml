@@ -2,15 +2,29 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
+@section listProv{
+    <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-<h1>Index</h1>
+}
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<h3>Seleccione linea de artículo</h3>
+<select class="input-50">
+    <option value="0">Tipo de artículo</option>
+    <option value="1">Escolar</option>
+    <option value="2">Comestible</option>
+    <option value="3">Tecnológico</option>
+    <option value="4">Ferretería</option>
+    <option value="5">Detalles</option>
+
+</select>
+
+<table id="provedor" class="table">
     <thead>
         <tr>
             <th>
@@ -26,23 +40,32 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreDelProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorUnitarioDelProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorTotalDelProducto)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdOrdenDeCompra">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdOrdenDeCompra">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdOrdenDeCompra">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDelProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorUnitarioDelProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorTotalDelProducto)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdOrdenDeCompra">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdOrdenDeCompra">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdOrdenDeCompra">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $('#provedor').DataTable();
+    });
+</script>
+@section datatable{
+    <link href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" rel="stylesheet" />
+}

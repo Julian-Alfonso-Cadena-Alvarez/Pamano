@@ -29,11 +29,22 @@
                     <li>
                         <a href="#">CONTACTENOS</a>
                         <ul>
-                            <li ><a href="#">Direccion</a></li>
+                            <li><a href="#">Direccion</a></li>
                             <li><a href="#">Redes Sociales</a></li>
                             <li><a href="#">Correo Electronico</a></li>
                         </ul>
                     </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a asp-area="Identity" asp-page="/Account/Manage/Index">PERFIL</a>
+                            <ul>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index">Datos Personales</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Email">Cambiar Correo Electronico</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/ChangePassword">Cambiar Contraseña</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -42,7 +53,7 @@
            @if (SignInManager.IsSignedIn(User))
                 {
                     <div>
-                        <a  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+                        <a  asp-area="Identity" asp-page="/Account/Manage/Index" title="Cuenta">@User.Identity.Name</a>
 
                         <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="btn-cerr-ses">Cerrar sesion</button>

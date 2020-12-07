@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pamano.Core.Domain;
-using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
