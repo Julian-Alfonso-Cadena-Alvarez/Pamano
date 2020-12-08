@@ -1,28 +1,39 @@
 ﻿@model Pamano.Core.Domain.OrdenDeCompra
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
+@section create{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 
-<h1>Create</h1>
+}
+<div class="Formulario">
+    <form asp-action="Create" class="form-registro" onsubmit="return validacion()" method="post">
+        <h2 class="form-titulo">Registro de Proveedores</h2>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="cont-input">
+            <input type="email" id="correo" name="Correo" placeholder="Correo electronico" class="input-100">
 
-<h4>OrdenDeCompra</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            <input type="text" id="Producto" name="producto" placeholder="Producto" class="input-50" />
+
+            <input type="text" id="empresa" name="Empresa" placeholder="Empresa" class="input-50">
+
+            <input type="number" id="telefono" name="Telefono" placeholder="Telefono" class="input-50">
+
+            <input type="number" id="ValorTotal" name="ValorTotal" placeholder="Valor del Producto" class="input-50">
+
+            <input type="text" id="direccionem" name="Dirección de la empresa" placeholder="Dirección de la empresa" class="input-100">
+
+            <input type="submit" value="Crear" class="btn-regis btn-enviar">
+            <p class="form-link"><a class="form-link" asp-action="Index">VOLVER</a></p>
+
+        </div>
+
+
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

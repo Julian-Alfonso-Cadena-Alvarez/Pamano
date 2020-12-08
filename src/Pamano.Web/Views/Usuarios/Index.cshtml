@@ -1,12 +1,17 @@
 ﻿@model IEnumerable<Pamano.Core.Domain.Usuarios>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-   
+    ViewData["Title"] = "Administracion De Usuarios";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<table class="table">
+<p><a asp-controller="Usuarios" asp-action="Create">Crear nuevo usuarios</a></p>
+
+<table id="Usuarios" class="table">
     <thead>
         <tr>
             <th>
@@ -56,3 +61,15 @@
         }
     </tbody>
 </table>
+<div class="btn_salida">
+    <ul>
+        <li><a href="compra_proveedores_ADMINISTRADOR.html">VOLVER</a></li>
+    </ul>
+</div>
+@section datatable {
+    <script>
+        $(document).ready(function () {
+            $('#Usuarios').DataTable();
+        });
+    </script>
+}

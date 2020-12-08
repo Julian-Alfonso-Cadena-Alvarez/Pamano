@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+window.onload = function() {
+
+var options = {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Compras realizadas a proveedores"
+	},
+	legend:{
+		horizontalAlign: "right",
+		verticalAlign: "center"
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+		indexLabel: "{name}",
+		legendText: "{name} (#percent%)",
+		indexLabelPlacement: "inside",
+		dataPoints: [
+			{ y: 6566.4, name: "Proveedor1" },
+			{ y: 2599.2, name: "proveedor2" },
+			{ y: 1231.2, name: "Proveedor3" },
+			{ y: 1368, name: "Proveedor4" },
+			{ y: 684, name: "Proveedor5"},
+			{ y: 1231.2, name: "Proveedor6" }
+		]
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 500px; width: 80%;"></div>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

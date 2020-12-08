@@ -1,17 +1,15 @@
 ﻿@model IEnumerable<Pamano.Core.Domain.OrdenDeCompra>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orden de Compra";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
-@section listProv{
+@section list{
     <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
     <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
-
 }
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar nueva Orden de compra</a>
 </p>
 <h3>Seleccione linea de artículo</h3>
 <select class="input-50">
@@ -21,22 +19,28 @@
     <option value="3">Tecnológico</option>
     <option value="4">Ferretería</option>
     <option value="5">Detalles</option>
-
 </select>
-
-<table id="provedor" class="table">
+<br />
+<br />
+<br />
+<table id="provedor" class="table mb-1">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreDelProveedor)
+                Proveedor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorUnitarioDelProducto)
+                Valor Unitario
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorTotalDelProducto)
+                Valor Total
             </th>
-            <th></th>
+            <th>
+                Producto
+            </th>
+            <th>
+                Accion
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -53,6 +57,9 @@
                     @Html.DisplayFor(modelItem => item.ValorTotalDelProducto)
                 </td>
                 <td>
+                    @Html.DisplayFor(ModelItem => item.Producto)
+                </td>
+                <td>
                     <a asp-action="Edit" asp-route-id="@item.IdOrdenDeCompra">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.IdOrdenDeCompra">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.IdOrdenDeCompra">Delete</a>
@@ -61,11 +68,22 @@
         }
     </tbody>
 </table>
-<script>
-    $(document).ready(function () {
-        $('#provedor').DataTable();
-    });
-</script>
+<div class="btn_salida">
+    <ul>
+        <li><a asp-controller="OrdenDeCompras" asp-action="Reporte">Ver reporte</a></li>
+    </ul>
+</div>
+<div class="btn_salida">
+    <ul>
+        <li><a href="compra_proveedores_ADMINISTRADOR.html">VOLVER</a></li>
+    </ul>
+</div>
+
 @section datatable{
-    <link href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('#provedor').DataTable();
+        });
+    </script>
 }

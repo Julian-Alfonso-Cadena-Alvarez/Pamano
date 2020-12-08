@@ -14,7 +14,8 @@
     <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
     @RenderSection("EstilosAdmin", required: false)
     @RenderSection("Provedor", required: false)
-    @RenderSection("listProv", required:false)
+    @RenderSection("list", required:false)
+    @RenderSection("Create", required:false)
 </head>
 <body>
 
@@ -40,7 +41,7 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li>
-                            <a asp-area="Identity" asp-page="/Account/Mange/Index">PERFIL</a>
+                            <a asp-area="Identity" asp-page="/Account/Manage/Index">PERFIL</a>
                             <ul>
                                 <li><a asp-area="Identity" asp-page="/Account/Manage/Index">Datos Personales</a></li>
                                 <li><a asp-area="Identity" asp-page="/Account/Manage/Email">Cambiar Correo Electronico</a></li>
@@ -91,7 +92,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">s</script>
     @RenderSection("Scripts", required: false)
     @RenderSection("datatable", required: false)
 </body>

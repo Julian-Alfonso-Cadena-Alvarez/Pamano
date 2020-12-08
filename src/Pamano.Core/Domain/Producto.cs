@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pamano.Core.Domain
 {
@@ -13,6 +14,8 @@ namespace Pamano.Core.Domain
         public int IdProducto { get; set; }
         public int? CantidadDeProducto { get; set; }
         public int? IdTipoDeProducto { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public int? PrecioDelProducto { get; set; }
         public string CaracteristicasDelProducto { get; set; }
 

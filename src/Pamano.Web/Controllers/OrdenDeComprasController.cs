@@ -20,7 +20,10 @@ namespace Pamano.Web.Controllers
         {
             _context = context;
         }
-
+        public IActionResult Reporte()
+        {
+            return View();
+        }
         // GET: OrdenDeCompras
         public async Task<IActionResult> Index()
         {

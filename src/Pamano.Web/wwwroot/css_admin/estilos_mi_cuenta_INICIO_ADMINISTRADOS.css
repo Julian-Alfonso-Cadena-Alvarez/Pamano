@@ -40,6 +40,9 @@ main{
     height: 580px;
     
 }
+table{
+    background-image: url(~/img/fondo2.png);
+}
 .perfil{
     width: 350px;
     height: 580px;
