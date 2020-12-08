@@ -1,66 +1,87 @@
 ﻿@model IEnumerable<Pamano.Core.Domain.Inventario>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Inventario";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Actualizar inventario</a>
 </p>
-<table class="table">
+<table id="lista" class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FechaDeIngreso)
+                Fecha De Ingreso
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdOrdenDeCompraNavigation)
+                ID Orden De Compra
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdOrdenDeVentaNavigation)
+                ID Orden De Venta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPedidoNavigation)
+                ID Pedido
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+                ID Producto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+                ID Usuario
             </th>
-            <th></th>
+            <th>
+                Acciones
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaDeIngreso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdInventario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdInventario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdInventario">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaDeIngreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div class="btn_salida">
+    <ul>
+        <li><a asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></li>
+    </ul>
+</div>
+
+
+@section datatable{ 
+    <script>
+        $(document).ready(function () {
+            $('#lista').DataTable();
+        });
+    </script>
+}

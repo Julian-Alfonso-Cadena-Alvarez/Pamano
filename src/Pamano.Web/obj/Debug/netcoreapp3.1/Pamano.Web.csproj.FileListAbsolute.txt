@@ -481,11 +481,6 @@ C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Vie
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Details.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Edit.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Index.cshtml.g.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVentas\Create.cshtml.g.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVentas\Delete.cshtml.g.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVentas\Details.cshtml.g.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVentas\Edit.cshtml.g.cs
-C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVentas\Index.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Pedidos\Create.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Pedidos\Delete.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Pedidos\Details.cshtml.g.cs
@@ -548,3 +543,6 @@ C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Vie
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_navAdmin.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\CompraProv.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Reporte.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Principal.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVenta\Principal.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVenta\Reporte.cshtml.g.cs

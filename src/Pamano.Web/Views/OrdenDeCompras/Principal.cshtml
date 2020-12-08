@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Principal";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="~/css_admin/compra_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
+}
+<div class="content">
+     <div class=" cont_opc">
+        <div class="proveedor">
+            <img src="../img_admin/compras.png" alt="">
+        </div>
+        <h2>Compras realizadas</h2>
+        <p>Puedes ver el historial de tus compras a proveedores.</p>
+        <div class=" btn_per btn_ir">
+            <ul>
+                <li><a asp-controller="OrdenDeCompras" asp-action="Index">Ir a compras</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cont_opc">
+        <div class="proveedor">
+            <img src="../img_admin/registrar.png" alt="">
+        </div>
+        <h2>Registrar proveedor</h2>
+        <p>Puedes registrar nuevos proveedores. </p>
+        <div class="btn_fav btn_ir">
+            <ul>
+                <li><a asp-controller="OrdenDeCompras" asp-action="Create">Ir a registrar</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="btn_salida">
+    <ul>
+        <li><a asp-controller="Home" asp-action="CuentaAdmin">SALIR</a></li>
+    </ul>
+</div>
+
+

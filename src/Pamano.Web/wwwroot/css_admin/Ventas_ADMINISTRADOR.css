@@ -5,7 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 h2 {
-    margin: 5px 20px 10px;
+    margin: 10px 20px 10px;
     text-align: center;
     font-size: 23px;
     color: #0c97cb;
@@ -24,40 +24,40 @@ p {
     border: 1px solid black;
 }
 
-/*MAIN*/
 main{
     width: 100%;
     height: 577px;
-    background: url(../img_admin/fondo3.png);
+    background-image: url(../img/fondo3.png);
 }
-.content {
-    display: -webkit-flex;
-    justify-content: center;
-    padding-right: 60px;
-    background: rgba(0,0,0,0);
-}
-.cont_opc {
-    margin-left: 4%;
-    margin-top: 80px;
-    width: 30%;
-    height: 400px;
+.cont_opc{
+    margin-left: 6.5%;
+    margin-top: 90px;
+    width: 40%;
+    height: 380px;
     float: left;
     background: #CBF3F0;
     border-radius: 10%;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    border:1px solid #0c97cb;; 
 }
-.proveedor {
+.realizar {
     background: rgba(0,0,0,0);
 }
-.proveedor img {
-    margin-left: 20%;
-    margin-top: 10%;
-    width: 60%;
-    height: 140px;
-    border-radius: 100%;
-    background: rgba(0,0,0,0);
+.realizar img{
+    margin-left: 35%;
+    margin-top: 5%;
+    width: 180px;
+    height: 180px;
+    border-radius: 10%;
 }
+
+.p{
+    text-align: center;
+    background:rgba(0,0,0,0);
+}
+
 /*Inicio boton ir*/
+
 .btn_ir {
     width: 100%;
     height: 50px;
@@ -71,8 +71,8 @@ main{
     }
         .btn_ir ul li {
             display: inline-block;
-            width: 250px;
-            margin-bottom: 10px;
+            width: 300px;
+            margin-bottom: 30px;
             background: rgba(0,0,0,0);
         }
             .btn_ir ul li a {
@@ -82,52 +82,40 @@ main{
                 font-size: 23px;
                 font-weight: bold;
                 text-align: center;
-                margin-top: 10px;
-                margin-left: 5px;
-                margin-right: 5px;
-                padding-top: 10px;
+                padding-top: 1px;
                 background: rgba(0,0,0,0);
             }
-.btn_ir ul li a:hover{
-    background: rgba(150, 187, 185, 0.4);
-}
-.btn_his {
-    margin-top: 15px;
-    background: rgba(0,0,0,0);
-}
-.btn_per {
-    margin-top: 31px;
-    background: rgba(0,0,0,0);
-}
-.btn_fav {
-    margin-top: 15px;
-    background: rgba(0,0,0,0);
-}
-.btn_car {
-    margin-bottom: 10px;
-    background: rgba(0,0,0,0);
+.btn_reali{
+    width: 70%;
+     height: 40px;
+     float: left;
+     background-color: #fff;
+     margin-top: 2%;
+     margin-left: 85px;
+     border-radius: 30px;
+     border: 2px solid #FF9F1C;
 }
 /*fin boton ir*/
 
-/*Boton de salida*/
-.btn_salida {
-    width: 100%;
+/*Boton de volver*/
+.btn_Volver {
+    width: 50%;
     height: 6%;
     padding-bottom: 7px;
     float: right;
     background: rgba(0,0,0,0);
 }
-    .btn_salida ul {
+    .btn_Volver ul {
         list-style: none;
         text-align: right;
         background: rgba(0,0,0,0);
     }
-        .btn_salida ul li {
+        .btn_Volver ul li {
             display: inline-block;
             width: 180px;
             background: rgba(0,0,0,0);
         }
-            .btn_salida ul li a {
+            .btn_Volver ul li a {
                 display: block;
                 text-decoration: none;
                 color: #FFBF69;
@@ -139,6 +127,6 @@ main{
                 border-bottom: 2px solid #ffa124;
                 background: rgba(0,0,0,0);
             }
-.btn_salida ul li a:hover{
+.btn_Volver ul li a:hover{
     background: rgba(189, 189, 189, 0.4);
 }

@@ -11,7 +11,9 @@
         <tr valign="top" align="left">
             <td width="350">
                 <div class="perfil">
-                    <div class=" foto"></div>
+                    
+                    <div class="foto"></div>
+                   
                     <h3>Nombre completo</h3>
 
                     <div class="btn_miperfil">
@@ -22,6 +24,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <p>----------------------------------------------------------------</p>
 
                     <h2>USUARIOS</h2>
@@ -60,7 +63,7 @@
                             <p>Aquí podras registrar y ver listado de tus proveedores, asi mismo verificar las compras realizadas. </p>
                             <div class="btn_compras btn_ir">
                                 <ul>
-                                    <li><a href="compra_proveedores_ADMINISTRADOR.html">Ir a compras a proveedores</a></li>
+                                    <li><a asp-controller="OrdendeCompras" asp-action="Principal">Ir a compras a proveedores</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -75,7 +78,7 @@
                             <p>En esta sección podras visualizar las ventas realizadas o ejecutar una venta.</p>
                             <div class=" btn_ventas btn_ir">
                                 <ul>
-                                    <li><a href="ventas_ADMINISTRADOR.html">Ir a Ventas</a></li>
+                                    <li><a asp-controller="OrdenDeVenta" asp-action="Principal">Ir a Ventas</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -90,16 +93,12 @@
                             <p>Podras ver la lista de los productos, actualizar inventario o agregar nuevos productos si así lo deseas.</p>
                             <div class=" btn_inventario btn_ir">
                                 <ul>
-                                    <li><a href="admin_inventario_ADMINISTRADOR.html">Ir a Inventario</a></li>
+                                    <li><a asp-controller="Inventario" asp-action="Index">Ir a Inventario</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
             </td>
         </tr>
-
     </table>

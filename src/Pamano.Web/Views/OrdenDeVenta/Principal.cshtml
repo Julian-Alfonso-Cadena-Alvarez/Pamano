@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Principal";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="~/css_admin/Ventas_ADMINISTRADOR.css" rel="stylesheet" />
+}
+<div class="cont_opc">
+    <div class="realizar">
+        <img src="../img_admin/ventas.png">
+    </div>
+    <h2>Realizar Venta</h2>
+    <p class="p">Puedes registrar una venta </p>
+    <div class=" btn_ir btn_reali">
+        <ul>
+            <li><a asp-action="Create"> Ir a Realizar Venta</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class=" cont_opc">
+    <div class=" realizar">
+        <img src="../img_admin/ventarealizada.png">
+    </div>
+    <h2>Ventas Realizadas</h2>
+    <p class="p">Puedes consultar las ventas realizadas </p>
+    <div class="  btn_ir btn_reali">
+        <ul>
+            <li><a asp-action="Index">Ir a Ventas Realizadas</a></li>
+        </ul>
+    </div>
+</div>
+<div class="btn_Volver">
+    <ul>
+        <li><a asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></li>
+    </ul>
+</div>
