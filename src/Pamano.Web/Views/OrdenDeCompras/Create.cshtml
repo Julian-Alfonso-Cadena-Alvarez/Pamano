@@ -11,19 +11,17 @@
 <div class="Formulario">
     <form asp-action="Create" class="form-registro" onsubmit="return validacion()" method="post">
         <h2 class="form-titulo">Registro de Proveedores</h2>
-        <div asp-validation-summary="ModelOnly"></div>
+        @* <div asp-validation-summary="ModelOnly"></div>*@
         <div class="cont-input">
-            <input type="email" id="correo" name="Correo" placeholder="Correo electronico" class="input-100">
+            <input asp-for="CorreoElectronico" type="email" id="correo" name="Correo" placeholder="Correo electronico" class="input-100">
 
-            <input type="text" id="Producto" name="producto" placeholder="Producto" class="input-50" />
+            <input asp-for="Producto" type="text" id="Producto" name="producto" placeholder="Producto" class="input-50" />
 
-            <input type="text" id="empresa" name="Empresa" placeholder="Empresa" class="input-50">
+            <input asp-for="NombreDelProveedor" type="text" id="empresa" name="Empresa" placeholder="Empresa" class="input-50">
 
-            <input type="number" id="telefono" name="Telefono" placeholder="Telefono" class="input-50">
+            <input asp-for="Telefono" type="number" id="telefono" name="Telefono" placeholder="Telefono" class="input-50">
 
-            <input type="number" id="ValorTotal" name="ValorTotal" placeholder="Valor del Producto" class="input-50">
-
-            <input type="text" id="direccionem" name="Dirección de la empresa" placeholder="Dirección de la empresa" class="input-100">
+            <input asp-for="ValorTotalDelProducto" type="number" id="ValorTotal" name="ValorTotal" placeholder="Valor del Producto" class="input-50">
 
             <input type="submit" value="Crear" class="btn-regis btn-enviar">
             <p class="form-link"><a class="form-link" asp-action="Index">VOLVER</a></p>
@@ -35,4 +33,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/js_admi/registrar_proveedor_ADMINISTRADOR.js"></script>
 }

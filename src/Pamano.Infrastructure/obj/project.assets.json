@@ -6607,11 +6607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
       "projectName": "Pamano.Infrastructure",
-      "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\Pamano.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6627,8 +6627,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
-              "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
+            "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
+              "projectPath": "C:\\Users\\familia\\Desktop\\pamano\\src\\Pamano.Core\\Pamano.Core.csproj"
             }
           }
         }
@@ -6678,9 +6678,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

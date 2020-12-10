@@ -26,10 +26,13 @@
                 ID Orden De Venta
             </th>
             <th>
+                Realizador de la Venta
+            </th>
+            <th>
                 ID Pedido
             </th>
             <th>
-                ID Producto
+                Producto
             </th>
             <th>
                 ID Usuario
@@ -42,31 +45,34 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaDeIngreso)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdUsuarioNavigation.PrimerNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

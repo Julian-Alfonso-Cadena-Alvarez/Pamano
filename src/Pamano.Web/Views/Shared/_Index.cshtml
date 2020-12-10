@@ -81,15 +81,16 @@
                     <a href="#" class="indice">Linea Oficina</a>
                     <a href="#" class="indice">Linea Archivo</a>
                     <a href="#" class="indice">Linea Detalles</a>
-                   
-                    
-                        <a asp-controller="Home" asp-action="Perfilcliente" > <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
-                    
-                    
-                     
-            
-                    
-                </li>
+
+
+                    <a asp-controller="Home" asp-action="Perfilcliente"> <img class="fav-car" src="~/img/carrito-de-compras.png"></a>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-action="CuentaAdmin"><img class="fav-car" src="~/img/inventario.png"/></a>
+                    }
+
+                 </li>
             </ul>
         </div>
     </header>

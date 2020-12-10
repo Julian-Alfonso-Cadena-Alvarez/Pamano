@@ -15,55 +15,63 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PrimerNombre)
+                Numero de Identificacion
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SegundoNombre)
+                Primer Nomnbre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrimerApellido)
+                Segundo Nomnbre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SegundoApellido)
+                Primer Apellido
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdRolNavigation)
+                Segundo Apellido
             </th>
-            <th></th>
+            <th>
+                Tipo de Usuario
+            </th>
+            <th>
+                Acicones
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrimerNombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SegundoNombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrimerApellido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SegundoApellido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdRolNavigation.IdRol)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRolNavigation.TipoDeRol)
+            </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
-                </td>
-            </tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdUsuario">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Eliminar</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
 <div class="btn_salida">
     <ul>
-        <li><a href="compra_proveedores_ADMINISTRADOR.html">VOLVER</a></li>
+        <li><a asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></li>
     </ul>
 </div>
 @section datatable {

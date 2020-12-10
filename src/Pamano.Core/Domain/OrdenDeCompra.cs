@@ -16,6 +16,9 @@ namespace Pamano.Core.Domain
         public int? ValorUnitarioDelProducto { get; set; }
         [DisplayFormat(DataFormatString = "{0:C}")]
         public int? ValorTotalDelProducto { get; set; }
+        [EmailAddress]
+        public string CorreoElectronico { get; set; }
+        public string Telefono { get; set; }
         public string Producto { get; set; }
         public virtual ICollection<Inventario> Inventario { get; set; }
     }

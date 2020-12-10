@@ -1,43 +1,66 @@
 ﻿@model Pamano.Core.Domain.Usuarios
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Crear nuevo Usuario";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section create{
+
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<h1>Create</h1>
 
-<h4>Usuarios</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdUsuario" class="control-label"></label>
-                <input asp-for="IdUsuario" class="form-control" />
-                <span asp-validation-for="IdUsuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdRol" class="control-label"></label>
-                <select asp-for="IdRol" class ="form-control" asp-items="ViewBag.IdRol"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="SegundoNombre" class="control-label"></label>
-                <input asp-for="SegundoNombre" class="form-control" />
-                <span asp-validation-for="SegundoNombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="Formulario">
+    <form onsubmit="return validacion()" asp-action="Create" class="form-registro"s>
+        <h2 class="form-titulo">Registro De Nuevo Usuario</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="cont-input">
+            <label asp-for="IdUsuario"  class="input-100" s>Documento de Identidad</label>
+            <input asp-for="IdUsuario" id="Cedula" class="input-100" type="number" />
+            <span asp-validation-for="IdUsuario" class="text-danger"></span>
+
+
+            <label asp-for="IdRol" class="input-100">Tipo de Usuario</label>
+            <select asp-for="IdRol" id="selector" class="input-100" asp-items="ViewBag.IdRol"></select>
+
+
+            <label asp-for="PrimerNombre" class="input-100">Primer Nombre</label>
+            <input asp-for="PrimerNombre" id="nombres" class="input-100" />
+            <span asp-validation-for="PrimerNombre" class="text-danger"></span>
+
+
+            <label asp-for="SegundoNombre" class="input-100">Segundo Nombre</label>
+            <input asp-for="SegundoNombre" id="nombres" class="input-100" />
+            <span asp-validation-for="SegundoNombre" class="text-danger"></span>
+
+            <label asp-for="PrimerApellido" class="input-100">Primer Apellido</label>
+            <input asp-for="PrimerApellido" id="apellidos" class="input-100" />
+            <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+
+
+            <label asp-for="SegundoApellido" class="input-100">Segundo Apellido</label>
+            <input asp-for="SegundoApellido" id="apellidos" class="input-100" />
+            <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+
+            <label asp-for="IdTipoTelefono" class="input-100">Tipo de telefono</label>
+            <select asp-for="IdTipoTelefono" id="selector" class="input-100" asp-items="ViewBag.IdTipoTelefono"></select>
+            
+
+            <label asp-for="Telefono" class="input-100"> Numero Telefono</label>
+            <input asp-for="Telefono" type="number" class="input-100" />
+            <span asp-validation-for="Telefono" class="text-danger"></span>
+
+            <input type="submit" value="Crear" class="btn-regis btn-enviar">
+            <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></p>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ @*await Html.RenderPartialAsync("_ValidationScriptsPartial");*@
+
+        <script src="~/js/js_admi/registrar_proveedor_ADMINISTRADOR.js"></script>
+
+    }
 }
