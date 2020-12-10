@@ -35,7 +35,7 @@ namespace Pamano.Web
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseMySQL(
                     Configuration.GetConnectionString("IdentityConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount =false)
                 .AddEntityFrameworkStores<AppIdentityDbContext>();
             //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PamanoDbContext>();
 

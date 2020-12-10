@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,13 +19,13 @@ namespace Pamano.Web.Controllers
         {
             _context = context;
         }
-
+        [Authorize]
         // GET: EstadoDelPedidoes
         public async Task<IActionResult> Index()
         {
             return View(await _context.EstadoDelPedido.ToListAsync());
         }
-
+        [Authorize]
         // GET: EstadoDelPedidoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,7 +43,7 @@ namespace Pamano.Web.Controllers
 
             return View(estadoDelPedido);
         }
-
+        [Authorize]
         // GET: EstadoDelPedidoes/Create
         public IActionResult Create()
         {
@@ -64,7 +65,7 @@ namespace Pamano.Web.Controllers
             }
             return View(estadoDelPedido);
         }
-
+        [Authorize]
         // GET: EstadoDelPedidoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,6 +116,7 @@ namespace Pamano.Web.Controllers
             }
             return View(estadoDelPedido);
         }
+        [Authorize]
 
         // GET: EstadoDelPedidoes/Delete/5
         public async Task<IActionResult> Delete(int? id)

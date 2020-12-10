@@ -8,20 +8,34 @@ using Microsoft.EntityFrameworkCore;
 using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 using Pamano.Core.Domain;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 namespace Pamano.Web.Controllers
 {
+    [Authorize]
     public class TipoDeProductoController : Controller
     {
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly PamanoDbContext _context;
 
-        public TipoDeProductoController(PamanoDbContext context)
+        public TipoDeProductoController(UserManager<IdentityUser> userManager,
+            PamanoDbContext context, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _userManager = userManager;
+            this._roleManager= roleManager;
         }
 
+        
+      
         // GET: TipoDeProducto
         public async Task<IActionResult> Index()
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null) return Challenge();
+            //return View(model);
             return View(await _context.TipoDeProducto.ToListAsync());
         }
 

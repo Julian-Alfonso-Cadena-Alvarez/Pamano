@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,24 +11,29 @@ using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
 {
+    [Authorize]
     public class OrdenDeVentaController : Controller
     {
         private readonly PamanoDbContext _context;
-
+        
         public OrdenDeVentaController(PamanoDbContext context)
         {
             _context = context;
         }
+
+        [Authorize]
         public IActionResult Principal()
         {
             return View();
         }
+        
         public IActionResult Reporte()
         {
             return View();
         }
 
         // GET: OrdenDeVenta
+        
         public async Task<IActionResult> Index()
         {
             var pamanoDbContext = _context.OrdenDeVenta.Include(o => o.IdUsuarioNavigation);
@@ -35,6 +41,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeVenta/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,6 +61,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeVenta/Create
+        
         public IActionResult Create()
         {
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
@@ -63,6 +71,7 @@ namespace Pamano.Web.Controllers
         // POST: OrdenDeVenta/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario")] OrdenDeVenta ordenDeVenta)

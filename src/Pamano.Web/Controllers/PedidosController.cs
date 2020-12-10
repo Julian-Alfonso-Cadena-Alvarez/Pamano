@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 using Pamano.Core.Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pamano.Web.Controllers
 {
+    [Authorize]
     public class PedidosController : Controller
     {
         private readonly PamanoDbContext _context;

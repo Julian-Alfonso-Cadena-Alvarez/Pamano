@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pamano.Web.Models;
@@ -34,10 +35,12 @@ namespace Pamano.Web.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult CuentaAdmin()
         {
             return View();
         }
+        [Authorize]
         public IActionResult CompraProv()
         {
             return View();

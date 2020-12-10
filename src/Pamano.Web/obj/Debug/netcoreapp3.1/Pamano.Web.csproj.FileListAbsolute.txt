@@ -543,6 +543,7 @@ C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Vie
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeCompras\Principal.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVenta\Principal.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\OrdenDeVenta\Reporte.cshtml.g.cs
+C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\CreateRol.cshtml.g.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Pamano.Web.csproj.CoreCompileInputs.cache
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Pamano.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\familia\Desktop\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Pamano.Web.MvcApplicationPartsAssemblyInfo.cache

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 using Pamano.Core.Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pamano.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Inventario
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var pamanoDbContext = _context.Inventario.Include(i => i.IdOrdenDeCompraNavigation).Include(i => i.IdOrdenDeVentaNavigation).Include(i => i.IdPedidoNavigation).Include(i => i.IdProductoNavigation).Include(i => i.IdUsuarioNavigation);
@@ -28,6 +30,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Inventario/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +52,7 @@ namespace Pamano.Web.Controllers
 
             return View(inventario);
         }
-
+        [Authorize]
         // GET: Inventario/Create
         public IActionResult Create()
         {
@@ -64,6 +67,7 @@ namespace Pamano.Web.Controllers
         // POST: Inventario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,IdProducto")] Inventario inventario)
@@ -83,6 +87,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Inventario/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,6 +111,7 @@ namespace Pamano.Web.Controllers
         // POST: Inventario/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdInventario,FechaDeIngreso,IdUsuario,IdOrdenDeVenta,IdOrdenDeCompra,IdPedido,IdProducto")] Inventario inventario)
@@ -144,6 +150,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Inventario/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -167,6 +174,7 @@ namespace Pamano.Web.Controllers
         }
 
         // POST: Inventario/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Pamano.Infrastructure;
 using Pamano.Infrastructure.Data;
 using Pamano.Core.Domain;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pamano.Web.Controllers
 {
@@ -20,21 +20,25 @@ namespace Pamano.Web.Controllers
         {
             _context = context;
         }
+        [Authorize]
         public IActionResult Principal()
         {
             return View();
         }
+        [Authorize]
         public IActionResult Reporte()
         {
             return View();
         }
         // GET: OrdenDeCompras
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.OrdenDeCompra.ToListAsync());
         }
 
         // GET: OrdenDeCompras/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -53,6 +57,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeCompras/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -61,6 +66,7 @@ namespace Pamano.Web.Controllers
         // POST: OrdenDeCompras/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto,Producto")] OrdenDeCompra ordenDeCompra)
@@ -75,6 +81,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeCompras/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +100,7 @@ namespace Pamano.Web.Controllers
         // POST: OrdenDeCompras/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeCompra,NombreDelProveedor,ValorUnitarioDelProducto,ValorTotalDelProducto,Producto")] OrdenDeCompra ordenDeCompra)
@@ -126,6 +134,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeCompras/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +153,7 @@ namespace Pamano.Web.Controllers
         }
 
         // POST: OrdenDeCompras/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
