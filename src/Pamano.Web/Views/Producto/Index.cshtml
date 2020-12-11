@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Pamano.Core.Domain.Producto>
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<Pamano.Core.Domain.Producto>
 
 @{
     ViewData["Title"] = "Productos";
@@ -9,7 +13,7 @@
 }
 
 <p>
-    <a hidden asp-action="Create">Agregar nuevo producto</a>
+    <a asp-action="Create">Agregar nuevo producto</a>
 </p>
 <div class="cont">
     <div class="cont-tabla">
@@ -28,10 +32,12 @@
                     <th>
                         Tipo de producto
                     </th>
-                    <th>
-                        Acciones
-                    </th>
-                </tr>
+
+                    
+                        <th>
+                            Acciones
+                        </th>
+ 
             </thead>
             <tbody>
                 @foreach (var item in Model)
@@ -49,12 +55,25 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.IdTipoDeProductoNavigation.NombreProducto)
                         </td>
+
                         <td>
-                           
-                             <a hiden asp-action="Edit" asp-route-id="@item.IdProducto">Editar</a> |
-                             <a asp-action="Details" asp-route-id="@item.IdProducto">Detalles</a> |
-                             <a hiden asp-action="Delete" asp-route-id="@item.IdProducto">Eliminar</a>
-                             
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-action="Details" asp-route-id="@item.IdProducto">Detalles |</a>
+
+                                
+                                <a asp-action="Delete" asp-route-id="@item.IdProducto">Eliminar |</a> 
+
+
+                                <a asp-action="Edit" asp-route-id="@item.IdProducto">Editar</a>
+
+                            }
+                            else
+                            {
+                                <a asp-action="Details" asp-route-id="@item.IdProducto">Detalles</a>
+                            }
+
+
                         </td>
                     </tr>
                 }
@@ -63,10 +82,10 @@
         </table>
     </div>
 </div>
-@section scripts{ 
-<script>
-    $(document).ready(function () {
-        $('#productos').DataTable();
-    });
-</script>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#productos').DataTable();
+        });
+    </script>
 }

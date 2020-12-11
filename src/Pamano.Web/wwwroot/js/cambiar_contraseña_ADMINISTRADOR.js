@@ -6,10 +6,7 @@ function validacion(){
     var contraseña1 = document.getElementById('contraseña1').value;
     var contraseña2 = document.getElementById('contraseña2').value;
     var confirmar = document.getElementById('confirmar').value;
-    
-
-
-  
+      
 
     if(contraseña1 == null || contraseña1.length == 0 || /^\s+$/.test(contraseña1) || !/^.{4,12}$/.test(contraseña1) ){
         alert('ERROR: El campo Contraseña no debe ir vacío o no debe tener menos de 4 caracteres y mas de 12 caracteres');
@@ -17,7 +14,8 @@ function validacion(){
     }
 
   if(contraseña1 == contraseña2){
-      alert('ERROR: La nueva contraseña no puede ser igual a la anterior')
+      alert('ERROR: La nueva contraseña no puede ser igual a la anterior');
+      return false;
   }
 
     if(contraseña2 == null || contraseña2.length == 0 || /^\s+$/.test(contraseña2) || !/^.{4,12}$/.test(contraseña2) ){

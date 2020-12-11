@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Pamano.Web.Controllers
 {
-    [Authorize]
+    
     public class ProductoController : Controller
     {
         private readonly PamanoDbContext _context;
@@ -47,7 +47,7 @@ namespace Pamano.Web.Controllers
 
             return View(producto);
         }
-
+        [Authorize]
         // GET: Producto/Create
         public IActionResult Create()
         {
@@ -60,6 +60,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("IdProducto,CantidadDeProducto,IdTipoDeProducto,PrecioDelProducto,CaracteristicasDelProducto")] Producto producto)
         {
             if (ModelState.IsValid)
@@ -73,6 +74,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Producto/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -126,6 +128,7 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: Producto/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

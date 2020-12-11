@@ -1,33 +1,50 @@
 ﻿@model Pamano.Core.Domain.Producto
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Crear un nuevo producto";
+    Layout = "~/Views/Shared/_navadmin.cshtml";
+}
+@section create{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<h1>Create</h1>
+<div class="Formulario">
+    <form id="CrearUsuarioForm" asp-action="Create" class="form-registro" onsubmit="return validacion()">
+        <h2 class="form-titulo">Nuevo producto</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="cont-input">
 
-<h4>Producto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdTipoDeProducto" class="control-label"></label>
-                <select asp-for="IdTipoDeProducto" class ="form-control" asp-items="ViewBag.IdTipoDeProducto"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            <label asp-for="IdProducto" class="input-100">Identificador del producto</label>
+            <input asp-for="IdProducto" class="input-100" type="number" />
+            <span asp-validation-for="IdProducto" class="text-danger"></span>
+
+
+            <label asp-for="IdTipoDeProducto" class="input-100">Tipo de producto</label>
+            <select asp-for="IdTipoDeProducto" class="input-100" asp-items="ViewBag.IdTipoDeProducto"></select>
+
+
+            <label asp-for="CantidadDeProducto" class="input-100">Cantidad</label>
+            <input asp-for="CantidadDeProducto"s class="input-100"/>
+            <span asp-validation-for="CantidadDeProducto" class="text-danger"></span>
+
+
+            <label asp-for="PrecioDelProducto" class="input-100">Precio del producto</label>
+            <input asp-for="PrecioDelProducto"class="input-100"/>
+            <span asp-validation-for="PrecioDelProducto" class="text-danger"></span>
+
+            <label asp-for="CaracteristicasDelProducto" class="input-100">Caracteristicas</label>
+            <input asp-for="CaracteristicasDelProducto" class="input-100" />
+            <span asp-validation-for="CaracteristicasDelProducto" class="text-danger"></span>
+
+            <input type="submit" value="Crear" class="btn-regis btn-enviar">
+            <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></p>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/verificarcreacionproducto.js"></script>
+
 }

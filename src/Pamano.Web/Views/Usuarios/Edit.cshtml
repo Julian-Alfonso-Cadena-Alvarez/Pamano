@@ -1,55 +1,42 @@
 ﻿@model Pamano.Core.Domain.Usuarios
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Usuario";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<h1>Edit</h1>
+<div class="Formulario">
+    <form asp-action="Edit" class="form-registro" onsubmit="return validacion()" method="post">
+        <h3 class="form-titulo">Datos de @Html.DisplayFor(model => model.PrimerNombre)</h3>
+        @* <div asp-validation-summary="ModelOnly"></div>*@
+    <div class="cont-input">
 
-<h4>Usuarios</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdUsuario" />
-            <div class="form-group">
-                <label asp-for="IdRol" class="control-label"></label>
-                <select asp-for="IdRol" class="form-control" asp-items="ViewBag.IdRol"></select>
-                <span asp-validation-for="IdRol" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrimerNombre" class="control-label"></label>
-                <input asp-for="PrimerNombre" class="form-control" />
-                <span asp-validation-for="PrimerNombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SegundoNombre" class="control-label"></label>
-                <input asp-for="SegundoNombre" class="form-control" />
-                <span asp-validation-for="SegundoNombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrimerApellido" class="control-label"></label>
-                <input asp-for="PrimerApellido" class="form-control" />
-                <span asp-validation-for="PrimerApellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SegundoApellido" class="control-label"></label>
-                <input asp-for="SegundoApellido" class="form-control" />
-                <span asp-validation-for="SegundoApellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        <label class="input-100">Numero de Identificacion</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.IdUsuario)">
+
+        <label class="input-100">Primer Nomrbe</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.PrimerNombre)">
+
+        <label class="input-100">Segundo Nomrbe</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.SegundoNombre)">
+
+        <label class="input-100">Primer Apellido</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.PrimerApellido)">
+
+        <label class="input-100">Segundo Apelldio</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.SegundoApellido)">
+
+        <label class="input-100">Tipo de usuario</label>
+        <select asp-for="IdRol" asp-items="ViewBag.IdRol" class="input-100 )"></select>
+
+        <label class="input-100">Telefono</label>
+        <input  type="text" class="input-100" value="@Html.DisplayFor(model => model.Telefono)">
+
+        <a class="btn-regis" asp-action="Edit" asp-route-id="@Model.IdUsuario">Editar</a>
+        <a class="form-link" asp-action="Index">Volver al listado</a>
     </div>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

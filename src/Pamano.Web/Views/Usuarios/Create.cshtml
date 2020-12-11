@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
 @section create{
-
     <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
 
 
 <div class="Formulario">
-    <form onsubmit="return validacion()" asp-action="Create" class="form-registro"s>
+    <form id="CrearUsuarioForm" asp-action="Create" class="form-registro">
         <h2 class="form-titulo">Registro De Nuevo Usuario</h2>
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="cont-input">
-            <label asp-for="IdUsuario"  class="input-100" s>Documento de Identidad</label>
+
+            <label asp-for="IdUsuario" class="input-100">Documento de Identidad</label>
             <input asp-for="IdUsuario" id="Cedula" class="input-100" type="number" />
             <span asp-validation-for="IdUsuario" class="text-danger"></span>
 
@@ -45,7 +45,7 @@
 
             <label asp-for="IdTipoTelefono" class="input-100">Tipo de telefono</label>
             <select asp-for="IdTipoTelefono" id="selector" class="input-100" asp-items="ViewBag.IdTipoTelefono"></select>
-            
+
 
             <label asp-for="Telefono" class="input-100"> Numero Telefono</label>
             <input asp-for="Telefono" type="number" class="input-100" />
@@ -58,9 +58,9 @@
 </div>
 
 @section Scripts {
-    @{ @*await Html.RenderPartialAsync("_ValidationScriptsPartial");*@
-
+    @{
+        
         <script src="~/js/js_admi/registrar_proveedor_ADMINISTRADOR.js"></script>
-
+        
     }
 }

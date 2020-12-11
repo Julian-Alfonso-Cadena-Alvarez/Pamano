@@ -8,25 +8,27 @@
 @section Estilo_datos_correo{
     <link href="~/css_cliente/estilos_datosp_clien.css" rel="stylesheet" />
 }
-<hr />
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 <div class="Formulario">
-    <form id="profile-form" class="form-registro" method="post">
+    <form id="profile-form" class="form-registro" method="post" onsubmit=" return validacion()" >
         <h2 class="form-titulo">Datos Personales</h2>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="cont-input">
             <label class="" asp-for="Username">Usuario</label>
             <input asp-for="Username" class="input-100" disabled />
+
             <label class="" asp-for="Input.PhoneNumber">Numero Telefonico</label>
-            <input asp-for="Input.PhoneNumber" class="input-100 " />
+            <input id="telefono" asp-for="Input.PhoneNumber" class="input-100 " />
             <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
             <input id="update-profile-button" type="submit" value="Guardar" class="btn-regis btn-enviar">
             <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="Perfilcliente">Volver</a></p>
         </div>
-        
+
     </form>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/cambiartelefono.js"></script>
 }

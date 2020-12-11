@@ -10,7 +10,7 @@ function validacion(){
     var marca = document.getElementById('marca').value;
     var empresa = document.getElementById('empresa').value;
     var direccionem = document.getElementById('direccionem').value;
-    var cedula = Document.getElementById('Cedula').value;
+    var cedula = document.getElementById('Cedula').value;
 
     if (cedula == null || cedula.length < 6 || /^\s+$/.test(cedula) || !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(cedula))
     {

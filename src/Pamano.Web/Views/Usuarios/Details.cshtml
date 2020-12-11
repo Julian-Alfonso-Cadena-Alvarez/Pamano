@@ -1,49 +1,43 @@
 ﻿@model Pamano.Core.Domain.Usuarios
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Detalles de Usuario";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
+}
+@section list{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
 }
 
-<h1>Details</h1>
+<div class="Formulario">
+    <form asp-action="Create" class="form-registro" onsubmit="return validacion()" method="post">
+        <h3 class="form-titulo">Detalles del usuario @Html.DisplayFor(model => model.PrimerNombre)</h3>
+        @* <div asp-validation-summary="ModelOnly"></div>*@
+    <div class="cont-input">
 
-<div>
-    <h4>Usuarios</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrimerNombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrimerNombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SegundoNombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SegundoNombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrimerApellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrimerApellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SegundoApellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SegundoApellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdRolNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdRolNavigation.IdRol)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdUsuario">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <label class="input-100">Numero de Identificacion</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.IdUsuario)">
+
+        <label class="input-100">Primer Nomrbe</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.PrimerNombre)">
+
+        <label class="input-100">Segundo Nomrbe</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.SegundoNombre)">
+
+        <label class="input-100">Primer Apellido</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.PrimerApellido)">
+
+        <label class="input-100">Segundo Apelldio</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.SegundoApellido)">
+
+        <label class="input-100">Tipo de usuario</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.IdRolNavigation.TipoDeRol)">
+
+        <label class="input-100">Telefono</label>
+        <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.Telefono)">
+
+        
+        <a class="btn-regis" asp-action="Edit" asp-route-id="@Model.IdUsuario">Editar</a>
+        <a class="form-link" asp-action="Index">Volver al listado</a>
+    </div>
+    </form>
 </div>
