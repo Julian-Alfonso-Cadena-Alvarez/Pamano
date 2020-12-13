@@ -4,7 +4,6 @@
     var cantida = document.getElementById('CantidadDeProducto').value;
     var precio = document.getElementsByName('PrecioDelProducto').value;
     var carac = document.getElementById('CaracteristicasDelProducto').value;
-
     if (idproducto == null) {
 
         alert('ERROR: Debes Poner un valor en el capo del producto');
@@ -67,3 +66,11 @@
     }
 
 }
+function cambiaValores() {
+    var inputvaloruni = document.getElementById("ValorUnitarioDelProducto");
+    var inputvalortotal = document.getElementById("ValorTotalDelProducto");
+    var inputcantidad = document.getElementById("CantidadProducto");
+    inputvalortotal.value = inputvaloruni * inputcantidad;
+    inputvalortotal.insertAdjacentText
+}
+
