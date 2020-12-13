@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,37 +10,23 @@ using Pamano.Infrastructure.Data;
 
 namespace Pamano.Web.Controllers
 {
-    [Authorize]
     public class OrdenDeVentaController : Controller
     {
         private readonly PamanoDbContext _context;
-        
+
         public OrdenDeVentaController(PamanoDbContext context)
         {
             _context = context;
         }
 
-        [Authorize]
-        public IActionResult Principal()
-        {
-            return View();
-        }
-        
-        public IActionResult Reporte()
-        {
-            return View();
-        }
-
         // GET: OrdenDeVenta
-        
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.OrdenDeVenta.Include(o => o.IdUsuarioNavigation);
+            var pamanoDbContext = _context.OrdenDeVenta.Include(o => o.IdProductoNavigation).Include(o => o.IdUsuarioNavigation);
             return View(await pamanoDbContext.ToListAsync());
         }
 
         // GET: OrdenDeVenta/Details/5
-        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +35,7 @@ namespace Pamano.Web.Controllers
             }
 
             var ordenDeVenta = await _context.OrdenDeVenta
+                .Include(o => o.IdProductoNavigation)
                 .Include(o => o.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
             if (ordenDeVenta == null)
@@ -61,9 +47,9 @@ namespace Pamano.Web.Controllers
         }
 
         // GET: OrdenDeVenta/Create
-        
         public IActionResult Create()
         {
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto");
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
             return View();
         }
@@ -71,10 +57,9 @@ namespace Pamano.Web.Controllers
         // POST: OrdenDeVenta/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario")] OrdenDeVenta ordenDeVenta)
+        public async Task<IActionResult> Create([Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario,IdProducto")] OrdenDeVenta ordenDeVenta)
         {
             if (ModelState.IsValid)
             {
@@ -82,6 +67,7 @@ namespace Pamano.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", ordenDeVenta.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
             return View(ordenDeVenta);
         }
@@ -99,6 +85,7 @@ namespace Pamano.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", ordenDeVenta.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
             return View(ordenDeVenta);
         }
@@ -108,7 +95,7 @@ namespace Pamano.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario")] OrdenDeVenta ordenDeVenta)
+        public async Task<IActionResult> Edit(int id, [Bind("IdOrdenDeVenta,CantidadDelProducto,ValorUnitario,ValorTotal,FechaDeVenta,IdUsuario,IdProducto")] OrdenDeVenta ordenDeVenta)
         {
             if (id != ordenDeVenta.IdOrdenDeVenta)
             {
@@ -135,6 +122,7 @@ namespace Pamano.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", ordenDeVenta.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
             return View(ordenDeVenta);
         }
@@ -148,6 +136,7 @@ namespace Pamano.Web.Controllers
             }
 
             var ordenDeVenta = await _context.OrdenDeVenta
+                .Include(o => o.IdProductoNavigation)
                 .Include(o => o.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdOrdenDeVenta == id);
             if (ordenDeVenta == null)

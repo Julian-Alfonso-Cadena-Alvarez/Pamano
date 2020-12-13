@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {}
+    "C:\\Users\\familia\\Source\\Repos\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
+    "C:\\Users\\familia\\Source\\Repos\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
+        "projectUniqueName": "C:\\Users\\familia\\Source\\Repos\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
         "projectName": "Pamano.Core",
-        "projectPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
+        "projectPath": "C:\\Users\\familia\\Source\\Repos\\Pamano\\src\\Pamano.Core\\Pamano.Core.csproj",
         "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\familia\\Desktop\\Pamano\\src\\Pamano.Core\\obj\\",
+        "outputPath": "C:\\Users\\familia\\Source\\Repos\\Pamano\\src\\Pamano.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config",

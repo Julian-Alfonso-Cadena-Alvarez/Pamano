@@ -10,3 +10,15 @@ C:\Users\familia\Desktop\pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.C
 C:\Users\familia\Desktop\pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.runtimeconfig.json
 C:\Users\familia\Desktop\pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.runtimeconfig.dev.json
 C:\Users\familia\Desktop\pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.genruntimeconfig.cache
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.deps.json
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.runtimeconfig.json
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.runtimeconfig.dev.json
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.dll
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\bin\Debug\netcoreapp3.1\Pamano.Core.pdb
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.csprojAssemblyReference.cache
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.AssemblyInfoInputs.cache
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.AssemblyInfo.cs
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.csproj.CoreCompileInputs.cache
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.dll
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.pdb
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Core\obj\Debug\netcoreapp3.1\Pamano.Core.genruntimeconfig.cache

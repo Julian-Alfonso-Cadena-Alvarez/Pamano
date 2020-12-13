@@ -4,35 +4,57 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
-@section list{
-    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
-}
-<div class="Formulario">
-    <form asp-action="Create" class="form-registro" onsubmit="return validacion()" method="post">
-        <h3 class="form-titulo">Orden de Compra @Html.DisplayFor(model => model.IdOrdenDeCompra)</h3>
-        @* <div asp-validation-summary="ModelOnly"></div>*@
-        <div class="cont-input">
 
-            <label class="input-100">Nombre del Proveedor</label>
-            <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.NombreDelProveedor)">
+<h1>Details</h1>
 
-            <label class="input-100">Valor del producto</label>
-            <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.ValorUnitarioDelProducto)">
-
-            <label class="input-100">Valor Total </label>
-            <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.ValorTotalDelProducto)">
-
-            <label class="input-100">Telefono</label>
-            <input disabled type="text" class="input-100" value="@Html.DisplayFor(model => model.Telefono)">
-
-            <a class="btn-regis" asp-action="Edit" asp-route-id="@Model.IdOrdenDeCompra">Editar</a>
-            <a class="form-link" asp-action="Index">Volver al listado</a>
-
-        </div>
-    </form>
+<div>
+    <h4>OrdenDeCompra</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreDelProveedor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreDelProveedor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorUnitarioDelProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ValorUnitarioDelProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorTotalDelProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ValorTotalDelProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CorreoElectronico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CorreoElectronico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProductoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProductoNavigation.IdProducto)
+        </dd>
+    </dl>
 </div>
-
-
 <div>
     <a asp-action="Edit" asp-route-id="@Model.IdOrdenDeCompra">Edit</a> |
     <a asp-action="Index">Back to List</a>

@@ -1,50 +1,41 @@
 ﻿@model IEnumerable<Pamano.Core.Domain.Inventario>
 
 @{
-    ViewData["Title"] = "Inventario";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
-@section list{
-    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
-}
 
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Actualizar inventario</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<table id="lista" class="table">
+<table class="table">
     <thead>
         <tr>
             <th>
-                Fecha De Ingreso
+                @Html.DisplayNameFor(model => model.FechaDeIngreso)
             </th>
             <th>
-                ID Orden De Compra
+                @Html.DisplayNameFor(model => model.IdOrdenDeCompraNavigation)
             </th>
             <th>
-                ID Orden De Venta
+                @Html.DisplayNameFor(model => model.IdOrdenDeVentaNavigation)
             </th>
             <th>
-                Realizador de la Venta
+                @Html.DisplayNameFor(model => model.IdPedidoNavigation)
             </th>
             <th>
-                ID Pedido
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
             </th>
             <th>
-                Producto
+                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
             </th>
-            <th>
-                ID Usuario
-            </th>
-            <th>
-                Acciones
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaDeIngreso)
@@ -56,10 +47,7 @@
                 @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdOrdenDeVenta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdOrdenDeVentaNavigation.IdUsuarioNavigation.PrimerNombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdUsuario)
+                @Html.DisplayFor(modelItem => item.IdPedidoNavigation.IdPedido)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
@@ -68,26 +56,11 @@
                 @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
+                <a asp-action="Edit" asp-route-id="@item.IdInventario">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdInventario">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdInventario">Delete</a>
             </td>
         </tr>
-        }
+}
     </tbody>
 </table>
-
-<div class="btn_salida">
-    <ul>
-        <li><a asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></li>
-    </ul>
-</div>
-
-
-@section datatable{ 
-    <script>
-        $(document).ready(function () {
-            $('#lista').DataTable();
-        });
-    </script>
-}

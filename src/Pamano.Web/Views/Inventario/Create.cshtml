@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
 
 <h1>Create</h1>
@@ -18,12 +18,12 @@
                 <select asp-for="IdUsuario" class ="form-control" asp-items="ViewBag.IdUsuario"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IdOrdenDeVenta" class="control-label"></label>
-                <select asp-for="IdOrdenDeVenta" class ="form-control" asp-items="ViewBag.IdOrdenDeVenta"></select>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdOrdenDeCompra" class="control-label"></label>
                 <select asp-for="IdOrdenDeCompra" class ="form-control" asp-items="ViewBag.IdOrdenDeCompra"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdOrdenDeVenta" class="control-label"></label>
+                <select asp-for="IdOrdenDeVenta" class ="form-control" asp-items="ViewBag.IdOrdenDeVenta"></select>
             </div>
             <div class="form-group">
                 <label asp-for="IdPedido" class="control-label"></label>
@@ -44,6 +44,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

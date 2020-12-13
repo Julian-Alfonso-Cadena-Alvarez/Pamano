@@ -1,37 +1,62 @@
 ﻿@model Pamano.Core.Domain.OrdenDeCompra
 
 @{
-    ViewData["Title"] = "Editar Orden de Compra";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
-@section list{
-    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
-}
-<div class="Formulario">
-    <form asp-action="Edit" class="form-registro" onsubmit="return validacion()" method="post">
-        <h3 class="form-titulo">Editar Orden de compra</h3>
-        <div asp-validation-summary="ModelOnly"></div>
-        <input type="hidden" asp-for="IdOrdenDeCompra" />
-        <div class="cont-input">
 
-            <label asp-for="NombreDelProveedor" class="input-100">Nombre del Proveedor</label>
-            <input asp-for="NombreDelProveedor" type="text" class="input-100" >
+<h1>Edit</h1>
 
-            <label asp-for="ValorUnitarioDelProducto" class="input-100">Valor unitario</label>
-            <input asp-for="ValorUnitarioDelProducto" type="number" class="input-100" >
-
-            <label asp-for="ValorTotalDelProducto" class="input-100">Valor Total</label>
-            <input asp-for="ValorTotalDelProducto" type="number" class="input-100" >
-            
-            <label asp-for="Producto" class="input-100">Producto</label>
-            <input asp-for="Producto" type="text" class="input-100" >
-            
-            <label asp-for="Telefono" class="input-100">Telefono</label>
-            <input asp-for="Telefono" type="number" class="input-100" >
-
-            <input type="submit" value="Guardar" class="btn-regis" />
-            
-            <a class="form-link" asp-action="Index">Volver al listado</a>
-        </div>
-    </form>
+<h4>OrdenDeCompra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdOrdenDeCompra" />
+            <div class="form-group">
+                <label asp-for="NombreDelProveedor" class="control-label"></label>
+                <input asp-for="NombreDelProveedor" class="form-control" />
+                <span asp-validation-for="NombreDelProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorUnitarioDelProducto" class="control-label"></label>
+                <input asp-for="ValorUnitarioDelProducto" class="form-control" />
+                <span asp-validation-for="ValorUnitarioDelProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTotalDelProducto" class="control-label"></label>
+                <input asp-for="ValorTotalDelProducto" class="form-control" />
+                <span asp-validation-for="ValorTotalDelProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoElectronico" class="control-label"></label>
+                <input asp-for="CorreoElectronico" class="form-control" />
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantidadProducto" class="control-label"></label>
+                <input asp-for="CantidadProducto" class="form-control" />
+                <span asp-validation-for="CantidadProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProducto" class="control-label"></label>
+                <select asp-for="IdProducto" class="form-control" asp-items="ViewBag.IdProducto"></select>
+                <span asp-validation-for="IdProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -8,8 +8,8 @@ namespace Pamano.Core.Domain
         public int IdInventario { get; set; }
         public DateTime? FechaDeIngreso { get; set; }
         public string IdUsuario { get; set; }
+        public int? IdOrdenDeCompra { get; set; }
         public int IdOrdenDeVenta { get; set; }
-        public int IdOrdenDeCompra { get; set; }
         public int IdPedido { get; set; }
         public int? IdProducto { get; set; }
 

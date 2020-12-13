@@ -1,7 +1,7 @@
 ﻿@model Pamano.Core.Domain.OrdenDeCompra
 
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Crear orden";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
 @section create{
@@ -9,30 +9,37 @@
 
 }
 <div class="Formulario">
-    <form asp-action="Create" class="form-registro" onsubmit="return validacion()" method="post">
-        <h2 class="form-titulo">Registro de Proveedores</h2>
-        @* <div asp-validation-summary="ModelOnly"></div>*@
+
+    <form asp-action="Create" id="formulario" onsubmit="return validacion()" class="form-registro">
+        <h2 class="form-titulo">Crear Orden de Compra</h2>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="cont-input">
-            <input asp-for="CorreoElectronico" type="email" id="correo" name="Correo" placeholder="Correo electronico" class="input-100">
+            <label asp-for="CantidadProducto" class="input-100"></label>
+            <input asp-for="CantidadProducto" class="input-100" />
+            <span asp-validation-for="CantidadProducto" class="text-danger"></span>
 
-            <input asp-for="Producto" type="text" id="Producto" name="producto" placeholder="Producto" class="input-50" />
+            <label asp-for="IdProductoNavigation" class="control-label">Producto</label>
+            <select asp-for="IdProductoNavigation.CaracteristicasDelProducto" class="form-control" asp-items="ViewBag.CaracteristicasDelProducto"></select>
 
-            <input asp-for="NombreDelProveedor" type="text" id="empresa" name="Empresa" placeholder="Empresa" class="input-50">
 
-            <input asp-for="Telefono" type="number" id="telefono" name="Telefono" placeholder="Telefono" class="input-50">
-
-            <input asp-for="ValorTotalDelProducto" type="number" id="ValorTotal" name="ValorTotal" placeholder="Valor del Producto" class="input-50">
+            <label asp-for="NombreDelProveedor" class="input-100">Nombre del Proveedor</label>
+            <input asp-for="NombreDelProveedor" class="input-100" />
+            <span asp-validation-for="NombreDelProveedor" class="text-danger"></span>
 
             <input type="submit" value="Crear" class="btn-regis btn-enviar">
-            <p class="form-link"><a class="form-link" asp-action="Index">VOLVER</a></p>
-
+            <p class="form-link"><a class="form-link" asp-controller="Home" asp-action="CuentaAdmin">VOLVER</a></p>
+            <p class="form-link"><a class="form-link" asp-area="Identity" asp-page="/Account/Manage/Index" >VOLVER</a></p>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </form>
+
 </div>
 
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script src="~/js/js_admi/registrar_proveedor_ADMINISTRADOR.js"></script>
-}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts{ 
+    <script src="~/js/ValidacionFormularioUsu.js"></script>
+} 

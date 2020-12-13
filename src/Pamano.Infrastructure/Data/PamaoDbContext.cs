@@ -17,9 +17,16 @@ namespace Pamano.Infrastructure.Data
         {
         }
 
-
+        public virtual DbSet<Aspnetroleclaims> Aspnetroleclaims { get; set; }
+        public virtual DbSet<Aspnetroles> Aspnetroles { get; set; }
+        public virtual DbSet<Aspnetuserclaims> Aspnetuserclaims { get; set; }
+        public virtual DbSet<Aspnetuserlogins> Aspnetuserlogins { get; set; }
+        public virtual DbSet<Aspnetuserroles> Aspnetuserroles { get; set; }
+        public virtual DbSet<Aspnetusers> Aspnetusers { get; set; }
+        public virtual DbSet<Aspnetusertokens> Aspnetusertokens { get; set; }
+        public virtual DbSet<Efmigrationshistory> Efmigrationshistory { get; set; }
         public virtual DbSet<EstadoDelPedido> EstadoDelPedido { get; set; }
-    
+        public virtual DbSet<IdentityuserString> IdentityuserString { get; set; }
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<OrdenDeCompra> OrdenDeCompra { get; set; }
         public virtual DbSet<OrdenDeVenta> OrdenDeVenta { get; set; }
@@ -35,20 +42,200 @@ namespace Pamano.Infrastructure.Data
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySQL("database=pamano;server=localhost;port=3306;user id=root;password=");
+//                optionsBuilder.UseMySQL("database=pamano;server=localhost;port=3306;user id=root;password=;");
 //            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Aspnetroleclaims>(entity =>
+            {
+                entity.ToTable("aspnetroleclaims");
 
-           
+                entity.HasIndex(e => e.RoleId)
+                    .HasName("IX_AspNetRoleClaims_RoleId");
 
+                entity.Property(e => e.Id).HasColumnType("int(11)");
 
+                entity.Property(e => e.ClaimType).HasDefaultValueSql("'NULL'");
 
-           
-           
+                entity.Property(e => e.ClaimValue).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasMaxLength(127);
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Aspnetroleclaims)
+                    .HasForeignKey(d => d.RoleId)
+                    .HasConstraintName("FK_AspNetRoleClaims_AspNetRoles_RoleId");
+            });
+
+            modelBuilder.Entity<Aspnetroles>(entity =>
+            {
+                entity.ToTable("aspnetroles");
+
+                entity.HasIndex(e => e.NormalizedName)
+                    .HasName("RoleNameIndex")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasMaxLength(127);
+
+                entity.Property(e => e.ConcurrencyStamp)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.NormalizedName)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+            });
+
+            modelBuilder.Entity<Aspnetuserclaims>(entity =>
+            {
+                entity.ToTable("aspnetuserclaims");
+
+                entity.HasIndex(e => e.UserId)
+                    .HasName("IX_AspNetUserClaims_UserId");
+
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.ClaimType).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.ClaimValue).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.UserId).IsRequired();
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Aspnetuserclaims)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AspNetUserClaims_AspNetUsers_UserId");
+            });
+
+            modelBuilder.Entity<Aspnetuserlogins>(entity =>
+            {
+                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey })
+                    .HasName("PRIMARY");
+
+                entity.ToTable("aspnetuserlogins");
+
+                entity.HasIndex(e => e.UserId)
+                    .HasName("IX_AspNetUserLogins_UserId");
+
+                entity.Property(e => e.LoginProvider).HasMaxLength(127);
+
+                entity.Property(e => e.ProviderKey).HasMaxLength(127);
+
+                entity.Property(e => e.ProviderDisplayName).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.UserId).IsRequired();
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Aspnetuserlogins)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AspNetUserLogins_AspNetUsers_UserId");
+            });
+
+            modelBuilder.Entity<Aspnetuserroles>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.RoleId })
+                    .HasName("PRIMARY");
+
+                entity.ToTable("aspnetuserroles");
+
+                entity.HasIndex(e => e.RoleId)
+                    .HasName("IX_AspNetUserRoles_RoleId");
+
+                entity.Property(e => e.UserId).HasMaxLength(127);
+
+                entity.Property(e => e.RoleId).HasMaxLength(127);
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Aspnetuserroles)
+                    .HasForeignKey(d => d.RoleId)
+                    .HasConstraintName("FK_AspNetUserRoles_AspNetRoles_RoleId");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Aspnetuserroles)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AspNetUserRoles_AspNetUsers_UserId");
+            });
+
+            modelBuilder.Entity<Aspnetusers>(entity =>
+            {
+                entity.ToTable("aspnetusers");
+
+                entity.HasIndex(e => e.NormalizedEmail)
+                    .HasName("EmailIndex");
+
+                entity.HasIndex(e => e.NormalizedUserName)
+                    .HasName("UserNameIndex")
+                    .IsUnique();
+
+                entity.Property(e => e.AccessFailedCount).HasColumnType("int(11)");
+
+                entity.Property(e => e.ConcurrencyStamp).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.NormalizedEmail)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.NormalizedUserName)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.PasswordHash).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.PhoneNumber).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.SecurityStamp).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("'NULL'");
+            });
+
+            modelBuilder.Entity<Aspnetusertokens>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name })
+                    .HasName("PRIMARY");
+
+                entity.ToTable("aspnetusertokens");
+
+                entity.Property(e => e.UserId).HasMaxLength(127);
+
+                entity.Property(e => e.LoginProvider).HasMaxLength(127);
+
+                entity.Property(e => e.Name).HasMaxLength(127);
+
+                entity.Property(e => e.Value).HasDefaultValueSql("'NULL'");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Aspnetusertokens)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AspNetUserTokens_AspNetUsers_UserId");
+            });
+
+            modelBuilder.Entity<Efmigrationshistory>(entity =>
+            {
+                entity.HasKey(e => e.MigrationId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("__efmigrationshistory");
+
+                entity.Property(e => e.MigrationId).HasMaxLength(150);
+
+                entity.Property(e => e.ProductVersion)
+                    .IsRequired()
+                    .HasMaxLength(32);
+            });
 
             modelBuilder.Entity<EstadoDelPedido>(entity =>
             {
@@ -67,7 +254,30 @@ namespace Pamano.Infrastructure.Data
                     .HasDefaultValueSql("'NULL'");
             });
 
-           
+            modelBuilder.Entity<IdentityuserString>(entity =>
+            {
+                entity.ToTable("identityuser<string>");
+
+                entity.Property(e => e.Id).HasMaxLength(127);
+
+                entity.Property(e => e.AccessFailedCount).HasColumnType("int(11)");
+
+                entity.Property(e => e.ConcurrencyStamp).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.Email).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.NormalizedEmail).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.NormalizedUserName).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.PasswordHash).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.PhoneNumber).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.SecurityStamp).HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.UserName).HasDefaultValueSql("'NULL'");
+            });
 
             modelBuilder.Entity<Inventario>(entity =>
             {
@@ -77,7 +287,7 @@ namespace Pamano.Infrastructure.Data
                 entity.ToTable("inventario");
 
                 entity.HasIndex(e => e.IdOrdenDeCompra)
-                    .HasName("ID_orden_de_compra");
+                    .HasName("id_orden_de_compra");
 
                 entity.HasIndex(e => e.IdOrdenDeVenta)
                     .HasName("ID_orden_de_venta");
@@ -101,8 +311,9 @@ namespace Pamano.Infrastructure.Data
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdOrdenDeCompra)
-                    .HasColumnName("ID_orden_de_compra")
-                    .HasColumnType("int(11)");
+                    .HasColumnName("id_orden_de_compra")
+                    .HasColumnType("int(3)")
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdOrdenDeVenta)
                     .HasColumnName("ID_orden_de_venta")
@@ -125,8 +336,7 @@ namespace Pamano.Infrastructure.Data
                 entity.HasOne(d => d.IdOrdenDeCompraNavigation)
                     .WithMany(p => p.Inventario)
                     .HasForeignKey(d => d.IdOrdenDeCompra)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("inventario_ibfk_2");
+                    .HasConstraintName("inventario_ibfk_8");
 
                 entity.HasOne(d => d.IdOrdenDeVentaNavigation)
                     .WithMany(p => p.Inventario)
@@ -159,19 +369,34 @@ namespace Pamano.Infrastructure.Data
 
                 entity.ToTable("orden_de_compra");
 
+                entity.HasIndex(e => e.IdProducto)
+                    .HasName("id_productofk");
+
                 entity.Property(e => e.IdOrdenDeCompra)
                     .HasColumnName("ID_orden_de_compra")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.CantidadProducto)
+                    .HasColumnName("cantidadProducto")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.CorreoElectronico)
+                    .HasMaxLength(25)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.IdProducto)
+                    .HasColumnName("id_producto")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NombreDelProveedor)
                     .HasColumnName("Nombre_del_proveedor")
                     .HasMaxLength(15)
                     .HasDefaultValueSql("'NULL'");
 
-                entity.Property(e => e.Producto)
-                    .IsRequired()
-                    .HasColumnName("producto")
-                    .HasMaxLength(30);
+                entity.Property(e => e.Telefono)
+                    .HasMaxLength(11)
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.ValorTotalDelProducto)
                     .HasColumnName("Valor_total_del_producto")
@@ -182,6 +407,11 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnName("Valor_unitario_del_producto")
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
+
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.OrdenDeCompra)
+                    .HasForeignKey(d => d.IdProducto)
+                    .HasConstraintName("id_productofk");
             });
 
             modelBuilder.Entity<OrdenDeVenta>(entity =>
@@ -190,6 +420,9 @@ namespace Pamano.Infrastructure.Data
                     .HasName("PRIMARY");
 
                 entity.ToTable("orden_de_venta");
+
+                entity.HasIndex(e => e.IdProducto)
+                    .HasName("id_producto");
 
                 entity.HasIndex(e => e.IdUsuario)
                     .HasName("id_usuario");
@@ -208,6 +441,11 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnType("date")
                     .HasDefaultValueSql("'NULL'");
 
+                entity.Property(e => e.IdProducto)
+                    .HasColumnName("id_producto")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'NULL'");
+
                 entity.Property(e => e.IdUsuario)
                     .HasColumnName("id_usuario")
                     .HasMaxLength(10)
@@ -222,6 +460,11 @@ namespace Pamano.Infrastructure.Data
                     .HasColumnName("Valor_unitario")
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
+
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.OrdenDeVenta)
+                    .HasForeignKey(d => d.IdProducto)
+                    .HasConstraintName("id_producto");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.OrdenDeVenta)
@@ -256,9 +499,9 @@ namespace Pamano.Infrastructure.Data
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.IdUsuario)
-                    .IsRequired()
                     .HasColumnName("ID_usuario")
-                    .HasMaxLength(10);
+                    .HasMaxLength(10)
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.HasOne(d => d.IdEstadoPedidoNavigation)
                     .WithMany(p => p.Pedidos)
@@ -268,7 +511,6 @@ namespace Pamano.Infrastructure.Data
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Pedidos)
                     .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("pedidos_ibfk_1");
             });
 

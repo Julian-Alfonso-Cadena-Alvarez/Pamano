@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
 
 <h1>Edit</h1>
@@ -25,14 +25,14 @@
                 <span asp-validation-for="IdUsuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdOrdenDeVenta" class="control-label"></label>
-                <select asp-for="IdOrdenDeVenta" class="form-control" asp-items="ViewBag.IdOrdenDeVenta"></select>
-                <span asp-validation-for="IdOrdenDeVenta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdOrdenDeCompra" class="control-label"></label>
                 <select asp-for="IdOrdenDeCompra" class="form-control" asp-items="ViewBag.IdOrdenDeCompra"></select>
                 <span asp-validation-for="IdOrdenDeCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdOrdenDeVenta" class="control-label"></label>
+                <select asp-for="IdOrdenDeVenta" class="form-control" asp-items="ViewBag.IdOrdenDeVenta"></select>
+                <span asp-validation-for="IdOrdenDeVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdPedido" class="control-label"></label>
@@ -55,6 +55,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

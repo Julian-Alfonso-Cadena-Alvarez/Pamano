@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
 
 <h1>Delete</h1>
@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.IdOrdenDeCompraNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdOrdenDeCompraNavigation.Producto)
+            @Html.DisplayFor(model => model.IdOrdenDeCompraNavigation.IdOrdenDeCompra)
         </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdOrdenDeVentaNavigation)
@@ -34,7 +34,7 @@
             @Html.DisplayNameFor(model => model.IdPedidoNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdPedidoNavigation.IdUsuario)
+            @Html.DisplayFor(model => model.IdPedidoNavigation.IdPedido)
         </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdProductoNavigation)

@@ -1,89 +1,72 @@
 ﻿@model IEnumerable<Pamano.Core.Domain.OrdenDeCompra>
 
 @{
-    ViewData["Title"] = "Orden de Compra";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
-@section list{
-    <link href="~/css_admin/Lista_proveedores_ADMINISTRADOR.css" rel="stylesheet" />
-    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
-}
+
+<h1>Index</h1>
+
 <p>
-    <a asp-action="Create">Agregar nueva Orden de compra</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<h3>Seleccione linea de artículo</h3>
-<select class="input-50">
-    <option value="0">Tipo de artículo</option>
-    <option value="1">Escolar</option>
-    <option value="2">Comestible</option>
-    <option value="3">Tecnológico</option>
-    <option value="4">Ferretería</option>
-    <option value="5">Detalles</option>
-</select>
-<br />
-<br />
-<br />
-<table id="provedor" class="table mb-1">
+<table class="table">
     <thead>
         <tr>
             <th>
-                Proveedor
+                @Html.DisplayNameFor(model => model.NombreDelProveedor)
             </th>
             <th>
-                Valor Unitario
+                @Html.DisplayNameFor(model => model.ValorUnitarioDelProducto)
             </th>
             <th>
-                Valor Total
+                @Html.DisplayNameFor(model => model.ValorTotalDelProducto)
             </th>
             <th>
-                Producto
+                @Html.DisplayNameFor(model => model.CorreoElectronico)
             </th>
             <th>
-                Accion
+                @Html.DisplayNameFor(model => model.Telefono)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NombreDelProveedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ValorUnitarioDelProducto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ValorTotalDelProducto)
-                </td>
-                <td>
-                    @Html.DisplayFor(ModelItem => item.Producto)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdOrdenDeCompra">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdOrdenDeCompra">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdOrdenDeCompra">Eliminar</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreDelProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorUnitarioDelProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotalDelProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectronico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrdenDeCompra">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdOrdenDeCompra">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOrdenDeCompra">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-<div class="btn_salida">
-    <ul>
-        <li><a asp-controller="OrdenDeCompras" asp-action="Reporte">Ver reporte</a></li>
-    </ul>
-</div>
-<div class="btn_salida">
-    <ul>
-        <li><a asp-controller="OrdenDeCompras" asp-action="Principal">VOLVER</a></li>
-    </ul>
-</div>
-
-@section datatable{
-
-    <script>
-        $(document).ready(function () {
-            $('#provedor').DataTable();
-        });
-    </script>
-}

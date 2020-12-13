@@ -1,6 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="Views\Administration\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Views\Administration\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Views\Administration\**" />
+    <None Remove="Data\**" />
+    <None Remove="Views\Administration\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Pamano.Core\Pamano.Core.csproj" />
     <ProjectReference Include="..\Pamano.Infrastructure\Pamano.Infrastructure.csproj" />
   </ItemGroup>
@@ -22,11 +33,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Views\Administration\" />
   </ItemGroup>
 
   <PropertyGroup>
