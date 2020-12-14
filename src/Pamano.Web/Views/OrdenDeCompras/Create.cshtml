@@ -23,19 +23,15 @@
             <span asp-validation-for="CantidadProducto" class="text-danger"></span>
 
             <label asp-for="NombreDelProveedor" class="input-100">Nombre del Proveedor</label>
-            <input asp-for="NombreDelProveedor" asp-items="ViewBag.NombreDelProveedor " class="input-100" />
+            <input asp-for="NombreDelProveedor" class="input-100" />
             <span asp-validation-for="NombreDelProveedor" class="text-danger"></span>
-
-            <label asp-for="CorreoElectronico" class="input-100">Correo Electronico</label>
-            <input asp-for="CorreoElectronico" class="input-100" />
-            <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
 
             <label asp-for="ValorUnitarioDelProducto" class="input-100">Valor Unitario Del Producto</label>
             <input asp-for="ValorUnitarioDelProducto" class="input-100" />
             <span asp-validation-for="ValorUnitarioDelProducto" class="text-danger"></span>
 
             <label asp-for="ValorTotalDelProducto" class="input-100">Valor Total Del Producto</label>
-            <input disabled asp-for="ValorTotalDelProducto" class="input-100" />
+            <input asp-for="ValorTotalDelProducto" class="input-100" />
             <span asp-validation-for="ValorUnitarioDelProducto" class="text-danger"></span>
 
             <input type="submit" value="Crear" class="btn-regis btn-enviar">

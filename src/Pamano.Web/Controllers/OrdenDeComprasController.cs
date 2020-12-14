@@ -19,10 +19,22 @@ namespace Pamano.Web.Controllers
             _context = context;
         }
 
+        public IActionResult Principal()
+        {
+            return View();
+        }
+
+        public IActionResult Reporte()
+        {
+            return View();
+        }
+
         // GET: OrdenDeCompras
         public async Task<IActionResult> Index()
         {
-            var pamanoDbContext = _context.OrdenDeCompra.Include(o => o.IdProductoNavigation);
+            var pamanoDbContext = _context.OrdenDeCompra
+                .Include(o => o.IdProductoNavigation)
+                .Include(i => i.IdProductoNavigation.IdTipoDeProductoNavigation);
             return View(await pamanoDbContext.ToListAsync());
         }
 
@@ -48,7 +60,11 @@ namespace Pamano.Web.Controllers
         // GET: OrdenDeCompras/Create
         public IActionResult Create()
         {
-            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto");
+            ViewData["IdProducto"] = new SelectList(
+                _context.Producto,
+                "IdProducto",
+                "CaracteristicasDelProducto"
+                );
             return View();
         }
 
@@ -82,7 +98,11 @@ namespace Pamano.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", ordenDeCompra.IdProducto);
+            ViewData["IdProducto"] = new SelectList(
+                _context.Producto,
+                "IdProducto",
+                "CaracteristicasDelProducto"
+                );
             return View(ordenDeCompra);
         }
 

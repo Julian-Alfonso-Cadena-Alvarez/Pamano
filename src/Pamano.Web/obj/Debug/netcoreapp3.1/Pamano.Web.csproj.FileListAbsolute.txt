@@ -1094,3 +1094,4 @@ C:\Users\familia\Source\Repos\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razo
 C:\Users\familia\Source\Repos\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Details.cshtml.g.cs
 C:\Users\familia\Source\Repos\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Edit.cshtml.g.cs
 C:\Users\familia\Source\Repos\Pamano\src\Pamano.Web\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Index.cshtml.g.cs
+C:\Users\familia\Source\Repos\Pamano\src\Pamano.Web\bin\Debug\netcoreapp3.1\Microsoft.Graph.Core.dll

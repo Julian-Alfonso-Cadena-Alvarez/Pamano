@@ -4,31 +4,44 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
+@section create{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
+}
 
-<h1>Create</h1>
+<div class="Formulario">
+    <form asp-action="Create" class="form-registro">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2 class="form-titulo">Crear Orden de Venta</h2>
+        <div class="cont-input">
+            <label asp-for="IdUsuario" class="input-100">Usuario</label>
+            <select asp-for="IdUsuario" class="input-100" asp-items="ViewBag.IdUsuario"></select>
 
-<h4>OrdenDeVenta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdUsuario" class="control-label"></label>
-                <select asp-for="IdUsuario" class ="form-control" asp-items="ViewBag.IdUsuario"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdProducto" class="control-label"></label>
-                <select asp-for="IdProducto" class ="form-control" asp-items="ViewBag.IdProducto"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            <label asp-for="IdProducto" class="input-100">Producto</label>
+            <select asp-for="IdProducto" class="input-100" asp-items="ViewBag.IdProducto"></select>
+
+            <label asp-for="CantidadDelProducto" class="input-100">Cantidad del producto</label>
+            <input asp-for="CantidadDelProducto" class="input-100" />
+            <span asp-validation-for="CantidadDelProducto" class="text-danger"></span>
+            
+            <label asp-for="ValorUnitario" class="input-100">Valor unitario</label>
+            <input asp-for="ValorUnitario" class="input-100" />
+            <span asp-validation-for="ValorUnitario" class="text-danger"></span>
+            
+            <label asp-for="ValorTotal" class="input-100">Valor Total</label>
+            <input asp-for="ValorTotal" class="input-100" />
+            <span asp-validation-for="ValorTotal" class="text-danger"></span>
+            
+            <label asp-for="FechaDeVenta" class="input-100">Fecha de Ingreso</label>
+            <input asp-for="FechaDeVenta" class="input-100" />
+            <span asp-validation-for="FechaDeVenta" class="text-danger"></span>
+
+            <input type="submit" value="Create" class="btn-regis btn-enviar" />
+        </div>
+    </form>
+    
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 

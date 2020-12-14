@@ -1,57 +1,49 @@
 ﻿@model Pamano.Core.Domain.OrdenDeVenta
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar venta";
     Layout = "~/Views/Shared/_navAdmin.cshtml";
 }
+@section list{
+    <link href="~/css_admin/registrar_proveedor_ADMINISTRADOR.css" rel="stylesheet" />
+}
 
-<h1>Edit</h1>
+<div class="Formulario">
+    <form asp-action="Edit" class="form-registro" onsubmit="return validacion()" method="post">
+        <h3 class="form-titulo">Datos de la venta @Html.DisplayFor(model => model.IdOrdenDeVenta)</h3>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdOrdenDeVenta" />
+        <div class="cont-input">
 
-<h4>OrdenDeVenta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdOrdenDeVenta" />
-            <div class="form-group">
-                <label asp-for="CantidadDelProducto" class="control-label"></label>
-                <input asp-for="CantidadDelProducto" class="form-control" />
-                <span asp-validation-for="CantidadDelProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ValorUnitario" class="control-label"></label>
-                <input asp-for="ValorUnitario" class="form-control" />
-                <span asp-validation-for="ValorUnitario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ValorTotal" class="control-label"></label>
-                <input asp-for="ValorTotal" class="form-control" />
-                <span asp-validation-for="ValorTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaDeVenta" class="control-label"></label>
-                <input asp-for="FechaDeVenta" class="form-control" />
-                <span asp-validation-for="FechaDeVenta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdUsuario" class="control-label"></label>
-                <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
-                <span asp-validation-for="IdUsuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdProducto" class="control-label"></label>
-                <select asp-for="IdProducto" class="form-control" asp-items="ViewBag.IdProducto"></select>
-                <span asp-validation-for="IdProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            <label asp-for="CantidadDelProducto" class="input-100">Cantidad Vendida</label>
+            <input asp-for="CantidadDelProducto" class="input-100" />
+            <span asp-validation-for="CantidadDelProducto" class="text-danger"></span>
+
+            <label asp-for="ValorUnitario" class="input-100">Valor Unitario</label>
+            <input asp-for="ValorUnitario" class="input-100" />
+            <span asp-validation-for="ValorUnitario" class="text-danger"></span>
+
+            <label asp-for="ValorTotal" class="input-100">Valor Total</label>
+            <input asp-for="ValorTotal" class="input-100" />
+            <span asp-validation-for="ValorTotal" class="text-danger"></span>
+
+            <label asp-for="FechaDeVenta" class="input-100">Fecha de Venta</label>
+            <input asp-for="FechaDeVenta" class="input-100" />
+            <span asp-validation-for="FechaDeVenta" class="text-danger"></span>
+
+            <label asp-for="IdUsuario" class="input-100">Usuario</label>
+            <select asp-for="IdUsuario" class="input-100" asp-items="ViewBag.IdUsuario"></select>
+            <span asp-validation-for="IdUsuario" class="text-danger"></span>
+
+            <label asp-for="IdProducto" class="input-100">Producto</label>
+            <select asp-for="IdProducto" class="input-100" asp-items="ViewBag.IdProducto"></select>
+            <span asp-validation-for="IdProducto" class="text-danger"></span>
+
+
+            <input type="submit" value="Guardar" class="btn-regis" />
+            <a class="form-link" asp-action="Index">Volver</a>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

@@ -18,6 +18,15 @@ namespace Pamano.Web.Controllers
         {
             _context = context;
         }
+        public IActionResult Principal()
+        {
+            return View();
+        }
+        public IActionResult Reporte()
+        {
+            return View();
+        }
+
 
         // GET: OrdenDeVenta
         public async Task<IActionResult> Index()
@@ -49,8 +58,9 @@ namespace Pamano.Web.Controllers
         // GET: OrdenDeVenta/Create
         public IActionResult Create()
         {
-            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto");
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "CaracteristicasDelProducto");
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
+            
             return View();
         }
 
@@ -85,7 +95,7 @@ namespace Pamano.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "IdProducto", ordenDeVenta.IdProducto);
+            ViewData["IdProducto"] = new SelectList(_context.Producto, "IdProducto", "CaracteristicasDelProducto", ordenDeVenta.IdProducto);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ordenDeVenta.IdUsuario);
             return View(ordenDeVenta);
         }
